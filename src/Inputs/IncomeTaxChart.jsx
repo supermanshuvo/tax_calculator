@@ -28,8 +28,8 @@ const IncomeTaxChart = () => {
                   <tbody>
                     {/* 1st item */}
                     <tr>
-                      <td className="withoutInputFields">
-                        <p className="text-center">First Tk.</p>
+                      <td className="withoutInputFields td_of_charts">
+                        First Tk.
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">163,000</p>
@@ -49,7 +49,7 @@ const IncomeTaxChart = () => {
                     </tr>
                     {/* 2nd item */}
                     <tr>
-                      <td>Next Tk.</td>
+                      <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
                         <p className="text-center">0</p>
                       </td>
@@ -68,7 +68,7 @@ const IncomeTaxChart = () => {
                     </tr>
                     {/* 3rd item */}
                     <tr>
-                      <td>Next Tk.</td>
+                      <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
                         <p className="text-center">0</p>
                       </td>
@@ -87,7 +87,7 @@ const IncomeTaxChart = () => {
                     </tr>
                     {/* 4th item */}
                     <tr>
-                      <td>Next Tk.</td>
+                      <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
                         <p className="text-center">0</p>
                       </td>
@@ -106,7 +106,7 @@ const IncomeTaxChart = () => {
                     </tr>
                     {/* 5th item */}
                     <tr>
-                      <td>Next Tk.</td>
+                      <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
                         <p className="text-center">0</p>
                       </td>
@@ -126,7 +126,7 @@ const IncomeTaxChart = () => {
                     {/* 6th item */}
 
                     <tr>
-                      <td>Next Tk.</td>
+                      <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
                         <p className="text-center">0</p>
                       </td>
@@ -146,7 +146,7 @@ const IncomeTaxChart = () => {
 
                     {/* Calculating Total */}
                     <tr>
-                      <th colSpan={5}>Total Payable Tax</th>
+                      <th colSpan={5}>Total Payable</th>
                       <td className="withoutInputFields">
                         <p className="text-center">0</p>
                       </td>

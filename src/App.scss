@@ -71,7 +71,8 @@ pre {
 .footerDetails {
   margin-top: 5vw;
   margin-bottom: 5vw;
-  font-size: 2vw !important;
+  font-size: 1.8vw !important;
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   font-weight: 600;
 }
@@ -107,4 +108,7 @@ button.btn {
 button.btn:hover {
   border: 2px solid crimson;
   background: #fff;
+}
+.td_of_charts {
+  font-size: 1.5vw;
 }

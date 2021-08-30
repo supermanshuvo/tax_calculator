@@ -8,7 +8,7 @@ const EmployeeDetails = () => {
         <form action="">
           <div className="row">
             {/* left-side-fields starts */}
-            <div className="col-6 table-left">
+            <div className="col-lg-6 col-md-12 table-left">
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">
                   <span>*</span> Enter Employee Name
@@ -49,7 +49,7 @@ const EmployeeDetails = () => {
 
             {/* right-side-fields starts
              */}
-            <div className="col-6 table-right">
+            <div className="col-lg-6 col-md-12 table-right">
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">Branch</label>
                 <input type="text" className="form-control" />
