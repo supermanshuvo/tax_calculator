@@ -2,13 +2,24 @@ import { useState } from "react";
 const InvestmentAllowance = (props) => {
   let ProvidentFund = props.PF;
   let [Sum, setSum] = useState(0);
+  let [AllowInvestment, setAllowInvestment] = useState(0);
+  let [LimitInvestment, setLimitInvestment] = useState(0);
   let getCalculate = (e) => {
     let DPSOthers = e.target.value;
     setSum(
       DPSOthers > 0 ? parseFloat(ProvidentFund) + parseFloat(DPSOthers) : "0"
     );
   };
-  console.log();
+  let H12 = props.ConfigureH12,
+    H17 = props.ConfigureH17,
+    totalTaxIncome = props.TotalTaxIncome;
+  let firstConditionAllowInvestment =
+    ( totalTaxIncome - ProvidentFund) * H12 * 0.01;
+  if (firstConditionAllowInvestment < H17) {
+    setAllowInvestment(firstConditionAllowInvestment);
+  } else {
+    setAllowInvestment(props.ConfigureH17);
+  }
   return (
     <div className="container mt-2">
       <div className="row">
@@ -35,7 +46,7 @@ const InvestmentAllowance = (props) => {
               <tr className="fw-bold">
                 <td>Allowed Investment</td>
                 <td>
-                  {0.0} From {0.0}
+                  {AllowInvestment} From {LimitInvestment}
                 </td>
               </tr>
             </tbody>
