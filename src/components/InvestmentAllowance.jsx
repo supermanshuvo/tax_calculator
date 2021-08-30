@@ -4,22 +4,34 @@ const InvestmentAllowance = (props) => {
   let [Sum, setSum] = useState(0);
   let [AllowInvestment, setAllowInvestment] = useState(0);
   let [LimitInvestment, setLimitInvestment] = useState(0);
+  let H12 = props.ConfigureH12,
+    H17 = props.ConfigureH17,
+    totalTaxIncome = props.TotalTaxIncome;
+  let firstConditionAllowInvestment =
+    (totalTaxIncome - ProvidentFund) * H12 * 0.01;
+
+  let secondConditionLimitedInvestment =
+    totalTaxIncome * H12 * 0.01 - ProvidentFund;
+
   let getCalculate = (e) => {
     let DPSOthers = e.target.value;
     setSum(
       DPSOthers > 0 ? parseFloat(ProvidentFund) + parseFloat(DPSOthers) : "0"
     );
+
+    if (firstConditionAllowInvestment < H17) {
+      setAllowInvestment(firstConditionAllowInvestment);
+    } else {
+      setAllowInvestment(H17);
+    }
+
+    if (secondConditionLimitedInvestment > H17) {
+      setLimitInvestment(secondConditionLimitedInvestment);
+    } else {
+      setLimitInvestment(H17);
+    }
   };
-  let H12 = props.ConfigureH12,
-    H17 = props.ConfigureH17,
-    totalTaxIncome = props.TotalTaxIncome;
-  let firstConditionAllowInvestment =
-    ( totalTaxIncome - ProvidentFund) * H12 * 0.01;
-  if (firstConditionAllowInvestment < H17) {
-    setAllowInvestment(firstConditionAllowInvestment);
-  } else {
-    setAllowInvestment(props.ConfigureH17);
-  }
+
   return (
     <div className="container mt-2">
       <div className="row">
