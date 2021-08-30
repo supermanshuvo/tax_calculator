@@ -7,91 +7,111 @@ const IncomeDetails = () => {
         <p className="All_Headings">Income Details</p>
         <form action="">
           <div className="row">
-            <div className="col-11 mx-auto">
+            <div className="col-12 mx-auto">
               <div className="table-responsive.sm">
                 <table className="table table-hover">
                   {/* All headings */}
                   <thead>
-                    <tr>
+                    <tr className="total_of_IncomeDetails">
                       <th scope="col"></th>
-                      <th scope="col">M.Amount</th>
-                      <th scope="col">L.Amount</th>
-                      <th scope="col">Y.Amount</th>
-                      <th scope="col">Taxable Income</th>
+                      <th scope="col" className="text-center">
+                        M.Amount
+                      </th>
+                      <th scope="col" className="text-center">
+                        L.Amount
+                      </th>
+                      <th scope="col" className="text-center">
+                        Y.Amount
+                      </th>
+                      <th scope="col" className="text-center">
+                        Taxable Income
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {/* 1st item */}
                     <tr>
-                      <th>
-                        <span>*</span>Basic Pay
-                      </th>
+                      <th>Basic Pay</th>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 2nd item */}
                     <tr>
-                      <th>
-                        <span>*</span>Housing
-                      </th>
+                      <th>Housing</th>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 3rd item */}
                     <tr>
-                      <th>
-                        <span>*</span>Meidcal
-                      </th>
+                      <th>Meidcal</th>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 4th item */}
                     <tr>
@@ -105,7 +125,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
@@ -115,7 +137,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 5th item */}
                     <tr>
@@ -129,7 +153,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
@@ -139,7 +165,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 6th item */}
                     <tr>
@@ -153,7 +181,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
@@ -163,32 +193,37 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 7th item */}
                     <tr>
-                      <th>
-                        {" "}
-                        <span>*</span> Bonus
-                      </th>
+                      <th> Bonus</th>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
+                          defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 8th item */}
                     <tr>
@@ -202,7 +237,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
@@ -212,7 +249,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* 9th item */}
                     <tr>
@@ -226,7 +265,9 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                       <td>
                         <input
                           type="number"
@@ -236,15 +277,21 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
                     </tr>
                     {/* Calculating Total */}
-                    <tr style={{ borderTop: "red" }}>
+                    <tr className="total_of_IncomeDetails">
                       <th>Total</th>
                       <td></td>
                       <td className="withoutInputFields"></td>
                       <td></td>
-                      <td className="withoutInputFields"></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center p_of_total_in_Income_Details">
+                          0
+                        </p>
+                      </td>
                     </tr>
                     {/* end of all items and table */}
                   </tbody>

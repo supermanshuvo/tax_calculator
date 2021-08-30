@@ -3,6 +3,9 @@
   font-family: "Times New Roman", Times, serif;
   background: #f2f8ff;
 }
+.container {
+  margin-bottom: 5vh;
+}
 .All_Headings {
   font-size: 1.8vw;
   font-weight: 600;
@@ -27,6 +30,10 @@ th {
 }
 td {
   vertical-align: middle;
+}
+.total_of_IncomeDetails,
+.p_of_total_in_Income_Details {
+  background-color: rgb(206, 198, 199);
 }
 label,
 p,
@@ -86,10 +93,8 @@ span {
   font-weight: 600;
 }
 .image-fluid {
-  height: 5vw;
+  height: 3.5vw;
   width: 10vw;
-  line-height: 50%;
-  display: flex;
 }
 button.btn {
   color: #fff;
