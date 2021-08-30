@@ -1,13 +1,14 @@
+import { useState } from "react";
 const InvestmentAllowance = (props) => {
   let ProvidentFund = props.PF;
-  let DPSOthers = 0,
-    sum = 0;
-  let handleOnchange = (e) => {
-    DPSOthers = e.target.value;
-    sum =
-      DPSOthers > 0 ? parseFloat(ProvidentFund) + parseFloat(DPSOthers) : "0";
-    console.log(sum);
+  let [Sum, setSum] = useState(0);
+  let getCalculate = (e) => {
+    let DPSOthers = e.target.value;
+    setSum(
+      DPSOthers > 0 ? parseFloat(ProvidentFund) + parseFloat(DPSOthers) : "0"
+    );
   };
+  console.log();
   return (
     <div className="container mt-2">
       <div className="row">
@@ -24,17 +25,12 @@ const InvestmentAllowance = (props) => {
               <tr>
                 <td>DPS/BSP/LIP/Others (If Applicable)</td>
                 <td>
-                  <input
-                    type="number"
-                    name="DPSOthers"
-                    id="DPSOthers"
-                    onChange={handleOnchange}
-                  />
+                  <input type="text" onChange={getCalculate} />
                 </td>
               </tr>
               <tr className="fw-bold">
                 <td>Total Investment</td>
-                <td>{sum}</td>
+                <td>{Sum}</td>
               </tr>
               <tr className="fw-bold">
                 <td>Allowed Investment</td>
