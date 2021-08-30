@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TotalTax from "./TotalTax";
 const InvestmentAllowance = (props) => {
   let ProvidentFund = props.PF;
   let [Sum, setSum] = useState(0);
@@ -65,6 +66,7 @@ const InvestmentAllowance = (props) => {
           </table>
         </div>
       </div>
+      <TotalTax AllowInvestment={AllowInvestment} ProvMonth={props.ProvMonth} />
     </div>
   );
 };
