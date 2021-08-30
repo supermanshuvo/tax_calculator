@@ -3,47 +3,45 @@ import React from "react";
 const EmployeeDetails = () => {
   return (
     <>
-      <div className="container-fluid">
+      <div className="container">
         <p className="All_Headings">Employee Details</p>
         <form action="">
           <div className="row">
             {/* left-side-fields starts */}
             <div className="col-6 table-left">
               <div className="form-group">
-                <label>
+                <label className="levelsOfEmployeeDetails">
                   <span>*</span> Enter Employee Name
                 </label>
                 <input type="text" className="form-control" required />
               </div>
 
               <div className="form-group">
-                <label>
+                <label className="levelsOfEmployeeDetails">
+                  <span>*</span> Employee Code
+                </label>
+                <input type="text" className="form-control" required />
+              </div>
+
+              <div className="form-group">
+                <label className="levelsOfEmployeeDetails">
                   <span>*</span> Location
                 </label>
                 <input type="text" className="form-control" required />
               </div>
 
               <div className="form-group">
-                <label>
+                <label className="levelsOfEmployeeDetails">
                   <span>*</span> Department
                 </label>
                 <input type="text" className="form-control" required />
               </div>
 
               <div className="form-group">
-                <label>
-                  <span>*</span> Designation
+                <label className="levelsOfEmployeeDetails">
+                  <span>*</span> Join Date
                 </label>
-                <input type="text" className="form-control" required />
-              </div>
-
-              <div className="form-group">
-                <p className="IncomeTaxCardFor">
-                  <i>
-                    Income Tax Card For : Financial Year 2020-2021 (Asst. Year
-                    2021-2022)
-                  </i>
-                </p>
+                <input type="date" className="form-control" required />
               </div>
             </div>
 
@@ -52,10 +50,21 @@ const EmployeeDetails = () => {
             {/* right-side-fields starts
              */}
             <div className="col-6 table-right">
+              <div className="form-group">
+                <label className="levelsOfEmployeeDetails">Branch</label>
+                <input type="text" className="form-control" />
+              </div>
+
+              <div className="form-group">
+                <label className="levelsOfEmployeeDetails">
+                  <span>*</span> Designation
+                </label>
+                <input type="text" className="form-control" required />
+              </div>
               <div>
-                <label>Eligible for</label>
+                <label className="levelsOfEmployeeDetails">Eligible for</label>
                 <select
-                  className="form-select"
+                  className="form-select employee_details_rightside"
                   aria-label="Default select example"
                   defaultValue={12}
                 >
@@ -77,9 +86,9 @@ const EmployeeDetails = () => {
               </div>
 
               <div>
-                <label>Gender</label>
+                <label className="levelsOfEmployeeDetails">Gender</label>
                 <select
-                  className="form-select"
+                  className="form-select employee_details_rightside"
                   aria-label="Default select example"
                   defaultValue={"M"}
                 >
@@ -92,9 +101,9 @@ const EmployeeDetails = () => {
               </div>
 
               <div>
-                <label>Prov. Months</label>
+                <label className="levelsOfEmployeeDetails">Prov. Months</label>
                 <select
-                  className="form-select"
+                  className="form-select employee_details_rightside"
                   aria-label="Default select example"
                   defaultValue={12}
                 >

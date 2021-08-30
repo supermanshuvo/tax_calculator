@@ -4,10 +4,18 @@
   background: #f2f8ff;
 }
 .All_Headings {
-  font-size: 2.6vw;
+  font-size: 1.8vw;
   font-weight: 600;
   text-align: left;
   margin-top: 4vw;
+}
+
+.tax_title {
+  font-weight: 600;
+  font-size: 1.7vw;
+}
+.employee_details_rightside {
+  font-size: 1.5vw;
 }
 
 .table-left,
@@ -26,7 +34,8 @@ optgroup,
 select {
   font-size: 1.5vw;
 }
-.inpOfIncomeDetails {
+.inpOfIncomeDetails,
+.inpOfInvestmentAllowance {
   font-size: 1.3vw;
   border: none;
   border: 1px solid white;
@@ -41,17 +50,21 @@ input:focus {
   width: 17vw;
   text-align: center;
 }
-.nameOfTheApp {
-  font-size: 2.5vw !important;
-  text-align: center;
-  color: #f81c3a;
-  font-weight: 600;
+.inpOfInvestmentAllowance {
+  margin-bottom: 0.3vw;
+  text-align: start;
 }
-
+label {
+  margin-bottom: 1.3vw 0;
+}
+pre {
+  font-size: 1.5vw;
+  font-family: "Times New Roman", Times, serif;
+}
 .footerDetails {
   margin-top: 5vw;
   margin-bottom: 5vw;
-  font-size: 2.5vw !important;
+  font-size: 2vw !important;
   text-align: center;
   font-weight: 600;
 }
@@ -63,5 +76,30 @@ input:focus {
 
 span {
   color: red;
-  //   background: #bbd6fe;
+}
+.header_div p {
+  text-align: center;
+  font-size: 1.5vw;
+}
+.company_name {
+  color: #000 !important;
+  font-weight: 600;
+}
+.image-fluid {
+  height: 5vw;
+  width: 10vw;
+  line-height: 50%;
+  display: flex;
+}
+button.btn {
+  color: #fff;
+  background: crimson;
+  border: 2px solid crimson;
+  padding: 0 2vw;
+  font-weight: 600;
+  border-radius: 2vw;
+}
+button.btn:hover {
+  border: 2px solid crimson;
+  background: #fff;
 }

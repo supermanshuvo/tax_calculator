@@ -3,7 +3,7 @@ import React from "react";
 const IncomeDetails = () => {
   return (
     <>
-      <div className="container-fluid">
+      <div className="container">
         <p className="All_Headings">Income Details</p>
         <form action="">
           <div className="row">
@@ -14,9 +14,9 @@ const IncomeDetails = () => {
                   <thead>
                     <tr>
                       <th scope="col"></th>
-                      <th scope="col">M.Amounrt</th>
-                      <th scope="col">L.Amounrt</th>
-                      <th scope="col">Y.Amounrt</th>
+                      <th scope="col">M.Amount</th>
+                      <th scope="col">L.Amount</th>
+                      <th scope="col">Y.Amount</th>
                       <th scope="col">Taxable Income</th>
                     </tr>
                   </thead>
@@ -186,7 +186,6 @@ const IncomeDetails = () => {
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields"></td>
