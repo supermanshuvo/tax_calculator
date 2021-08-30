@@ -5,7 +5,7 @@ import InvestmentAllowance from "./components/InvestmentAllowance";
 const App = () => {
   return (
     <>
-      <InvestmentAllowance PF={1.5564555}/>
+      <InvestmentAllowance PF={2}/>
     </>
   );
 };
