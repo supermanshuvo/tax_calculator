@@ -35,25 +35,8 @@ const TotalTax = (props) => {
   Configure.H49 =
   Configure.H50 =
   Configure.H51 =
-
-
-  IF(<=0,0,
-    IF(<=$,$'ITax-Exc-Car'.*$*0.01,
-    IF(<=$,
-        IF($'ITax-Exc-Car'.-$>0,
-        ($*$*0.01)+(-$)*$*0.01,
-        $'ITax-Exc-Car'.*$*0.01),
-        $*$*0.01)+($*$*0.01)+
-        (-($+$))*$*0.01)))
   
-  IF(E42<=0,0,
-    IF(H20<=$Configure.C44,$'ITax-Exc-Car'.E42*$Configure.H44*0.01,
-    IF(H20<=$Configure.C45,
-        IF($'ITax-Exc-Car'.E42-$Configure.C46>0,
-        ($Configure.C46*$Configure.H46*0.01)+(E42-$Configure.C46)*$Configure.H47*0.01,
-        $'ITax-Exc-Car'.E42*$Configure.H46*0.01),
-        $Configure.C49*$Configure.H49*0.01)+($Configure.C50*$Configure.H50*0.01)+
-        (E42-($Configure.C49+$Configure.C50))*$Configure.H51*0.01)))
+  
 
   */
   return (
