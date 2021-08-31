@@ -1,7 +1,9 @@
+// import { useState } from "react";
+
 const TotalTax = (props) => {
-  let AllowInvestment = props.AllowInvestment,
+  /* let AllowInvestment = props.AllowInvestment,
     totalTaxIncome = props.TotalTaxIncome;
-  let lessRebate = 0,
+  let [lessRebate, setLessRebate] = useState(0),
     totalMonth = props.ProvMonth;
   let totalPayableTax = props.TotalPayableTax,
     ProvisionMonthTax = parseInt(AllowInvestment / totalMonth);
@@ -12,18 +14,12 @@ const TotalTax = (props) => {
       ? 5000
       : totalPayableTax - lessRebate;
   let NetIncomeTaxPayable = result;
-  let configureC44 = 0,
-    ConfigureC45 = 0,
-    ConfigureC46 = 0,
-    ConfigureC49 = 0,
-    ConfigureC50 = 0,
-    ConfigureH44 = 0,
-    ConfigureH46 = 0,
-    ConfigureH47 = 0,
-    ConfigureH49 = 0,
-    ConfigureH50 = 0,
-    ConfigureH51 = 0;
-  console.log(totalTaxIncome);
+
+  (() => {
+    let LessRebateResult = 0;
+    setLessRebate(LessRebateResult);
+  })();
+  console.log(totalTaxIncome); */
   /* 
 
   E42 = AllowInvestment
@@ -68,16 +64,16 @@ const TotalTax = (props) => {
           <tbody>
             <tr>
               <td>Less Rebate on Investment Tk.</td>
-              <td>{AllowInvestment}</td>
-              <td>{lessRebate}</td>
+              <td>{props.AllowInvestment}</td>
+              <td>{props.lessRebate}</td>
             </tr>
             <tr>
-              <td colspan="2">Net Income Tax Payable</td>
-              <td>{NetIncomeTaxPayable}</td>
+              <td colSpan="2">Net Income Tax Payable</td>
+              <td>{props.NetIncomeTaxPayable}</td>
             </tr>
             <tr>
-              <td colspan="2">Provision Per Month {totalMonth} Months</td>
-              <td>{ProvisionMonthTax}</td>
+              <td colSpan="2">Provision Per Month {props.totalMonth} Months</td>
+              <td>{props.ProvisionMonthTax}</td>
             </tr>
           </tbody>
         </table>

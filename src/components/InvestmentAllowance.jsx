@@ -14,6 +14,37 @@ const InvestmentAllowance = (props) => {
   let secondConditionLimitedInvestment =
     totalTaxIncome * H12 * 0.01 - ProvidentFund;
 
+  // total calculation vale
+  let totalPayableTax = props.TotalPayableTax,
+    totalMonth = props.ProvMonth;
+
+  let configureC44 = 1000000,
+    ConfigureC45 = 3000000,
+    ConfigureC46 = 250000,
+    ConfigureC49 = 250000,
+    ConfigureC50 = 500000,
+    ConfigureH44 = 15,
+    ConfigureH46 = 15,
+    ConfigureH47 = 12,
+    ConfigureH49 = 15,
+    ConfigureH50 = 12,
+    ConfigureH51 = 10;
+  let LessRebateFunc = () => {
+    let result = 0;
+
+    return result;
+  };
+  let LessRebate = LessRebateFunc();
+  let result =
+    totalPayableTax - LessRebate < 0
+      ? 5000
+      : totalPayableTax - LessRebate < 5000
+      ? 5000
+      : totalPayableTax - LessRebate;
+  let NetIncomeTaxPayable = result;
+
+  let ProvisionMonthTax = parseInt(NetIncomeTaxPayable / totalMonth);
+
   let getCalculate = (e) => {
     let DPSOthers = e.target.value;
     setSum(
@@ -68,9 +99,10 @@ const InvestmentAllowance = (props) => {
       </div>
       <TotalTax
         AllowInvestment={AllowInvestment}
-        ProvMonth={props.ProvMonth}
-        TotalPayableTax={props.TotalPayableTax}
-        TotalTaxIncome={totalTaxIncome}
+        lessRebate={LessRebate}
+        NetIncomeTaxPayable={NetIncomeTaxPayable}
+        totalMonth={totalMonth}
+        ProvisionMonthTax={ProvisionMonthTax}
       />
     </div>
   );
