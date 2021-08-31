@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import jsPDF from "jspdf"
+
 import './App.css';
+import { InComeDetails } from './components/IncomeDetails.js';
 
 function App() {
+  const generatePdfReport = ()=>{
+    let pdfDoc = new jsPDF()
+    pdfDoc.html(document.querySelector('.App'),{
+    callback:function(pdf){
+        pdf.save('taxReport.pdf')
+    }
+});
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <InComeDetails/>
+      <button onClick={generatePdfReport}>Download Report</button>
     </div>
   );
 }
