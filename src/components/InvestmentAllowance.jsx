@@ -86,7 +86,9 @@ const InvestmentAllowance = (props) => {
       : totalPayableTax - LessRebate;
   let NetIncomeTaxPayable = result;
 
-  let ProvisionMonthTax = parseInt(NetIncomeTaxPayable / totalMonth);
+  let ProvisionMonthTax = Math.round(
+    parseFloat(NetIncomeTaxPayable / totalMonth)
+  );
 
   return (
     <div className="container mt-2">
