@@ -70,6 +70,7 @@ const InvestmentAllowance = (props) => {
         AllowInvestment={AllowInvestment}
         ProvMonth={props.ProvMonth}
         TotalPayableTax={props.TotalPayableTax}
+        TotalTaxIncome={totalTaxIncome}
       />
     </div>
   );
