@@ -33,9 +33,9 @@ export const InComeDetails = ()=>{
         calculateTaxable(inComeDetailsState.conveyancemAmount,inComeDetailsState.conveyancelAmount)+
         calculateTaxable(inComeDetailsState.livingmAmount,inComeDetailsState.livinglAmount)+
         calculateTaxable(inComeDetailsState.providentFundmAmount,inComeDetailsState.providentFundlAmount)+
-        calculateTaxable(inComeDetailsState.bonusmAmount,inComeDetailsState.bonuslAmount,2)+
-        calculateTaxable(inComeDetailsState.specialAmountmAmount,inComeDetailsState.specialAmountlAmount)+
-        calculateTaxable(inComeDetailsState.othersmAmount,inComeDetailsState.otherslAmount))
+        calculateTaxable(inComeDetailsState.bonusmAmount,inComeDetailsState.bonuslAmount,bonusYoccurrance)+
+        calculateTaxable(inComeDetailsState.specialAmountmAmount,inComeDetailsState.specialAmountlAmount,specialYoccurrance)+
+        calculateTaxable(inComeDetailsState.othersmAmount,inComeDetailsState.otherslAmount,othersYoccurrance))
         return totalTaxable;
 }
 
