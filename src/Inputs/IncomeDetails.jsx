@@ -3,13 +3,13 @@ import React from "react";
 const IncomeDetails = () => {
   return (
     <>
-      <div className="container">
+      <div className="container fields">
         <p className="All_Headings">Income Details</p>
         <form action="">
           <div className="row">
             <div className="col-12 mx-auto">
               <div className="table-responsive.sm">
-                <table className="table table-hover">
+                <table className="table">
                   {/* All headings */}
                   <thead>
                     <tr className="total_of_IncomeDetails">

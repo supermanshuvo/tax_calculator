@@ -1,6 +1,15 @@
 import React from "react";
+import jsPDF from "jspdf";
 
 const InvestmentAllowance = () => {
+  const generatePdfReport = () => {
+    let pdfDoc = new jsPDF();
+    pdfDoc.html(document.querySelector(".container"), {
+      callback: function (pdf) {
+        pdf.save("taxReport.pdf");
+      },
+    });
+  };
   return (
     <>
       <div className="container">
@@ -115,7 +124,9 @@ const InvestmentAllowance = () => {
             {/*in next line row "div" will have been ended */}
           </div>
           <div className="d-flex justify-content-end">
-            <button className="btn">Print</button>
+            <button className="btn" onClick={generatePdfReport}>
+              Download Report
+            </button>
           </div>
         </form>
         {/*in next line "container-fluid" div will have been ended */}

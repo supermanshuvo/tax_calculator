@@ -3,7 +3,7 @@ import React from "react";
 const EmployeeDetails = () => {
   return (
     <>
-      <div className="container">
+      <div className="container fields">
         <p className="All_Headings">Employee Details</p>
         <form action="">
           <div className="row">

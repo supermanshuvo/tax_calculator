@@ -2,15 +2,53 @@
 * {
   font-family: "Times New Roman", Times, serif;
   // background: #f2f8ff;
+  // background: #ecf0f3;
 }
 .container {
   margin-bottom: 5vh;
 }
+//////////////////////////////////
+.fields {
+  // margin: 0 auto;
+  // padding: 0.5vw 2vw 2vw 2vw;
+  box-shadow: 0.7vw 0.7vw 2vw #cbced1, -0.7vw -0.7vw 1.9vw #ffffff;
+  border-radius: 1vw;
+}
+.fields label {
+  font-weight: bold;
+}
+.fields input {
+  border: none;
+  outline: none;
+  background: none;
+  // font-size: 1.3vw;
+  color: #555;
+  border-radius: 3vw;
+  padding: 0.7vw;
+  box-shadow: inset.1vw 0.1vw 0.7vw #dee0e2, inset -0.1vw -0.1vw 0.9vw #ffffff;
+}
+.fields select {
+  border: 3px solid rgb(230, 230, 230);
+}
+
+.fields select:focus {
+  box-shadow: 0.05vw 0.05vw 1vw #dbdddf, -0.05vw -0.05vw 1vw #ffffff;
+}
+
+.fields input:focus {
+  box-shadow: inset.2vw 0.2vw 1.7vw #dbdddf, inset -0.2vw -0.2vw 1.9vw #ffffff;
+}
+
+///////////////////////////////////////
 .All_Headings {
   font-size: 1.8vw;
   font-weight: 600;
   text-align: left;
   margin-top: 4vw;
+}
+.All_Headings {
+  color: rgb(187, 57, 204);
+  text-align: center;
 }
 
 .tax_title {
@@ -31,10 +69,10 @@ th {
 td {
   vertical-align: middle;
 }
-.total_of_IncomeDetails,
-.p_of_total_in_Income_Details {
-  background-color: rgb(206, 198, 199);
-}
+// .total_of_IncomeDetails,
+// .p_of_total_in_Income_Details {
+//   background-color: rgb(206, 198, 199);
+// }
 label,
 p,
 optgroup,
