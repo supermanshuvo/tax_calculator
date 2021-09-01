@@ -1,4 +1,3 @@
-import jsPDF from "jspdf"
 import { useReducer,useCallback,useEffect,useState} from "react"
 
 export const InComeDetails = ()=>{
@@ -137,7 +136,7 @@ export const InComeDetails = ()=>{
                     <th scope="row">Bonus</th>
                     <td><input onChange={handleChange} name="bonusmAmount"
                      value={inComeDetailsState.bonusmAmount}/></td>
-                    <td><input readOnly value={inComeDetailsState.bonusmAmount*12}/></td>
+                    <td><input readOnly value={inComeDetailsState.bonusmAmount*bonusYoccurrance}/></td>
                     <td><input onChange={handleChange} name="bonuslAmount"
                      value={inComeDetailsState.bonuslAmount}/></td>
                     <td><input readOnly value={calculateTaxable(inComeDetailsState.bonusmAmount,
@@ -147,7 +146,7 @@ export const InComeDetails = ()=>{
                     <th scope="row">Special Amount</th>
                     <td><input onChange={handleChange} name="specialAmountmAmount"
                      value={inComeDetailsState.specialAmountmAmount}/></td>
-                    <td><input readOnly value={inComeDetailsState.specialAmountmAmount*12}/></td>
+                    <td><input readOnly value={inComeDetailsState.specialAmountmAmount*specialYoccurrance}/></td>
                     <td><input onChange={handleChange} name="specialAmountlAmount"
                      value={inComeDetailsState.specialAmountlAmount}/></td>
                     <td><input readOnly value={calculateTaxable(inComeDetailsState.specialAmountmAmount,
@@ -157,7 +156,7 @@ export const InComeDetails = ()=>{
                     <th scope="row">Others</th>
                     <td><input onChange={handleChange} name="othersmAmount"
                      value={inComeDetailsState.othersmAmount}/></td>
-                    <td><input readOnly value={inComeDetailsState.othersmAmount*12}/></td>
+                    <td><input readOnly value={inComeDetailsState.othersmAmount*othersYoccurrance}/></td>
                     <td><input onChange={handleChange} name="otherslAmount"
                      value={inComeDetailsState.otherslAmount}/></td>
                     <td><input readOnly value={calculateTaxable(inComeDetailsState.othersmAmount,
