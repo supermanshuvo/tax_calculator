@@ -135,18 +135,48 @@ span {
   height: 3.5vw;
   width: 10vw;
 }
-button.btn {
+button.calculate {
   color: #fff;
-  background: crimson;
-  border: 2px solid crimson;
-  padding: 0 2vw;
+  background: rgb(20, 180, 55);
+  border: 2px solid rgb(20, 180, 55);
+  padding: 0.5vw 1.3vw;
   font-weight: 600;
   border-radius: 2vw;
 }
-button.btn:hover {
+button.download {
+  color: #fff;
+  background: crimson;
+  border: 2px solid crimson;
+  padding: 0.5vw 1.3vw;
+  font-weight: 600;
+  border-radius: 2vw;
+}
+
+button.calculate:hover {
+  border: 2px solid rgb(20, 180, 55);
+  background: #fff;
+}
+button.download:hover {
   border: 2px solid crimson;
   background: #fff;
 }
 .td_of_charts {
   font-size: 1.5vw;
+}
+
+.inside_th {
+  border: none;
+}
+
+td {
+  // border-bottom: 1px solid rgba(250, 65, 65, 0.986);
+  border: none;
+}
+.last_point {
+  border-bottom: 3px solid black;
+}
+
+.calculate {
+  display: flex;
+  justify-content: end;
 }

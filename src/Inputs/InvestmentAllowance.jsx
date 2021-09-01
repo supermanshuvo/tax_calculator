@@ -124,7 +124,7 @@ const InvestmentAllowance = () => {
             {/*in next line row "div" will have been ended */}
           </div>
           <div className="d-flex justify-content-end">
-            <button className="btn" onClick={generatePdfReport}>
+            <button className="btn download" onClick={generatePdfReport}>
               Download Report
             </button>
           </div>

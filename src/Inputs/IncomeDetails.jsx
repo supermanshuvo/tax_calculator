@@ -31,7 +31,7 @@ const IncomeDetails = () => {
                   <tbody>
                     {/* 1st item */}
                     <tr>
-                      <th>Basic Pay</th>
+                      <th className="inside_th">Basic Pay</th>
                       <td>
                         <input
                           type="number"
@@ -59,7 +59,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 2nd item */}
                     <tr>
-                      <th>Housing</th>
+                      <th className="inside_th">Housing</th>
                       <td>
                         <input
                           type="number"
@@ -87,7 +87,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 3rd item */}
                     <tr>
-                      <th>Meidcal</th>
+                      <th className="inside_th">Meidcal</th>
                       <td>
                         <input
                           type="number"
@@ -115,7 +115,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 4th item */}
                     <tr>
-                      <th>Conveyance</th>
+                      <th className="inside_th">Conveyance</th>
                       <td>
                         <input
                           type="number"
@@ -143,7 +143,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 5th item */}
                     <tr>
-                      <th>Living</th>
+                      <th className="inside_th">Living</th>
                       <td>
                         <input
                           type="number"
@@ -171,7 +171,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 6th item */}
                     <tr>
-                      <th>Provident Fund</th>
+                      <th className="inside_th">Provident Fund</th>
                       <td>
                         <input
                           type="number"
@@ -199,7 +199,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 7th item */}
                     <tr>
-                      <th> Bonus</th>
+                      <th className="inside_th"> Bonus</th>
                       <td>
                         <input
                           type="number"
@@ -227,7 +227,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 8th item */}
                     <tr>
-                      <th>Special Amount(if any)</th>
+                      <th className="inside_th">Special Amount</th>
                       <td>
                         <input
                           type="number"
@@ -255,8 +255,8 @@ const IncomeDetails = () => {
                     </tr>
                     {/* 9th item */}
                     <tr>
-                      <th>Others</th>
-                      <td>
+                      <th className="last_point">Others</th>
+                      <td className="last_point">
                         <input
                           type="number"
                           name=""
@@ -265,10 +265,10 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields">
+                      <td className="withoutInputFields last_point">
                         <p className="text-center">0</p>
                       </td>
-                      <td>
+                      <td className="last_point">
                         <input
                           type="number"
                           name=""
@@ -277,13 +277,13 @@ const IncomeDetails = () => {
                           defaultValue={0}
                         />
                       </td>
-                      <td className="withoutInputFields">
+                      <td className="withoutInputFields last_point">
                         <p className="text-center">0</p>
                       </td>
                     </tr>
                     {/* Calculating Total */}
                     <tr className="total_of_IncomeDetails">
-                      <th>Total</th>
+                      <th className="inside_th">Total</th>
                       <td></td>
                       <td className="withoutInputFields"></td>
                       <td></td>
@@ -304,6 +304,12 @@ const IncomeDetails = () => {
           </div>
           {/*in next line "form"  will have been ended */}
         </form>
+        <div className=" d-flex justify-content-end">
+          <button className="btn calculate">caculate</button>
+        </div>
+
+        <br />
+        <br />
         {/*in next line "container-fluid" div will have been ended */}
       </div>
     </>
