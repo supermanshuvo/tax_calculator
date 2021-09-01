@@ -333,99 +333,173 @@ function Totaltax() {
     return (
        
       
-          <div className='py-4'>
-             <h1>Payable Tax</h1>
-             <table className="table boarder shadow">
-             <thead className="thead-dark">
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th>Rate</th>
-                  <th>Tax</th>
-               </tr>
-             </thead>
-             <tbody>
-               <tr>
-                 <td>first tk</td>
-                 <td>{taxable1}</td>
-                 <td>from</td>
-                 <td>{amount1}</td>
-                 <td>0</td>
-                 <td>0</td>
-                 
-               </tr>
+           <>
+      <div className="container">
+        <p className="All_Headings">Income Tax</p>
+        <form action="">
+          <div className="row">
+            <div className="col-12 mx-auto">
+              <div className="table-responsive">
+                <table className="table table-hover table-bordered border-dark ">
+                  {/* All headings */}
+                  <thead>
+                    <tr className="total_of_IncomeDetails">
+                      <th scope="col" className="text-center"></th>
+                      <th scope="col" className="text-center"></th>
+                      <th scope="col" className="text-center"></th>
+                      <th scope="col" className="text-center"></th>
+                      <th scope="col" className="text-center">
+                        Rate
+                      </th>
+                      <th scope="col" className="text-center">
+                        Tax
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* 1st item */}
+                    <tr>
+                      <td className="withoutInputFields td_of_charts">
+                        First Tk.
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{taxable1}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">From</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{amount1}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">0</p>
+                      </td>
+                    </tr>
+                    {/* 2nd item */}
+                    <tr>
+                      <td className="td_of_charts">Next Tk.</td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{taxable2}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">From</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{amount2}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">5</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{conditon1}</p>
+                      </td>
+                    </tr>
+                    {/* 3rd item */}
+                    <tr>
+                      <td className="td_of_charts">Next Tk.</td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{taxable3}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">from</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{amount3}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">10</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{conditon2}</p>
+                      </td>
+                    </tr>
+                    {/* 4th item */}
+                    <tr>
+                      <td className="td_of_charts">Next Tk.</td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{taxable4}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">From</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{amount4}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">15</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{conditon3}</p>
+                      </td>
+                    </tr>
+                    {/* 5th item */}
+                    <tr>
+                      <td className="td_of_charts">Next Tk.</td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{taxable5}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">From</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{amount5}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">20</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{conditon4}</p>
+                      </td>
+                    </tr>
+                    {/* 6th item */}
 
-               <tr>
-                 <td>next tk</td>
-                 <td>{taxable2}</td>
-                 <td>from</td>
-                 <td>{amount2}</td>
-                 <td>5</td>
-                 <td>{conditon1}</td>
-                
-               </tr>
+                    <tr>
+                      <td className="td_of_charts">Next Tk.</td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{taxable6}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">From</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{amount6}</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">25</p>
+                      </td>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{conditon5}</p>
+                      </td>
+                    </tr>
 
-               <tr>
-                 <td>next tk</td>
-                 <td>{taxable3}</td>
-                 <td>from</td>
-                 <td>{amount3}</td>
-                 <td>10</td>
-                 <td>{conditon2}</td>
-                 
-               </tr>
+                    {/* Calculating Total */}
+                    <tr>
+                      <th colSpan={5}>Total Payable</th>
+                      <td className="withoutInputFields">
+                        <p className="text-center">{conditon6}</p>
+                      </td>
+                    </tr>
+                    {/* end of all items and table */}
+                  </tbody>
+                </table>
+              </div>
 
-               <tr>
-                 <td>next tk</td>
-                 <td>{taxable4}</td>
-                 <td>from</td>
-                 <td>{amount4}</td>
-                 <td>15</td>
-                 <td>{conditon3}</td>
-                 
-               </tr>
-
-               <tr>
-                 <td>next tk</td>
-                 <td>{taxable5}</td>
-                 <td>from</td>
-                 <td>{amount5}</td>
-                 <td>20</td>
-                 <td>{conditon4}</td>
-                
-               </tr>
-
-               <tr>
-                 <td>next tk</td>
-                 <td>{taxable6}</td>
-                 <td>from</td>
-                 <td>{amount6}</td>
-                 <td>25</td>
-                 <td>{conditon5}</td>
-                 
-               </tr>
-
-               <tr>
-                 <td>Total payable Tax</td>
-                 <td></td>
-                 <td></td>
-                 <td></td>
-                 <td></td>
-                 <td>{conditon6}</td>
-               </tr>
+              {/*in next line "col-9" div will have been ended */}
+            </div>
+            {/*in next line "row" div will have been ended */}
+          </div>
+          {/*in next line "form"  will have been ended */}
+        </form>
+        {/*in next line "container-fluid" div will have been ended */}
+      </div>
+      <button onClick={handleChange}>click</button>
+    </>
 
 
-             
-              
-            </tbody>
-  
-          </table>
-
-
-       <button onClick={handleChange}>click</button>
-    </div>
+    
   );
 
     
