@@ -5,9 +5,11 @@
   // background: #ecf0f3;
 }
 .container {
-  margin-bottom: 5vh;
+  padding: 2vh 2vw;
+  // padding-bottom: 3vw;
+  margin-bottom: 7vh;
 }
-//////////////////////////////////
+
 .fields {
   // margin: 0 auto;
   // padding: 0.5vw 2vw 2vw 2vw;
@@ -39,7 +41,6 @@
   box-shadow: inset.2vw 0.2vw 1.7vw #dbdddf, inset -0.2vw -0.2vw 1.9vw #ffffff;
 }
 
-///////////////////////////////////////
 .All_Headings {
   font-size: 1.8vw;
   font-weight: 600;
@@ -69,10 +70,7 @@ th {
 td {
   vertical-align: middle;
 }
-// .total_of_IncomeDetails,
-// .p_of_total_in_Income_Details {
-//   background-color: rgb(206, 198, 199);
-// }
+
 label,
 p,
 optgroup,
@@ -144,7 +142,7 @@ button.calculate {
   border-radius: 2vw;
 }
 button.download {
-  color: #fff;
+  color: white;
   background: crimson;
   border: 2px solid crimson;
   padding: 0.5vw 1.3vw;
@@ -154,11 +152,13 @@ button.download {
 
 button.calculate:hover {
   border: 2px solid rgb(20, 180, 55);
-  background: #fff;
+  background: rgb(32, 212, 71);
+  color: #fff;
 }
 button.download:hover {
   border: 2px solid crimson;
-  background: #fff;
+  background: rgb(241, 19, 63);
+  color: #fff;
 }
 .td_of_charts {
   font-size: 1.5vw;
@@ -179,4 +179,10 @@ td {
 .calculate {
   display: flex;
   justify-content: end;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.hr_in_end_of_the_div {
+  color: violet;
+  border: 0.5px solid rgb(214, 16, 214);
+  margin-bottom: 5vh;
 }

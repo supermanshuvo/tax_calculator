@@ -135,6 +135,9 @@ const EmployeeDetails = () => {
           </div>
         </form>
       </div>
+      <div className="container-fluid">
+        <hr className="hr_in_end_of_the_div" />
+      </div>
     </>
   );
 };

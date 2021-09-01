@@ -3,13 +3,13 @@ import React from "react";
 const IncomeTaxChart = () => {
   return (
     <>
-      <div className="container">
+      <div className="container fields">
         <p className="All_Headings">Income Tax</p>
         <form action="">
           <div className="row">
             <div className="col-12 mx-auto">
               <div className="table-responsive">
-                <table className="table table-hover table-bordered border-dark ">
+                <table className="table">
                   {/* All headings */}
                   <thead>
                     <tr className="total_of_IncomeDetails">
@@ -28,9 +28,7 @@ const IncomeTaxChart = () => {
                   <tbody>
                     {/* 1st item */}
                     <tr>
-                      <td className="withoutInputFields td_of_charts">
-                        First Tk.
-                      </td>
+                      <td className="td_of_charts">First Tk.</td>
                       <td className="withoutInputFields">
                         <p className="text-center">163,000</p>
                       </td>
@@ -126,20 +124,20 @@ const IncomeTaxChart = () => {
                     {/* 6th item */}
 
                     <tr>
-                      <td className="td_of_charts">Next Tk.</td>
-                      <td className="withoutInputFields">
+                      <td className="td_of_charts last_point">Next Tk.</td>
+                      <td className="withoutInputFields last_point">
                         <p className="text-center">0</p>
                       </td>
-                      <td className="withoutInputFields">
+                      <td className="withoutInputFields last_point">
                         <p className="text-center">From</p>
                       </td>
-                      <td className="withoutInputFields">
+                      <td className="withoutInputFields last_point">
                         <p className="text-center">0</p>
                       </td>
-                      <td className="withoutInputFields">
+                      <td className="withoutInputFields last_point">
                         <p className="text-center">25</p>
                       </td>
-                      <td className="withoutInputFields">
+                      <td className="withoutInputFields last_point">
                         <p className="text-center">0</p>
                       </td>
                     </tr>
@@ -163,6 +161,9 @@ const IncomeTaxChart = () => {
           {/*in next line "form"  will have been ended */}
         </form>
         {/*in next line "container-fluid" div will have been ended */}
+      </div>
+      <div className="container-fluid">
+        <hr className="hr_in_end_of_the_div" />
       </div>
     </>
   );

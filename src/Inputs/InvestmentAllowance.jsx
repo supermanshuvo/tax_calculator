@@ -12,7 +12,7 @@ const InvestmentAllowance = () => {
   };
   return (
     <>
-      <div className="container">
+      <div className="container fields">
         <p className="All_Headings">Investment Allowance & Tax Rebate</p>
         <form action="">
           <div className="row">
