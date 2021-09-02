@@ -1,6 +1,7 @@
 import { useReducer,useCallback,useEffect,useState} from "react"
+import { useForm } from "react-hook-form";
 
-export const InComeDetails = ()=>{
+export const InComeDetails = (props)=>{
 
     const inComeDetailsInit = {
         basicmAmount:0, basiclAmount:0 ,
@@ -15,6 +16,7 @@ export const InComeDetails = ()=>{
     }
     const reducerFunc = (state,newState)=>({...state,...newState})
     const [totalTaxableIncome,setTotalTaxableIncome]=useState(0)
+    const {handleSubmit,register} = useForm(); 
 
     const [inComeDetailsState,setIncomeDetails] = useReducer(reducerFunc,inComeDetailsInit)
     const bonusYoccurrance=2,specialYoccurrance=6,othersYoccurrance=2
@@ -50,14 +52,140 @@ export const InComeDetails = ()=>{
         setIncomeDetails({[name]:newValue});
         //calculateTaxableIncome()
     }
+    const handleFormData=(formData)=>{
+        props.handleStates(formData,totalTaxableIncome,true)
+        //alert(`${formData.department} taxable: ${totalTaxableIncome}`)
+      }
 
 
-    
     return(
         <>
-        <div>
+        <div className="container fields">
+            <p className="All_Headings">Employee Details</p>
+            <form onSubmit={handleSubmit(handleFormData)}>
+                <div className="row">
+                    {/* left-side-fields starts */}
+                    <div className="col-lg-6 col-md-12 table-left">
+                    <div className="form-group">
+                        <label className="levelsOfEmployeeDetails">
+                            <span>*</span> Enter Employee Name
+                        </label>
+                        <input {...register('employeeName')} type="text" className="form-control" required />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="levelsOfEmployeeDetails">
+                        <span>*</span> Employee Code
+                        </label>
+                        <input {...register('employeeCode')} type="text" className="form-control" required />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="levelsOfEmployeeDetails">
+                        <span>*</span> Location
+                        </label>
+                        <input {...register('location')} type="text" className="form-control" required />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="levelsOfEmployeeDetails">
+                        <span>*</span> Department
+                        </label>
+                        <input {...register('department')} type="text" className="form-control" required />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="levelsOfEmployeeDetails">
+                        <span>*</span> Join Date
+                        </label>
+                        <input {...register('joinDate')} type="date" className="form-control" required />
+                    </div>
+                </div>
+
+                    {/* left-side-fields ends */}
+
+                    {/* right-side-fields starts
+                    */}
+                <div className="col-lg-6 col-md-12 table-right">
+                    <div className="form-group">
+                        <label className="levelsOfEmployeeDetails">Branch</label>
+                        <input {...register('branch')}  type="text" className="form-control" />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="levelsOfEmployeeDetails">
+                        <span>*</span> Designation
+                        </label>
+                        <input type="text" className="form-control" required />
+                    </div>
+                    <div>
+                        <label className="levelsOfEmployeeDetails">Eligible for</label>
+                        <select {...register('eligibility')} 
+                        className="form-select employee_details_rightside"
+                        aria-label="Default select example"
+                        defaultValue={12}
+                        >
+                        <optgroup>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </optgroup>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label className="levelsOfEmployeeDetails">Gender</label>
+                        <select {...register('gender')} 
+                        className="form-select employee_details_rightside"
+                        aria-label="Default select example"
+                        defaultValue={"M"}
+                        >
+                        <optgroup>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                            <option value="O">Others</option>
+                        </optgroup>
+                        </select>
+                    </div>
+
+                <div>
+                    <label className="levelsOfEmployeeDetails">Prov. Months</label>
+                    <select {...register('provMonths')} 
+                    className="form-select employee_details_rightside"
+                    aria-label="Default select example"
+                    defaultValue={12}
+                    >
+                  <optgroup>
+                    <option>Open this select menu</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+
+            {/* right-side-fields ends */}
+            </div>
             <h2>Income Details: </h2>
-            <form>
             <table className="table">
                 <thead>
                     <tr>
@@ -165,6 +293,7 @@ export const InComeDetails = ()=>{
                 </tbody>
                 </table>
                 <h3>Total Taxable Income : {totalTaxableIncome}</h3>
+                <button type='submit' value='Submit'>Submit</button>
             </form>
         </div>
         </>
