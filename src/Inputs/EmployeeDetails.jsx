@@ -11,37 +11,34 @@ const EmployeeDetails = () => {
             <div className="col-lg-6 col-md-12 table-left">
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">
-                  <span>*</span> Enter Employee Name
+                  Enter Employee Name
                 </label>
                 <input type="text" className="form-control" required />
               </div>
 
               <div className="form-group">
-                <label className="levelsOfEmployeeDetails">
-                  <span>*</span> Employee Code
-                </label>
+                <label className="levelsOfEmployeeDetails">Employee Code</label>
                 <input type="text" className="form-control" required />
               </div>
 
               <div className="form-group">
-                <label className="levelsOfEmployeeDetails">
-                  <span>*</span> Location
-                </label>
+                <label className="levelsOfEmployeeDetails">Location</label>
                 <input type="text" className="form-control" required />
               </div>
 
               <div className="form-group">
-                <label className="levelsOfEmployeeDetails">
-                  <span>*</span> Department
-                </label>
+                <label className="levelsOfEmployeeDetails">Department</label>
                 <input type="text" className="form-control" required />
               </div>
 
               <div className="form-group">
-                <label className="levelsOfEmployeeDetails">
-                  <span>*</span> Join Date
-                </label>
-                <input type="date" className="form-control" required />
+                <label className="levelsOfEmployeeDetails">Join Date</label>
+                <input
+                  type="date"
+                  className="form-control date"
+                  required
+                  // style={{ fontSize: "1.5vw" }}
+                />
               </div>
             </div>
 
@@ -56,9 +53,7 @@ const EmployeeDetails = () => {
               </div>
 
               <div className="form-group">
-                <label className="levelsOfEmployeeDetails">
-                  <span>*</span> Designation
-                </label>
+                <label className="levelsOfEmployeeDetails">Designation</label>
                 <input type="text" className="form-control" required />
               </div>
               <div>
@@ -134,9 +129,6 @@ const EmployeeDetails = () => {
             </button> */}
           </div>
         </form>
-      </div>
-      <div className="container-fluid">
-        <hr className="hr_in_end_of_the_div" />
       </div>
     </>
   );

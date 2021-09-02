@@ -144,11 +144,14 @@ const IncomeTaxChart = () => {
 
                     {/* Calculating Total */}
                     <tr>
-                      <th colSpan={5}>Total Payable</th>
+                      <td colSpan={5} className="total_payable">
+                        Total Payable
+                      </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center"></p>
                       </td>
                     </tr>
+
                     {/* end of all items and table */}
                   </tbody>
                 </table>
@@ -161,9 +164,6 @@ const IncomeTaxChart = () => {
           {/*in next line "form"  will have been ended */}
         </form>
         {/*in next line "container-fluid" div will have been ended */}
-      </div>
-      <div className="container-fluid">
-        <hr className="hr_in_end_of_the_div" />
       </div>
     </>
   );

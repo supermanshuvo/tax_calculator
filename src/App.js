@@ -11,6 +11,7 @@ const App = () => {
   return (
     <>
       <Header />
+
       <EmployeeDetails />
       <IncomeDetails />
       <IncomeTaxChart />

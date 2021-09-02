@@ -1,60 +1,69 @@
 @import "~bootstrap/scss/bootstrap.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+// :root {
+//   --main-bg-color: coral;
+// }
 * {
   font-family: "Times New Roman", Times, serif;
-  // background: #f2f8ff;
-  // background: #ecf0f3;
+  // background-color: rgb(255, 252, 252);
 }
 .container {
   padding: 2vh 2vw;
-  // padding-bottom: 3vw;
-  margin-bottom: 7vh;
+  margin-bottom: 15vh;
+  background-color: rgb(255, 252, 252);
+  min-width: 100%;
 }
 
 .fields {
-  // margin: 0 auto;
-  // padding: 0.5vw 2vw 2vw 2vw;
   box-shadow: 0.7vw 0.7vw 2vw #cbced1, -0.7vw -0.7vw 1.9vw #ffffff;
   border-radius: 1vw;
 }
 .fields label {
   font-weight: bold;
 }
-.fields input {
+.fields input,
+.fields input.inpOfIncomeDetails {
   border: none;
   outline: none;
-  background: none;
-  // font-size: 1.3vw;
+  background: rgb(255, 252, 252) !important;
+  border: 1px solid rgba(66, 65, 65, 0.3);
   color: #555;
-  border-radius: 3vw;
   padding: 0.7vw;
-  box-shadow: inset.1vw 0.1vw 0.7vw #dee0e2, inset -0.1vw -0.1vw 0.9vw #ffffff;
+  box-shadow: inset 0.1vw 0.1vw 0.7vw #dee0e2, inset -0.1vw -0.1vw 0.9vw #ffffff;
 }
+
+.fields input:focus {
+  background-color: rgb(255, 252, 252) !important;
+  box-shadow: inset 0.1vw 0.1vw 0.7vw #dee0e2, inset -0.1vw -0.1vw 0.9vw #ffffff;
+  border: 1px solid rgba(66, 65, 65, 0.3);
+}
+
 .fields select {
-  border: 3px solid rgb(230, 230, 230);
+  border: 1px solid rgba(66, 65, 65, 0.3);
+  background-color: rgb(255, 252, 252);
 }
 
 .fields select:focus {
   box-shadow: 0.05vw 0.05vw 1vw #dbdddf, -0.05vw -0.05vw 1vw #ffffff;
 }
 
-.fields input:focus {
-  box-shadow: inset.2vw 0.2vw 1.7vw #dbdddf, inset -0.2vw -0.2vw 1.9vw #ffffff;
-}
-
 .All_Headings {
-  font-size: 1.8vw;
+  font-size: 2vw;
   font-weight: 600;
   text-align: left;
   margin-top: 4vw;
 }
 .All_Headings {
-  color: rgb(187, 57, 204);
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 .tax_title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.7vw;
+  font-size: 3vw !important;
+  line-height: 92px;
+  font-family: "Poppins", sans-serif;
 }
 .employee_details_rightside {
   font-size: 1.5vw;
@@ -68,7 +77,11 @@ th {
   font-size: 1.7vw;
 }
 td {
-  vertical-align: middle;
+  // vertical-align: middle;
+  font-size: 1.5vw !important;
+}
+td.total_payable {
+  font-weight: 600;
 }
 
 label,
@@ -88,6 +101,10 @@ select {
 }
 input:focus {
   border: none;
+}
+
+input.date {
+  font-size: 1.5vw;
 }
 .withoutInputFields {
   width: 17vw;
@@ -119,7 +136,7 @@ pre {
 }
 
 span {
-  color: red;
+  font-size: 1.3vw;
 }
 .header_div p {
   text-align: center;
@@ -128,38 +145,14 @@ span {
 .company_name {
   color: #000 !important;
   font-weight: 600;
+  font-size: 1.2vw;
+  font-family: "Poppins", sans-serif;
 }
 .image-fluid {
   height: 3.5vw;
   width: 10vw;
 }
-button.calculate {
-  color: #fff;
-  background: rgb(20, 180, 55);
-  border: 2px solid rgb(20, 180, 55);
-  padding: 0.5vw 1.3vw;
-  font-weight: 600;
-  border-radius: 2vw;
-}
-button.download {
-  color: white;
-  background: crimson;
-  border: 2px solid crimson;
-  padding: 0.5vw 1.3vw;
-  font-weight: 600;
-  border-radius: 2vw;
-}
 
-button.calculate:hover {
-  border: 2px solid rgb(20, 180, 55);
-  background: rgb(32, 212, 71);
-  color: #fff;
-}
-button.download:hover {
-  border: 2px solid crimson;
-  background: rgb(241, 19, 63);
-  color: #fff;
-}
 .td_of_charts {
   font-size: 1.5vw;
 }
@@ -169,7 +162,6 @@ button.download:hover {
 }
 
 td {
-  // border-bottom: 1px solid rgba(250, 65, 65, 0.986);
   border: none;
 }
 .last_point {
@@ -181,8 +173,27 @@ td {
   justify-content: end;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.hr_in_end_of_the_div {
-  color: violet;
-  border: 0.5px solid rgb(214, 16, 214);
-  margin-bottom: 5vh;
+
+.btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: -webkit-linear-gradient(#6795fd 0%, #67ceff 100%);
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(160, 147, 147, 0.29);
+  border-bottom: solid 3px #5e7fca;
+}
+
+.btn:active {
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+.btn:hover {
+  color: #fff;
 }

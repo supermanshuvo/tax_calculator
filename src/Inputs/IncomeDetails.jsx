@@ -283,7 +283,7 @@ const IncomeDetails = () => {
                     </tr>
                     {/* Calculating Total */}
                     <tr className="total_of_IncomeDetails">
-                      <th className="inside_th text-danger ">Total</th>
+                      <th className="inside_th">Total</th>
                       <td></td>
                       <td className="withoutInputFields"></td>
                       <td></td>
@@ -293,6 +293,20 @@ const IncomeDetails = () => {
                         </p>
                       </td>
                     </tr>
+                    {/* for button */}
+                    {/* <tr className="total_of_IncomeDetails">
+                      <th className="inside_th text-danger "></th>
+                      <td></td>
+                      <td className="withoutInputFields"></td>
+                      <td></td>
+                      <td className="withoutInputFields">
+                        <p className="text-center text-danger p_of_total_in_Income_Details">
+                          <div className=" d-flex justify-content-end">
+                            <button className="btn calculate">caculate</button>
+                          </div>
+                        </p>
+                      </td>
+                    </tr> */}
                     {/* end of all items and table */}
                   </tbody>
                 </table>
@@ -304,13 +318,10 @@ const IncomeDetails = () => {
           </div>
           {/*in next line "form"  will have been ended */}
         </form>
-        <div className=" d-flex justify-content-end">
-          <button className="btn calculate">caculate</button>
+        <div className=" d-flex justify-content-center">
+          <button className="btn">caculate</button>
         </div>
         {/*in next line "container-fluid" div will have been ended */}
-      </div>
-      <div className="container-fluid">
-        <hr className="hr_in_end_of_the_div" />
       </div>
     </>
   );

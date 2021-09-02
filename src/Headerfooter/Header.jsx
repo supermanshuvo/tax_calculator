@@ -6,14 +6,15 @@ const Header = () => {
     <>
       <div className="container-fluid ">
         <div className="row">
-          <div className="col-1">
-            <img src={vsLogo} alt="vivasoft_logo" className="image-fluid" />
-          </div>
-          <div className="col-11">
+          <div className="col-12">
             <p className="text-center">
-              <span className="company_name">VivaSoft Limited</span> <br />
-              H#385, R#06, Mirpur Dohs, Dhaka-1216 <br />
-              Dhaka
+              <span className="company_name">
+                <img src={vsLogo} alt="vivasoft_logo" className="image-fluid" />
+              </span>
+              <br />
+              <span className="address">
+                H#385, R#06 <br /> Mirpur Dohs, Dhaka-1216, Dhaka.
+              </span>
             </p>
           </div>
         </div>
@@ -25,7 +26,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container-fluid">
         <p className="text-center tax_title">
           Employee tax yearly statement for tax year - 2021 (2020-2021)
         </p>
