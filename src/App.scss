@@ -7,11 +7,13 @@
   font-family: "Times New Roman", Times, serif;
   // background-color: rgb(255, 252, 252);
 }
+
 .container {
   padding: 2vh 2vw;
   margin-bottom: 15vh;
   background-color: rgb(255, 252, 252);
   min-width: 100%;
+  max-width: 100%;
 }
 
 .fields {
@@ -99,6 +101,17 @@ select {
   vertical-align: middle;
   background-color: white !important;
 }
+
+.th_of_Output_Table {
+  font-size: 1.4vw;
+  border: none;
+  border: 1px solid white;
+  vertical-align: middle;
+}
+.td_of_Output_Table {
+  font-size: 1.4vw;
+}
+
 input:focus {
   border: none;
 }
@@ -184,6 +197,7 @@ td {
   background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
   box-shadow: 0px 2px 2px rgba(160, 147, 147, 0.29);
   border-bottom: solid 3px #5e7fca;
+  font-size: 1.5vw;
 }
 
 .btn:active {

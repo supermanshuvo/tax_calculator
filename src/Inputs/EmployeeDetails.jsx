@@ -10,9 +10,7 @@ const EmployeeDetails = () => {
             {/* left-side-fields starts */}
             <div className="col-lg-6 col-md-12 table-left">
               <div className="form-group">
-                <label className="levelsOfEmployeeDetails">
-                  Enter Employee Name
-                </label>
+                <label className="levelsOfEmployeeDetails">Employee Name</label>
                 <input type="text" className="form-control" required />
               </div>
 
