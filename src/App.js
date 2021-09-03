@@ -6,6 +6,7 @@ import InvestmentAllowance from "./Inputs/InvestmentAllowance";
 import Header from "./Headerfooter/Header";
 import Footer from "./Headerfooter/Footer";
 import EmployeeDetailsAsOutputTable from "./Inputs/EmployeeDetailsAsOutputTable";
+import InvestAllowancep2 from "./Inputs/InvestAllowancep2";
 import "./App.scss";
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <IncomeDetails />
       <IncomeTaxChart />
       <InvestmentAllowance />
+      <InvestAllowancep2 />
       <Footer />
     </>
   );

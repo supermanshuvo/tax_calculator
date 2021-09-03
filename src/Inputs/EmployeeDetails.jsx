@@ -1,32 +1,154 @@
 import React from "react";
+import jsPDF from "jspdf";
+import { useReducer, useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
-const EmployeeDetails = () => {
+const EmployeeDetails = (props) => {
+  const inComeDetailsInit = {
+    basicmAmount: 0,
+    basiclAmount: 0,
+    housingmAmount: 0,
+    housinglAmount: 0,
+    medicalmAmount: 0,
+    medicallAmount: 0,
+    conveyancemAmount: 0,
+    conveyancelAmount: 0,
+    livingmAmount: 0,
+    livinglAmount: 0,
+    providentFundyAmount: 0,
+    providentFundlAmount: 0,
+    bonusyAmount: 0,
+    bonuslAmount: 0,
+    specialAmountmAmount: 0,
+    specialAmountlAmount: 0,
+    othersmAmount: 0,
+    otherslAmount: 0,
+  };
+  const reducerFunc = (state, newState) => ({ ...state, ...newState });
+  const [totalTaxableIncome, setTotalTaxableIncome] = useState(0);
+  const { handleSubmit, register } = useForm();
+
+  const [inComeDetailsState, setIncomeDetails] = useReducer(
+    reducerFunc,
+    inComeDetailsInit
+  );
+  const specialYoccurrance = 6,
+    othersYoccurrance = 2;
+
+  const calculateTaxable = (mAmount, lAmount, yOccurrance = 12) => {
+    const value =
+      mAmount * yOccurrance - lAmount > 0 ? mAmount * yOccurrance - lAmount : 0;
+    return value;
+  };
+
+  const calculateTaxableIncome = () => {
+    const totalTaxable =
+      calculateTaxable(
+        inComeDetailsState.basicmAmount,
+        inComeDetailsState.basiclAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.housingmAmount,
+        inComeDetailsState.housinglAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.medicalmAmount,
+        inComeDetailsState.medicallAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.conveyancemAmount,
+        inComeDetailsState.conveyancelAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.livingmAmount,
+        inComeDetailsState.livinglAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.providentFundyAmount,
+        inComeDetailsState.providentFundlAmount,
+        1
+      ) +
+      calculateTaxable(
+        inComeDetailsState.bonusyAmount,
+        inComeDetailsState.bonuslAmount,
+        1
+      ) +
+      calculateTaxable(
+        inComeDetailsState.specialAmountmAmount,
+        inComeDetailsState.specialAmountlAmount,
+        specialYoccurrance
+      ) +
+      calculateTaxable(
+        inComeDetailsState.othersmAmount,
+        inComeDetailsState.otherslAmount,
+        othersYoccurrance
+      );
+    return totalTaxable;
+  };
+
+  useEffect(() => {
+    setTotalTaxableIncome(calculateTaxableIncome());
+  });
+
+  const handleChange = (evnt) => {
+    const name = evnt.target.name;
+    const newValue = Number(evnt.target.value);
+    setIncomeDetails({ [name]: newValue });
+    //calculateTaxableIncome()
+  };
+  const handleFormData = (formData) => {
+    const provFund =
+      inComeDetailsState.providentFundyAmount -
+      inComeDetailsState.providentFundlAmount;
+    props.handleStates(formData, totalTaxableIncome, provFund, true);
+    //alert(`${formData.department} taxable: ${totalTaxableIncome}`)
+  };
   return (
     <>
       <div className="container fields">
         <p className="All_Headings">Employee Details</p>
-        <form action="">
+        <form onSubmit={handleSubmit(handleFormData)}>
           <div className="row">
             {/* left-side-fields starts */}
             <div className="col-lg-6 col-md-12 table-left">
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">Employee Name</label>
-                <input type="text" className="form-control" required />
+                <input
+                  {...register("employeeName")}
+                  type="text"
+                  className="form-control"
+                  required
+                />
               </div>
 
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">Employee Code</label>
-                <input type="text" className="form-control" required />
+                <input
+                  {...register("employeeCode")}
+                  type="text"
+                  className="form-control"
+                  required
+                />
               </div>
 
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">Location</label>
-                <input type="text" className="form-control" required />
+                <input
+                  {...register("location")}
+                  type="text"
+                  className="form-control"
+                  required
+                />
               </div>
 
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">Department</label>
-                <input type="text" className="form-control" required />
+                <input
+                  {...register("department")}
+                  type="text"
+                  className="form-control date"
+                  required
+                />
               </div>
 
               <div className="form-group">
@@ -47,7 +169,11 @@ const EmployeeDetails = () => {
             <div className="col-lg-6 col-md-12 table-right">
               <div className="form-group">
                 <label className="levelsOfEmployeeDetails">Branch</label>
-                <input type="text" className="form-control" />
+                <input
+                  {...register("branch")}
+                  type="text"
+                  className="form-control"
+                />
               </div>
 
               <div className="form-group">
@@ -57,6 +183,7 @@ const EmployeeDetails = () => {
               <div>
                 <label className="levelsOfEmployeeDetails">Eligible for</label>
                 <select
+                  {...register("eligibility")}
                   className="form-select employee_details_rightside"
                   aria-label="Default select example"
                   defaultValue={12}
@@ -81,6 +208,7 @@ const EmployeeDetails = () => {
               <div>
                 <label className="levelsOfEmployeeDetails">Gender</label>
                 <select
+                  {...register("gender")}
                   className="form-select employee_details_rightside"
                   aria-label="Default select example"
                   defaultValue={"M"}
@@ -96,6 +224,7 @@ const EmployeeDetails = () => {
               <div>
                 <label className="levelsOfEmployeeDetails">Prov. Months</label>
                 <select
+                  {...register("provMonths")}
                   className="form-select employee_details_rightside"
                   aria-label="Default select example"
                   defaultValue={12}

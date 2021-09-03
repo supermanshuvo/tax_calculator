@@ -35,26 +35,43 @@ const IncomeDetails = () => {
                       <td>
                         <input
                           type="number"
-                          name=""
+                          name="basicmAmount"
+                          value={inComeDetailsState.basicmAmount}
+                          onChange={handleChange}
                           id=""
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={inComeDetailsState.basicmAmount * 12}
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
+                          onChange={handleChange}
+                          name="basiclAmount"
+                          value={inComeDetailsState.basiclAmount}
                           type="number"
-                          name=""
                           id=""
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.basicmAmount,
+                              inComeDetailsState.basiclAmount
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 2nd item */}
@@ -63,26 +80,41 @@ const IncomeDetails = () => {
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="housingmAmount"
+                          value={inComeDetailsState.housingmAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={inComeDetailsState.housingmAmount * 12}
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="housinglAmount"
+                          value={inComeDetailsState.housinglAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.housingmAmount,
+                              inComeDetailsState.housinglAmount
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 3rd item */}
@@ -91,26 +123,41 @@ const IncomeDetails = () => {
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="medicalmAmount"
+                          value={inComeDetailsState.medicalmAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={inComeDetailsState.medicalmAmount * 12}
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="medicallAmount"
+                          value={inComeDetailsState.medicallAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.medicalmAmount,
+                              inComeDetailsState.medicallAmount
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 4th item */}
@@ -119,26 +166,41 @@ const IncomeDetails = () => {
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="conveyancemAmount"
+                          value={inComeDetailsState.conveyancemAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={inComeDetailsState.conveyancemAmount * 12}
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="conveyancelAmount"
+                          value={inComeDetailsState.conveyancelAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.conveyancemAmount,
+                              inComeDetailsState.conveyancelAmount
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 5th item */}
@@ -147,26 +209,41 @@ const IncomeDetails = () => {
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="livingmAmount"
+                          value={inComeDetailsState.livingmAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={inComeDetailsState.livingmAmount * 12}
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="livinglAmount"
+                          value={inComeDetailsState.livinglAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.livingmAmount,
+                              inComeDetailsState.livinglAmount
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 6th item */}
@@ -175,26 +252,41 @@ const IncomeDetails = () => {
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          name="providentFundmAmount"
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            onChange={handleChange}
+                            name="providentFundyAmount"
+                            value={inComeDetailsState.providentFundyAmount}
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="providentFundlAmount"
+                          value={inComeDetailsState.providentFundlAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.providentFundyAmount,
+                              inComeDetailsState.providentFundlAmount,
+                              1
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 7th item */}
@@ -210,19 +302,35 @@ const IncomeDetails = () => {
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            onChange={handleChange}
+                            name="bonusyAmount"
+                            value={inComeDetailsState.bonusyAmount}
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="bonuslAmount"
+                          value={inComeDetailsState.bonuslAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.bonusyAmount,
+                              inComeDetailsState.bonuslAmount,
+                              1
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 8th item */}
@@ -231,26 +339,45 @@ const IncomeDetails = () => {
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="specialAmountmAmount"
+                          value={inComeDetailsState.specialAmountmAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={
+                              inComeDetailsState.specialAmountmAmount *
+                              specialYoccurrance
+                            }
+                          />
+                        </p>
                       </td>
                       <td>
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="specialAmountlAmount"
+                          value={inComeDetailsState.specialAmountlAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.specialAmountmAmount,
+                              inComeDetailsState.specialAmountlAmount,
+                              specialYoccurrance
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* 9th item */}
@@ -259,37 +386,53 @@ const IncomeDetails = () => {
                       <td className="last_point">
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="othersmAmount"
+                          value={inComeDetailsState.othersmAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields last_point">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={inComeDetailsState.othersmAmount * 12}
+                          />
+                        </p>
                       </td>
                       <td className="last_point">
                         <input
                           type="number"
-                          name=""
-                          id=""
+                          onChange={handleChange}
+                          name="otherslAmount"
+                          value={inComeDetailsState.otherslAmount}
                           className="inpOfIncomeDetails"
                           defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields last_point">
-                        <p className="text-center">0</p>
+                        <p className="text-center">
+                          <input
+                            readOnly
+                            value={calculateTaxable(
+                              inComeDetailsState.othersmAmount,
+                              inComeDetailsState.otherslAmount,
+                              othersYoccurrance
+                            )}
+                          />
+                        </p>
                       </td>
                     </tr>
                     {/* Calculating Total */}
                     <tr className="total_of_IncomeDetails">
-                      <th className="inside_th">Total</th>
+                      <th className="inside_th">Total Taxable Income</th>
                       <td></td>
                       <td className="withoutInputFields"></td>
                       <td></td>
                       <td className="withoutInputFields">
                         <p className="text-center text-danger p_of_total_in_Income_Details">
-                          <b>0</b>
+                          <b>{totalTaxableIncome}</b>
                         </p>
                       </td>
                     </tr>
@@ -319,7 +462,9 @@ const IncomeDetails = () => {
           {/*in next line "form"  will have been ended */}
         </form>
         <div className=" d-flex justify-content-center">
-          <button className="btn">caculate</button>
+          <button type="submit" value="submit" className="btn">
+            caculate
+          </button>
         </div>
         {/*in next line "container-fluid" div will have been ended */}
       </div>
