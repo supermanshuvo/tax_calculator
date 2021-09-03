@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import InvestAllowancep2 from "InvestAllowancep2";
+import InvestAllowancep2 from "./InvestAllowancep2";
 import jsPDF from "jspdf";
 
 const InvestmentAllowance = (props) => {
-  // const generatePdfReport = () => {
-  //   let pdfDoc = new jsPDF();
-  //   pdfDoc.html(document.querySelector(".container"), {
-  //     callback: function (pdf) {
-  //       pdf.save("taxReport.pdf");
-  //     },
-  //   });
-  // };
+  const generatePdfReport = () => {
+    let pdfDoc = new jsPDF();
+    pdfDoc.html(document.querySelector(".container"), {
+      callback: function (pdf) {
+        pdf.save("taxReport.pdf");
+      },
+    });
+  };
   let ProvidentFund = props.PF;
   let [Sum, setSum] = useState(0);
   let [AllowInvestment, setAllowInvestment] = useState(0);

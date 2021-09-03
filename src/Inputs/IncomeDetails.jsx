@@ -1,6 +1,108 @@
 import React from "react";
+import jsPDF from "jspdf";
+import { useReducer, useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
-const IncomeDetails = () => {
+const IncomeDetails = (props) => {
+  const inComeDetailsInit = {
+    basicmAmount: 0,
+    basiclAmount: 0,
+    housingmAmount: 0,
+    housinglAmount: 0,
+    medicalmAmount: 0,
+    medicallAmount: 0,
+    conveyancemAmount: 0,
+    conveyancelAmount: 0,
+    livingmAmount: 0,
+    livinglAmount: 0,
+    providentFundyAmount: 0,
+    providentFundlAmount: 0,
+    bonusyAmount: 0,
+    bonuslAmount: 0,
+    specialAmountmAmount: 0,
+    specialAmountlAmount: 0,
+    othersmAmount: 0,
+    otherslAmount: 0,
+  };
+  const reducerFunc = (state, newState) => ({ ...state, ...newState });
+  const [totalTaxableIncome, setTotalTaxableIncome] = useState(0);
+  const { handleSubmit, register } = useForm();
+
+  const [inComeDetailsState, setIncomeDetails] = useReducer(
+    reducerFunc,
+    inComeDetailsInit
+  );
+  const specialYoccurrance = 6,
+    othersYoccurrance = 2;
+
+  const calculateTaxable = (mAmount, lAmount, yOccurrance = 12) => {
+    const value =
+      mAmount * yOccurrance - lAmount > 0 ? mAmount * yOccurrance - lAmount : 0;
+    return value;
+  };
+
+  const calculateTaxableIncome = () => {
+    const totalTaxable =
+      calculateTaxable(
+        inComeDetailsState.basicmAmount,
+        inComeDetailsState.basiclAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.housingmAmount,
+        inComeDetailsState.housinglAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.medicalmAmount,
+        inComeDetailsState.medicallAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.conveyancemAmount,
+        inComeDetailsState.conveyancelAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.livingmAmount,
+        inComeDetailsState.livinglAmount
+      ) +
+      calculateTaxable(
+        inComeDetailsState.providentFundyAmount,
+        inComeDetailsState.providentFundlAmount,
+        1
+      ) +
+      calculateTaxable(
+        inComeDetailsState.bonusyAmount,
+        inComeDetailsState.bonuslAmount,
+        1
+      ) +
+      calculateTaxable(
+        inComeDetailsState.specialAmountmAmount,
+        inComeDetailsState.specialAmountlAmount,
+        specialYoccurrance
+      ) +
+      calculateTaxable(
+        inComeDetailsState.othersmAmount,
+        inComeDetailsState.otherslAmount,
+        othersYoccurrance
+      );
+    return totalTaxable;
+  };
+
+  useEffect(() => {
+    setTotalTaxableIncome(calculateTaxableIncome());
+  });
+
+  const handleChange = (evnt) => {
+    const name = evnt.target.name;
+    const newValue = Number(evnt.target.value);
+    setIncomeDetails({ [name]: newValue });
+    //calculateTaxableIncome()
+  };
+  const handleFormData = (formData) => {
+    const provFund =
+      inComeDetailsState.providentFundyAmount -
+      inComeDetailsState.providentFundlAmount;
+    props.handleStates(formData, totalTaxableIncome, provFund, true);
+    //alert(`${formData.department} taxable: ${totalTaxableIncome}`)
+  };
   return (
     <>
       <div className="container fields">
@@ -40,7 +142,6 @@ const IncomeDetails = () => {
                           onChange={handleChange}
                           id=""
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -59,7 +160,6 @@ const IncomeDetails = () => {
                           type="number"
                           id=""
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -84,7 +184,6 @@ const IncomeDetails = () => {
                           name="housingmAmount"
                           value={inComeDetailsState.housingmAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -102,7 +201,6 @@ const IncomeDetails = () => {
                           name="housinglAmount"
                           value={inComeDetailsState.housinglAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -127,7 +225,6 @@ const IncomeDetails = () => {
                           name="medicalmAmount"
                           value={inComeDetailsState.medicalmAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -145,7 +242,6 @@ const IncomeDetails = () => {
                           name="medicallAmount"
                           value={inComeDetailsState.medicallAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -170,7 +266,6 @@ const IncomeDetails = () => {
                           name="conveyancemAmount"
                           value={inComeDetailsState.conveyancemAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -188,7 +283,6 @@ const IncomeDetails = () => {
                           name="conveyancelAmount"
                           value={inComeDetailsState.conveyancelAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -213,7 +307,6 @@ const IncomeDetails = () => {
                           name="livingmAmount"
                           value={inComeDetailsState.livingmAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -231,7 +324,6 @@ const IncomeDetails = () => {
                           name="livinglAmount"
                           value={inComeDetailsState.livinglAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -254,7 +346,6 @@ const IncomeDetails = () => {
                           type="number"
                           name="providentFundmAmount"
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -273,7 +364,6 @@ const IncomeDetails = () => {
                           name="providentFundlAmount"
                           value={inComeDetailsState.providentFundlAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -298,7 +388,6 @@ const IncomeDetails = () => {
                           name=""
                           id=""
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -317,7 +406,6 @@ const IncomeDetails = () => {
                           name="bonuslAmount"
                           value={inComeDetailsState.bonuslAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -343,7 +431,6 @@ const IncomeDetails = () => {
                           name="specialAmountmAmount"
                           value={inComeDetailsState.specialAmountmAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -364,7 +451,6 @@ const IncomeDetails = () => {
                           name="specialAmountlAmount"
                           value={inComeDetailsState.specialAmountlAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields">
@@ -390,7 +476,6 @@ const IncomeDetails = () => {
                           name="othersmAmount"
                           value={inComeDetailsState.othersmAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields last_point">
@@ -408,7 +493,6 @@ const IncomeDetails = () => {
                           name="otherslAmount"
                           value={inComeDetailsState.otherslAmount}
                           className="inpOfIncomeDetails"
-                          defaultValue={0}
                         />
                       </td>
                       <td className="withoutInputFields last_point">

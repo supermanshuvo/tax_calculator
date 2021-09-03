@@ -2,14 +2,14 @@ import React from "react";
 import jsPDF from "jspdf";
 
 const InvestAllowancep2 = (props) => {
-  //   const generatePdfReport = () => {
-  //     let pdfDoc = new jsPDF();
-  //     pdfDoc.html(document.querySelector(".container"), {
-  //       callback: function (pdf) {
-  //         pdf.save("taxReport.pdf");
-  //       },
-  //     });
-  //   };
+  const generatePdfReport = () => {
+    let pdfDoc = new jsPDF();
+    pdfDoc.html(document.querySelector(".container"), {
+      callback: function (pdf) {
+        pdf.save("taxReport.pdf");
+      },
+    });
+  };
   /* let AllowInvestment = props.AllowInvestment,
       totalTaxIncome = props.TotalTaxIncome;
     let [lessRebate, setLessRebate] = useState(0),
