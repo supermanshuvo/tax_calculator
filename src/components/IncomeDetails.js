@@ -116,7 +116,7 @@ export const InComeDetails = (props)=>{
                         <label className="levelsOfEmployeeDetails">
                         <span>*</span> Designation
                         </label>
-                        <input type="text" className="form-control" required />
+                        <input type="text" {...register('designation')}  className="form-control" required />
                     </div>
                     <div>
                         <label className="levelsOfEmployeeDetails">Eligible for</label>

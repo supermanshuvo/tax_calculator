@@ -14,6 +14,7 @@ const InvestmentAllowance = (props) => {
 
   let secondConditionLimitedInvestment =
     totalTaxIncome * H12 * 0.01 - ProvidentFund;
+
   let getCalculate = (e) => {
     let DPSOthers = e.target.value;
     setSum(
@@ -91,6 +92,7 @@ const InvestmentAllowance = (props) => {
     parseFloat(NetIncomeTaxPayable / totalMonth)
   );
 
+
   return (
     <div className="container mt-2">
       <div className="row">
@@ -124,29 +126,6 @@ const InvestmentAllowance = (props) => {
             </tbody>
           </table>
         </div>
-      </div>
-      <div className="row">
-        <h3>{AllowInvestment}: {LessRebate} : {NetIncomeTaxPayable}:{ProvisionMonthTax} </h3>
-        {/*<h5 className="bg-secondary fw-light p-2">Total Calculation</h5>
-        <div className="container-fluid">
-          <table className="table">
-            <tbody>
-              <tr>
-                <td>Less Rebate on Investment Tk.</td>
-                <td>{props.AllowInvestment}</td>
-                <td>{props.lessRebate}</td>
-              </tr>
-              <tr>
-                <td colSpan="2">Net Income Tax Payable</td>
-                <td>{props.NetIncomeTaxPayable}</td>
-              </tr>
-              <tr>
-                <td colSpan="2">Provision Per Month {props.totalMonth} Months</td>
-                <td>{props.ProvisionMonthTax}</td>
-              </tr>
-            </tbody>
-  </table>
-  </div>*/}
       </div>
       <TotalTaxInvest
         AllowInvestment={AllowInvestment}

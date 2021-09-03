@@ -7,6 +7,7 @@ import TotalTax  from './components/TotalTax.js';
 import InvestmentAllowance from "./components/InvestmentAllowance.js";
 import Header from "./components/Header.js";
 import Footer from "./components/Footer";
+import EmployeeDetailsAsOutputTable from './components/EmployeeDetailsAsOutputTable.js'
 
 const ref = React.createRef();
 const options = {
@@ -69,6 +70,7 @@ function App() {
         <>
         <div ref={ref}>
           <Header/>
+          <EmployeeDetailsAsOutputTable formData={userData}/>
           <TotalTax 
           totalTaxableIncome={totalTaxableIncome} gender = {userData.gender}/>
           <InvestmentAllowance PF={provFund} ConfigureH12={25} ConfigureH17={15000000} 
