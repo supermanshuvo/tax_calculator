@@ -1,5 +1,6 @@
-import { useState } from "react";
-import TotalTaxInvest from "./TotalTaxInvest";
+import { useEffect, useState } from "react";
+import TotalTaxInvest from "./TotalTaxInvest.js";
+
 const InvestmentAllowance = (props) => {
   let ProvidentFund = props.PF;
   let [Sum, setSum] = useState(0);
@@ -93,6 +94,7 @@ const InvestmentAllowance = (props) => {
   return (
     <div className="container mt-2">
       <div className="row">
+        <h3>{props.ProvMonth} : {props.TotalPayable} : {props.TotalTaxIncome}:{props.PF}</h3>
         <h5 className="bg-secondary fw-light p-2">
           Investment Allowance and Tax Rebate
         </h5>
@@ -123,7 +125,30 @@ const InvestmentAllowance = (props) => {
           </table>
         </div>
       </div>
-      <TotalTax
+      <div className="row">
+        <h3>{AllowInvestment}: {LessRebate} : {NetIncomeTaxPayable}:{ProvisionMonthTax} </h3>
+        {/*<h5 className="bg-secondary fw-light p-2">Total Calculation</h5>
+        <div className="container-fluid">
+          <table className="table">
+            <tbody>
+              <tr>
+                <td>Less Rebate on Investment Tk.</td>
+                <td>{props.AllowInvestment}</td>
+                <td>{props.lessRebate}</td>
+              </tr>
+              <tr>
+                <td colSpan="2">Net Income Tax Payable</td>
+                <td>{props.NetIncomeTaxPayable}</td>
+              </tr>
+              <tr>
+                <td colSpan="2">Provision Per Month {props.totalMonth} Months</td>
+                <td>{props.ProvisionMonthTax}</td>
+              </tr>
+            </tbody>
+  </table>
+  </div>*/}
+      </div>
+      <TotalTaxInvest
         AllowInvestment={AllowInvestment}
         lessRebate={LessRebate}
         NetIncomeTaxPayable={NetIncomeTaxPayable}
