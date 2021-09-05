@@ -9,8 +9,8 @@ export const InComeDetails = (props)=>{
         medicalmAmount:0, medicallAmount:0,
         conveyancemAmount:0, conveyancelAmount:0,
         livingmAmount:0, livinglAmount:0,
-        providentFundmAmount:0, providentFundlAmount:0,
-        bonusmAmount:0, bonuslAmount:0,
+        providentFundyAmount:0, providentFundlAmount:0,
+        bonusyAmount:0, bonuslAmount:0,
         specialAmountmAmount:0, specialAmountlAmount:0,
         othersmAmount:0,otherslAmount:0,
     }
@@ -19,7 +19,7 @@ export const InComeDetails = (props)=>{
     const {handleSubmit,register} = useForm(); 
 
     const [inComeDetailsState,setIncomeDetails] = useReducer(reducerFunc,inComeDetailsInit)
-    const bonusYoccurrance=2,specialYoccurrance=6,othersYoccurrance=2
+    const specialYoccurrance=6,othersYoccurrance=2
 
     const calculateTaxable = (mAmount,lAmount, yOccurrance=12) =>{
          const value = (mAmount*yOccurrance-lAmount)>0? mAmount*yOccurrance-lAmount:0;
@@ -27,15 +27,14 @@ export const InComeDetails = (props)=>{
     }
 
    const calculateTaxableIncome=()=>{
-       console.log(inComeDetailsState)
       const totalTaxable = (
         calculateTaxable(inComeDetailsState.basicmAmount,inComeDetailsState.basiclAmount)+
         calculateTaxable(inComeDetailsState.housingmAmount,inComeDetailsState.housinglAmount)+
         calculateTaxable(inComeDetailsState.medicalmAmount,inComeDetailsState.medicallAmount)+
         calculateTaxable(inComeDetailsState.conveyancemAmount,inComeDetailsState.conveyancelAmount)+
         calculateTaxable(inComeDetailsState.livingmAmount,inComeDetailsState.livinglAmount)+
-        calculateTaxable(inComeDetailsState.providentFundmAmount,inComeDetailsState.providentFundlAmount)+
-        calculateTaxable(inComeDetailsState.bonusmAmount,inComeDetailsState.bonuslAmount,bonusYoccurrance)+
+        calculateTaxable(inComeDetailsState.providentFundyAmount,inComeDetailsState.providentFundlAmount,1)+
+        calculateTaxable(inComeDetailsState.bonusyAmount,inComeDetailsState.bonuslAmount,1)+
         calculateTaxable(inComeDetailsState.specialAmountmAmount,inComeDetailsState.specialAmountlAmount,specialYoccurrance)+
         calculateTaxable(inComeDetailsState.othersmAmount,inComeDetailsState.otherslAmount,othersYoccurrance))
         return totalTaxable;
@@ -43,7 +42,6 @@ export const InComeDetails = (props)=>{
 
     useEffect(()=>{
         setTotalTaxableIncome(calculateTaxableIncome())
-        console.log(totalTaxableIncome)
     })
 
     const handleChange= (evnt) =>{
@@ -53,7 +51,8 @@ export const InComeDetails = (props)=>{
         //calculateTaxableIncome()
     }
     const handleFormData=(formData)=>{
-        props.handleStates(formData,totalTaxableIncome,true)
+        const provFund = inComeDetailsState.providentFundyAmount-inComeDetailsState.providentFundlAmount
+        props.handleStates(formData,totalTaxableIncome,provFund,true)
         //alert(`${formData.department} taxable: ${totalTaxableIncome}`)
       }
 
@@ -116,7 +115,7 @@ export const InComeDetails = (props)=>{
                         <label className="levelsOfEmployeeDetails">
                         <span>*</span> Designation
                         </label>
-                        <input type="text" className="form-control" required />
+                        <input type="text" {...register('designation')}  className="form-control" required />
                     </div>
                     <div>
                         <label className="levelsOfEmployeeDetails">Eligible for</label>
@@ -150,9 +149,9 @@ export const InComeDetails = (props)=>{
                         defaultValue={"M"}
                         >
                         <optgroup>
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                            <option value="O">Others</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="others">Others</option>
                         </optgroup>
                         </select>
                     </div>
@@ -252,23 +251,19 @@ export const InComeDetails = (props)=>{
                     </tr>
                     <tr>
                     <th scope="row">Provident Fund</th>
-                    <td><input onChange={handleChange} name="providentFundmAmount"
-                     value={inComeDetailsState.providentFundmAmount}/></td>
-                    <td><input readOnly value={inComeDetailsState.providentFundmAmount*12}/></td>
+                    <td><input name="providentFundmAmount"/></td>
+                    <td><input onChange={handleChange} name='providentFundyAmount' value={inComeDetailsState.providentFundyAmount}/></td>
                     <td><input onChange={handleChange} name="providentFundlAmount"
                      value={inComeDetailsState.providentFundlAmount}/></td>
-                    <td><input readOnly value={calculateTaxable(inComeDetailsState.providentFundmAmount,
-                        inComeDetailsState.providentFundlAmount)}/></td>
+                    <td><input readOnly value={calculateTaxable(inComeDetailsState.providentFundyAmount,
+                        inComeDetailsState.providentFundlAmount,1)}/></td>
                     </tr>
                     <tr>
                     <th scope="row">Bonus</th>
-                    <td><input onChange={handleChange} name="bonusmAmount"
-                     value={inComeDetailsState.bonusmAmount}/></td>
-                    <td><input readOnly value={inComeDetailsState.bonusmAmount*bonusYoccurrance}/></td>
                     <td><input onChange={handleChange} name="bonuslAmount"
                      value={inComeDetailsState.bonuslAmount}/></td>
-                    <td><input readOnly value={calculateTaxable(inComeDetailsState.bonusmAmount,
-                        inComeDetailsState.bonuslAmount,bonusYoccurrance)}/></td>
+                    <td><input readOnly value={calculateTaxable(inComeDetailsState.bonusyAmount,
+                        inComeDetailsState.bonuslAmount,1)}/></td>
                     </tr>
                     <tr>
                     <th scope="row">Special Amount</th>

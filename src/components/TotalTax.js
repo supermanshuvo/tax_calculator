@@ -38,7 +38,6 @@ function Totaltax(props) {
 
     
     if(gender==="male"){
-      console.log("i am a male")
       let t1=300000;
       let t2=100000;
       let t3=300000;
@@ -70,14 +69,12 @@ function Totaltax(props) {
 
         let paidTax1= (tax1*25)/100
         let totalTax1= paidTax1+a+b+c+d
-        console.log(paidTax1)
         setCondition1(a)
         setCondition2(b)
         setCondition3(c)
         setCondition4(d)
         setCondition5(paidTax1)
         setCondition6(totalTax1)
-
       }
 
       //condition2
@@ -108,7 +105,6 @@ function Totaltax(props) {
         setCondition3(c)
         setCondition4(paidTax2)
         setCondition6(totalTax2)
-
         }
       
       //condition3
@@ -134,7 +130,6 @@ function Totaltax(props) {
         setCondition2(b)
         setCondition3(paidTax3)
         setCondition6(totalTax3)
-
         }
       
       //condition4
@@ -155,8 +150,7 @@ function Totaltax(props) {
          let totalTax4=paidTax4+a
          setCondition1(a)
          setCondition2(paidTax4)
-        setCondition6(totalTax4)
-
+         setCondition6(totalTax4)
       }
       
       //condition5
@@ -190,7 +184,6 @@ function Totaltax(props) {
        let t3=300000;
        let t4=400000;
        let t5=500000;
-       console.log("i am a female")
 
        //condition1
 
