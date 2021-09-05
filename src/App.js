@@ -10,10 +10,11 @@ import Footer from "./components/Footer";
 import EmployeeDetailsAsOutputTable from './components/EmployeeDetailsAsOutputTable.js'
 
 const ref = React.createRef();
+console.log(ref)
 const options = {
-  orientation: 'landscape',
+  orientation: 'portrait',
   unit: 'in',
-  format: [8,12]
+  format: [14,12]
 };
 
 function App() {

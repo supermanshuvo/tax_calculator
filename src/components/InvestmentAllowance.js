@@ -15,10 +15,10 @@ const InvestmentAllowance = (props) => {
   let secondConditionLimitedInvestment =
     totalTaxIncome * H12 * 0.01 - ProvidentFund;
 
-  let getCalculate = (e) => {
-    let DPSOthers = e.target.value;
+  let getCalculate = (value) => {
+    let DPSOthers = value;
     setSum(
-      DPSOthers > 0 ? parseFloat(ProvidentFund) + parseFloat(DPSOthers) : "0"
+      DPSOthers > 0 ? parseFloat(ProvidentFund) + parseFloat(DPSOthers) : ProvidentFund
     );
 
     if (firstConditionAllowInvestment < H17) {
@@ -33,7 +33,7 @@ const InvestmentAllowance = (props) => {
       setLimitInvestment(H17);
     }
   };
-
+  
   // total calculation vale
   let totalPayableTax = props.TotalPayableTax,
     totalMonth = props.ProvMonth;
@@ -92,11 +92,13 @@ const InvestmentAllowance = (props) => {
     parseFloat(NetIncomeTaxPayable / totalMonth)
   );
 
+  useEffect(()=>{
+    getCalculate(0)
+  },[])
 
   return (
     <div className="container mt-2">
       <div className="row">
-        <h3>{props.ProvMonth} : {props.TotalPayable} : {props.TotalTaxIncome}:{props.PF}</h3>
         <h5 className="bg-secondary fw-light p-2">
           Investment Allowance and Tax Rebate
         </h5>
@@ -110,7 +112,7 @@ const InvestmentAllowance = (props) => {
               <tr>
                 <td>DPS/BSP/LIP/Others (If Applicable)</td>
                 <td>
-                  <input type="text" onChange={getCalculate} />
+                  <input type="text" defaultValue={0} onChange={(e)=>getCalculate(e.target.value)} />
                 </td>
               </tr>
               <tr className="fw-bold">
