@@ -1,6 +1,6 @@
 import React from "react";
 
-function EmployeeDetailsAsOutputTable({formData}) {
+function EmployeeDetailsAsOutputTable({ formData }) {
   return (
     <>
       <div className="container fields">
@@ -17,7 +17,9 @@ function EmployeeDetailsAsOutputTable({formData}) {
                       <th className="th_of_Output_Table" scope="row">
                         Employee Name
                       </th>
-                      <td className="td_of_Output_Table">{formData.employeeName}</td>
+                      <td className="td_of_Output_Table">
+                        {formData.employeeName}
+                      </td>
                       {/* right -  1*/}
                       <th className="th_of_Output_Table">Branch</th>
                       <td className="td_of_Output_Table">{formData.branch}</td>
@@ -26,27 +28,35 @@ function EmployeeDetailsAsOutputTable({formData}) {
                     <tr>
                       {/* left - 2*/}
                       <th className="th_of_Output_Table">Employee Code</th>
-                      <td className="td_of_Output_Table">{formData.employeeCode}</td>
+                      <td className="td_of_Output_Table">
+                        {formData.employeeCode}
+                      </td>
                       {/* right -  2*/}
                       <th className="th_of_Output_Table">Designation</th>
                       <td className="td_of_Output_Table">
-                      {formData.designation}
+                        {formData.designation}
                       </td>
                     </tr>
                     {/* 3rd item */}
                     <tr>
                       {/* left - 3*/}
                       <th className="th_of_Output_Table">Location</th>
-                      <td className="td_of_Output_Table">{formData.location}</td>
+                      <td className="td_of_Output_Table">
+                        {formData.location}
+                      </td>
                       {/* right -  3*/}
                       <th className="th_of_Output_Table">Eligible for</th>
-                      <td className="td_of_Output_Table">{formData.eligibility} Months</td>
+                      <td className="td_of_Output_Table">
+                        {formData.eligibility} Months
+                      </td>
                     </tr>
                     {/* 4th item */}
                     <tr>
                       {/* left - 4 */}
                       <th className="th_of_Output_Table">Department</th>
-                      <td className="td_of_Output_Table">{formData.department}</td>
+                      <td className="td_of_Output_Table">
+                        {formData.department}
+                      </td>
                       {/* right -  4*/}
                       <th className="th_of_Output_Table">Gender</th>
                       <td className="td_of_Output_Table">{formData.gender}</td>
@@ -55,10 +65,14 @@ function EmployeeDetailsAsOutputTable({formData}) {
                     <tr>
                       {/* left - 5*/}
                       <th className="th_of_Output_Table">Join Date</th>
-                      <td className="td_of_Output_Table">{formData.joinDate}</td>
+                      <td className="td_of_Output_Table">
+                        {formData.joinDate}
+                      </td>
                       {/* right -  5*/}
                       <th className="th_of_Output_Table">Prov. Months</th>
-                      <td className="td_of_Output_Table">{formData.provMonths} Months</td>
+                      <td className="td_of_Output_Table">
+                        {formData.provMonths} Months
+                      </td>
                     </tr>
 
                     {/* end of all items and table */}
@@ -76,6 +90,6 @@ function EmployeeDetailsAsOutputTable({formData}) {
       </div>
     </>
   );
-};
+}
 
 export default EmployeeDetailsAsOutputTable;

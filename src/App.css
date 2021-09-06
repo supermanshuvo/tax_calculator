@@ -1,38 +1,211 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Times New Roman", Times, serif;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  padding: 2vh 2vw;
+  margin-bottom: 15vh;
+  background-color: rgb(255, 252, 252);
+  min-width: 100%;
+  /* max-width: 100%; */
+}
+
+.fields {
+  box-shadow: 0.7vw 0.7vw 2vw #cbced1, -0.7vw -0.7vw 1.9vw #ffffff;
+  border-radius: 1vw;
+}
+.fields label {
+  font-weight: bold;
+}
+.fields input,
+.fields input.inpOfIncomeDetails {
+  border: none;
+  outline: none;
+  background: rgb(255, 252, 252) !important;
+  border: 1px solid rgba(66, 65, 65, 0.3);
+  color: #555;
+  padding: 0.7vw;
+  box-shadow: inset 0.1vw 0.1vw 0.7vw #dee0e2, inset -0.1vw -0.1vw 0.9vw #ffffff;
+}
+
+.fields input:focus {
+  background-color: rgb(255, 252, 252) !important;
+  box-shadow: inset 0.1vw 0.1vw 0.7vw #dee0e2, inset -0.1vw -0.1vw 0.9vw #ffffff;
+  border: 1px solid rgba(66, 65, 65, 0.3);
+}
+
+.fields select {
+  border: 1px solid rgba(66, 65, 65, 0.3);
+  background-color: rgb(255, 252, 252);
+}
+
+.fields select:focus {
+  box-shadow: 0.05vw 0.05vw 1vw #dbdddf, -0.05vw -0.05vw 1vw #ffffff;
+}
+
+.All_Headings {
+  font-size: 2vw;
+  font-weight: 600;
+  text-align: left;
+  margin-top: 4vw;
+}
+.All_Headings {
+  text-align: center;
+  /* font-family: "Poppins", sans-serif; */
+}
+
+.tax_title {
+  font-weight: 700;
+  font-size: 1.7vw;
+  font-size: 3vw !important;
+  line-height: 92px;
+  /* font-family: "Poppins", sans-serif; */
+}
+.employee_details_rightside {
+  font-size: 1.5vw;
+}
+
+.table-left,
+.table-right {
+  padding: 3vw;
+}
+th {
+  font-size: 1.7vw;
+}
+td {
+  font-size: 1.5vw !important;
+}
+td.total_payable {
+  font-weight: 600;
+}
+
+label,
+p,
+optgroup,
+select {
+  font-size: 1.5vw;
+}
+.inpOfIncomeDetails,
+.inpOfInvestmentAllowance {
+  font-size: 1.3vw;
+  border: none;
+  border: 1px solid white;
+  text-align: center;
+  vertical-align: middle;
+  background-color: white !important;
+}
+
+.th_of_Output_Table {
+  font-size: 1.4vw;
+  border: none;
+  border: 1px solid white;
+  vertical-align: middle;
+}
+.td_of_Output_Table {
+  font-size: 1.4vw;
+}
+input.form-control {
+  font-size: 1.5vw;
+}
+input:focus {
+  border: none;
+}
+
+input.date {
+  font-size: 1.5vw;
+}
+.withoutInputFields {
+  width: 17vw;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inpOfInvestmentAllowance {
+  margin-bottom: 0.3vw;
+  text-align: start;
+}
+label {
+  margin-bottom: 1.3vw 0;
+}
+pre {
+  font-size: 1.5vw;
+  font-family: "Times New Roman", Times, serif;
+}
+.footerDetails {
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  font-size: 1.8vw !important;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight: 600;
+}
+.IncomeTaxCardFor {
+  margin-top: 2vw;
+  font-weight: 600;
+  font-size: 1.5vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+span {
+  font-size: 1.3vw;
+}
+.header_div p {
+  text-align: center;
+  font-size: 1.5vw;
+}
+.company_name {
+  color: #000 !important;
+  font-weight: 600;
+  font-size: 1.2vw;
+  /* font-family: "Poppins", sans-serif; */
+}
+.image-fluid {
+  height: 3.5vw;
+  width: 10vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.td_of_charts {
+  font-size: 1.5vw;
+}
+
+.inside_th {
+  border: none;
+}
+
+td {
+  border: none;
+}
+.last_point {
+  border-bottom: 3px solid black;
+}
+
+.calculate {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: end;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: -webkit-linear-gradient(#6795fd 0%, #67ceff 100%);
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(160, 147, 147, 0.29);
+  border-bottom: solid 3px #5e7fca;
+  font-size: 1.5vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn:active {
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+.btn:hover {
+  color: #fff;
 }

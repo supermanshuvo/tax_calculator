@@ -92,12 +92,14 @@ const InvestmentAllowance = (props) => {
     parseFloat(NetIncomeTaxPayable / totalMonth)
   );
 
-
   return (
     <div className="container mt-2">
       <div className="row">
-        <h3>{props.ProvMonth} : {props.TotalPayable} : {props.TotalTaxIncome}:{props.PF}</h3>
-        <h5 className="bg-secondary fw-light p-2">
+        <h3>
+          {props.ProvMonth} : {props.TotalPayable} : {props.TotalTaxIncome}:
+          {props.PF}
+        </h3>
+        <h5 className="bg-secondary fw-light p-2 text-center">
           Investment Allowance and Tax Rebate
         </h5>
         <div className="container-fluid">
