@@ -94,48 +94,52 @@ const InvestmentAllowance = (props) => {
 
   return (
     <div className="container mt-2">
-      <div className="row">
-        <h3>
-          {props.ProvMonth} : {props.TotalPayable} : {props.TotalTaxIncome}:
-          {props.PF}
-        </h3>
-        <h5 className="bg-secondary fw-light p-2 text-center">
+      <div className="sector">
+        <div className="row">
+          <h3>
+            {props.ProvMonth} : {props.TotalPayable} : {props.TotalTaxIncome}:
+            {props.PF}
+          </h3>
+          {/* <h5 className="bg-secondary fw-light p-2 text-center">
           Investment Allowance and Tax Rebate
-        </h5>
-        <div className="container-fluid">
-          <table className="table">
-            <tbody>
-              <tr>
-                <td>Contribution to Provident Fund</td>
-                <td>{ProvidentFund}</td>
-              </tr>
-              <tr>
-                <td>DPS/BSP/LIP/Others (If Applicable)</td>
-                <td>
-                  <input type="text" onChange={getCalculate} />
-                </td>
-              </tr>
-              <tr className="fw-bold">
-                <td>Total Investment</td>
-                <td>{Sum}</td>
-              </tr>
-              <tr className="fw-bold">
-                <td>Allowed Investment</td>
-                <td>
-                  {AllowInvestment} From {LimitInvestment}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        </h5> */}
+          <p className="All_Headings">Investment Allowance and Tax Rebate</p>
+
+          <div className="container-fluid">
+            <table className="table">
+              <tbody>
+                <tr>
+                  <td>Contribution to Provident Fund</td>
+                  <td>{ProvidentFund}</td>
+                </tr>
+                <tr>
+                  <td>DPS/BSP/LIP/Others (If Applicable)</td>
+                  <td>
+                    <input type="text" onChange={getCalculate} />
+                  </td>
+                </tr>
+                <tr className="fw-bold">
+                  <td>Total Investment</td>
+                  <td>{Sum}</td>
+                </tr>
+                <tr className="fw-bold">
+                  <td>Allowed Investment</td>
+                  <td>
+                    {AllowInvestment} From {LimitInvestment}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        <TotalTaxInvest
+          AllowInvestment={AllowInvestment}
+          lessRebate={LessRebate}
+          NetIncomeTaxPayable={NetIncomeTaxPayable}
+          totalMonth={totalMonth}
+          ProvisionMonthTax={ProvisionMonthTax}
+        />
       </div>
-      <TotalTaxInvest
-        AllowInvestment={AllowInvestment}
-        lessRebate={LessRebate}
-        NetIncomeTaxPayable={NetIncomeTaxPayable}
-        totalMonth={totalMonth}
-        ProvisionMonthTax={ProvisionMonthTax}
-      />
     </div>
   );
 };

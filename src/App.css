@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 * {
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
   font-family: "Poppins", sans-serif;
+  /* background-color: red; */
 }
 
 .container {
@@ -14,8 +15,13 @@
 }
 
 .fields {
-  box-shadow: 0.7vw 0.7vw 2vw #cbced1, -0.7vw -0.7vw 1.9vw #ffffff;
+  /* box-shadow: 0.7vw 0.7vw 2vw #cbced1, -0.7vw -0.7vw 1.9vw #ffffff; */
   border-radius: 1vw;
+}
+.sector {
+  box-shadow: 0.7vw 0.7vw 2vw #cbced1, -0.7vw -0.7vw 1.9vw #ffffff;
+  background-color: rgb(242, 242, 250) !important;
+  margin-top: 8vh;
 }
 .fields label {
   font-weight: bold;
@@ -208,4 +214,8 @@ td {
 
 .btn:hover {
   color: #fff;
+}
+
+.es6 {
+  margin-bottom: 1000px;
 }

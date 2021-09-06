@@ -37,34 +37,41 @@ const TotalTaxInvest = (props) => {
     
     */
   return (
-    <div className="row">
-      <h3>
-        {props.AllowInvestment}: {props.lessRebate} :{" "}
-        {props.NetIncomeTaxPayable}:{props.ProvisionMonthTax}{" "}
-      </h3>
-      <h5 className="bg-secondary fw-light p-2 text-center">
-        Total Calculation
-      </h5>
-      <div className="container-fluid">
-        <table className="table">
-          <tbody>
-            <tr>
-              <td>Less Rebate on Investment Tk.</td>
-              <td>{props.AllowInvestment}</td>
-              <td>{props.lessRebate}</td>
-            </tr>
-            <tr>
-              <td colSpan="2">Net Income Tax Payable</td>
-              <td>{props.NetIncomeTaxPayable}</td>
-            </tr>
-            <tr>
-              <td colSpan="2">Provision Per Month {props.totalMonth} Months</td>
-              <td>{props.ProvisionMonthTax}</td>
-            </tr>
-          </tbody>
-        </table>
+    <>
+      <div className="sector">
+        <div className="row">
+          <h3>
+            {props.AllowInvestment}: {props.lessRebate} :{" "}
+            {props.NetIncomeTaxPayable}:{props.ProvisionMonthTax}{" "}
+          </h3>
+          {/* <h5 className="bg-secondary fw-light p-2 text-center">
+            Total Calculation
+          </h5> */}
+          <p className="All_Headings">Total Calculation</p>
+          <div className="container-fluid">
+            <table className="table">
+              <tbody>
+                <tr>
+                  <td>Less Rebate on Investment Tk.</td>
+                  <td>{props.AllowInvestment}</td>
+                  <td>{props.lessRebate}</td>
+                </tr>
+                <tr>
+                  <td colSpan="2">Net Income Tax Payable</td>
+                  <td>{props.NetIncomeTaxPayable}</td>
+                </tr>
+                <tr>
+                  <td colSpan="2">
+                    Provision Per Month {props.totalMonth} Months
+                  </td>
+                  <td>{props.ProvisionMonthTax}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

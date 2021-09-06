@@ -88,7 +88,6 @@ function App() {
               TotalPayable={totalpayable}
               ProvMonth={userData.provMonths}
             />
-            <Footer />
           </div>
 
           <ReactToPdf
@@ -100,11 +99,15 @@ function App() {
             scale={0.8}
           >
             {({ toPdf }) => (
-              <button className="btn " onClick={toPdf}>
+              <button
+                className="btn d-flex justify-content-end"
+                onClick={toPdf}
+              >
                 Generate pdf
               </button>
             )}
           </ReactToPdf>
+          <Footer />
         </>
       )}
     </div>
