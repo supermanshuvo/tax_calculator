@@ -38,7 +38,6 @@ const TotalTaxInvest = (props) => {
     */
     return (
       <div className="row">
-        <h3>{props.AllowInvestment}: {props.lessRebate} : {props.NetIncomeTaxPayable}:{props.ProvisionMonthTax} </h3>
         <h5 className="bg-secondary fw-light p-2">Total Calculation</h5>
         <div className="container-fluid">
           <table className="table">
