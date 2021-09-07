@@ -234,4 +234,8 @@ th.col-sm-1.bar {
 .totalTaxableIncome {
   text-align: center;
 }
+h3.text-center.mb-4 {
+  font-size: 2vw;
+  font-weight: 700;
+}
 
