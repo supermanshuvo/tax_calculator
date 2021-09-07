@@ -388,7 +388,7 @@ export const InComeDetails = (props) => {
                        </td>
                        <td className="text-center col-sm-1">
                         <input
-                          name="basiclAmount"
+                          name="medicallAmount"
                           value={inComeDetailsState.medicallAmount}
                           onChange={handleChange}
                           className="col-sm-5"
