@@ -654,7 +654,6 @@ export const InComeDetails = (props) => {
               <button type="submit" className="btn" value="Submit">
                 Submit
               </button>
-            </div>
           </div>
 
           {/* ////////////PART -2 ////////////// */}
