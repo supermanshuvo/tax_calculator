@@ -5,7 +5,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import {InComeDetails} from './components/IncomeDetails.js';
 import TotalTax  from './components/TotalTax.js';
-import InvestmentAllowance2 from "./components/InvestMentAllowence2.js";
+import InvestmentAllowance from "./components/InvestMentAllowence.js";
 import Header from "./components/Header.js";
 import Footer from "./components/Footer";
 import EmployeeDetailsAsOutputTable from './components/EmployeeDetailsAsOutputTable.js';
@@ -88,10 +88,8 @@ function App() {
           <EmployeeDetailsAsOutputTable formData={userData}/>
           <TotalTax 
           totalTaxableIncome={totalTaxableIncome} gender = {userData.gender}/>
-          {/*<InvestmentAllowance PF={provFund} ConfigureH12={25} ConfigureH17={15000000} 
-            TotalTaxIncome={totalTaxableIncome} TotalPayable={totalpayable}
-             ProvMonth={userData.provMonths} />*/}
-          <InvestmentAllowance2 providentFund={provFund} maxInvestTaxExemption={25} maxAllowedInvesment={15000000} 
+
+          <InvestmentAllowance providentFund={provFund} maxInvestTaxExemption={25} maxAllowedInvesment={15000000} 
             totalTaxIncome={totalTaxableIncome} totalPayableTax={totalpayable}
              provMonth={parseInt(userData.provMonths)} />   
         </div>

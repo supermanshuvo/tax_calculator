@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import TotalTaxInvest from "./TotalTaxInvest.js";
 
-const InvestmentAllowance2 = ({providentFund,maxInvestTaxExemption,maxAllowedInvesment,
+const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInvesment,
     totalTaxIncome,totalPayableTax,provMonth}) => {
   
   const [totalInvestMent, setTotalInvestMent] = useState(0);
@@ -107,4 +107,4 @@ const InvestmentAllowance2 = ({providentFund,maxInvestTaxExemption,maxAllowedInv
   );
 };
 
-export default InvestmentAllowance2;
+export default InvestmentAllowance;
