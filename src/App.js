@@ -63,7 +63,7 @@ function App() {
         pdf.setFontSize(6)
         pdf.text(240,640,'©2021 VivaSoft, All right reserved.')
         // pdf.output('dataurlnewwindow');
-        pdf.save("download.pdf");
+        pdf.save("TaxReport.pdf");
       })
     ;
   }
