@@ -267,368 +267,369 @@ export const InComeDetails = (props) => {
               {/* right-side-fields ends */}
             </div>
           </div>
-          <div className="sector">
-            <div className="row">
-              <p className="All_Headings">Income Details</p>
-              <div className="col-12 mx-auto">
-                <div className="table-responsive.sm">
-                  <table className="table">
-                    <thead>
-                      <tr className="total_of_IncomeDetails">
-                        <th scope="col"></th>
-                        <th scope="col" className="text-center">
-                          M. Amount
-                        </th>
-                        <th scope="col" className="text-center">
-                          Y.Amount
-                        </th>
-                        <th scope="col" className="text-center">
-                          L.Amount
-                        </th>
-                        <th scope="col" className="text-center">
-                          Taxable Income
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        {/* 1st item */}
-                        <th className="inside_th">Basic Pay</th>
-                        <td>
-                          <input
+         <div className="container mt-5">
+             <h3 className="text-center mb-4 ">Income Details</h3>
+             <div className="table-responsive">
+             <table className="table  table-hover table-striped">
+                 <thead>
+                    <tr className="bg-dark text-white">
+                       <th scope="col-sm-1"></th>
+                       <th scope="col" className="text-center col-sm-2">
+                           M.Amount
+                       </th>
+                       <th scope="col" className="text-center col-sm-2">
+                           Y.Amount
+                       </th>
+                       <th scope="col" className="text-center col-sm-2">
+                            L.Amount
+                       </th>
+                       <th scope="col" className="text-center col-sm-2">
+                            Taxable Income
+                       </th>
+                   </tr>
+                 </thead>
+
+                <tbody>
+                    <tr>
+                     <th className= "col-sm-1 bar">Basic Pay</th>
+                       <td className="text-center col-sm-1 border-shadow">
+                         <p>
+                           <input
                             name="basicmAmount"
-                            className="inpOfIncomeDetails"
-                            value={inComeDetailsState.basicmAmount}
+                            value= {inComeDetailsState.basicmAmount}
                             onChange={handleChange}
-                          />
-                        </td>
-                        <td>
+                            className="col-sm-5"
+                            />
+                         </p>
+                       </td>
+                       <td className="text-center col-sm-1">
+                          <input className="col-sm-5"
+                            readOnly
+                            value={inComeDetailsState.basicmAmount*12}
+                          />    
+                      </td>
+                      <td className="text-center col-sm-1">
+                        <input
+                          name="basiclAmount"
+                          value={inComeDetailsState.basiclAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                      </td>
+                      <td className="text-center col-sm-1">
+                        
                           <input
                             readOnly
-                            value={inComeDetailsState.basicmAmount * 12}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                        <td>
+                            value={calculateTaxable(inComeDetailsState.basicmAmount,
+                             inComeDetailsState.basiclAmount)}
+                            className="col-sm-5"
+                          />    
+                      </td>
+                      
+                    </tr>
+
+                    <tr>
+                       <th className="col-sm-1 bar">Housing</th>
+                       <td className="text-center col-sm-1">
+                          <p className="text-right">
                           <input
-                            onChange={handleChange}
-                            className="inpOfIncomeDetails"
-                            name="basiclAmount"
-                            value={inComeDetailsState.basiclAmount}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.basicmAmount,
-                              inComeDetailsState.basiclAmount
-                            )}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 2nd item */}
-                        <th className="inside_th">Housing</th>
-                        <td>
-                          <input
-                            onChange={handleChange}
                             name="housingmAmount"
-                            value={inComeDetailsState.housingmAmount}
-                            className="inpOfIncomeDetails"
-                          />
-                        </td>
-                        <td>
+                            value= {inComeDetailsState.housingmAmount}
+                            onChange={handleChange}
+                            className="col-sm-5"
+                           />
+                          </p>
+                       </td>
+                       <td className="text-center col-sm-1">
+                           <input className="col-sm-5"
+                             readOnly
+                             value={inComeDetailsState.housingmAmount*12}
+                           />  
+                       </td>
+                       <td className="text-center col-sm-1">
+                        <input
+                          name="housinglAmount"
+                          value={inComeDetailsState.housinglAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                       </td>
+                       <td className="text-center col-sm-1">
+                        
                           <input
                             readOnly
-                            value={inComeDetailsState.housingmAmount * 12}
-                            className="withoutInputFields"
+                            value={calculateTaxable(inComeDetailsState.housingmAmount,
+                             inComeDetailsState.housinglAmount)}
+                            className="col-sm-5"
                           />
-                        </td>
-                        <td>
-                          <input
+                    
+                       </td>
+
+                    </tr>
+
+                    <tr>
+                       <th className="col-sm-1 bar">Medical</th>
+                       <td className="text-center col-sm-1">
+                          <p className="text-right">
+                           <input
+                            name= "medicalmAmount"
+                            value= {inComeDetailsState.medicalmAmount}
                             onChange={handleChange}
-                            name="housinglAmount"
-                            value={inComeDetailsState.housinglAmount}
-                            className="inpOfIncomeDetails"
+                            className="col-sm-5"
+                           />
+                          </p>
+                       </td>
+                       <td className="text-center col-sm-1">
+                          <input className="col-sm-5"
+                            readOnly
+                            value={inComeDetailsState.medicalmAmount*12}
                           />
-                        </td>
-                        <td>
+                        
+                       </td>
+                       <td className="text-center col-sm-1">
+                        <input
+                          name="basiclAmount"
+                          value={inComeDetailsState.medicallAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                       </td>
+                       <td className="text-center col-sm-1">
+                         
                           <input
                             readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.housingmAmount,
-                              inComeDetailsState.housinglAmount
-                            )}
-                            className="withoutInputFields"
+                            value={calculateTaxable(inComeDetailsState.medicalmAmount,
+                            inComeDetailsState.medicallAmount)}
+                            className="col-sm-5"
                           />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 3rd item */}
-                        <th className="inside_th">Medical</th>
-                        <td>
-                          <input
-                            onChange={handleChange}
-                            name="medicalmAmount"
-                            value={inComeDetailsState.medicalmAmount}
-                            className="inpOfIncomeDetails"
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th className="col-sm-1 bar">Conveyance</th>
+                      <td className="text-center col-sm-1">
+                        <p className="text-right">
+                        <input
+                          name="conveyancemAmount"
+                          value= {inComeDetailsState.conveyancemAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                        </p>
+                      </td>
+                      <td className="text-center col-sm-1">
+                          <input className="col-sm-5"
+                            readOnly
+                            value={inComeDetailsState.conveyancemAmount*12}
                           />
-                        </td>
-                        <td>
+                        
+                      </td>
+                      <td className="text-center col-sm-1">
+                        <input
+                          name="conveyancelAmount"
+                          value={inComeDetailsState.conveyancelAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                      </td>
+                      <td className="text-center col-sm-1">
+                            <input
+                            readOnly
+                            value={calculateTaxable(inComeDetailsState.conveyancemAmount,
+                             inComeDetailsState.conveyancelAmount)}
+                            className="col-sm-5"
+                          />
+                      </td>
+
+                    </tr>
+
+                    <tr>
+                      <th className="col-sm-1 bar">Living</th>
+                      <td className="text-center col-sm-1">
+                        <p className="text-right">
+                         <input
+                          name="livingmAmount"
+                          value= {inComeDetailsState.livingmAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                          />
+                        </p>
+                      </td>
+                      <td className="text-center col-sm-1">
+                          <input className="col-sm-5"
+                            readOnly
+                            value={inComeDetailsState.livingmAmount*12}
+                          />  
+                      </td>
+                      <td className="text-center col-sm-1">
+                        <input
+                          name="livinglAmount"
+                          value={inComeDetailsState.livinglAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                      </td>
+                       <td className="text-center col-sm-1">
                           <input
                             readOnly
-                            value={inComeDetailsState.medicalmAmount * 12}
-                            className="withoutInputFields"
+                            value={calculateTaxable(inComeDetailsState.livingmAmount,
+                        inComeDetailsState.livinglAmount)}
+                            className="col-sm-5"
                           />
-                        </td>
-                        <td>
+                      </td>
+                    </tr>
+
+                    <tr>
+                       <th className="col-sm-1 bar">Provedient fund</th>
+                       <td className="text-center">
+                          <p className="text-right">
                           <input
-                            onChange={handleChange}
-                            name="medicallAmount"
-                            value={inComeDetailsState.medicallAmount}
-                            className="inpOfIncomeDetails"
+                          name="providentFundmAmount"
+                          value= ""
+                          
+                          className="col-sm-5"
                           />
-                        </td>
-                        <td>
-                          <input
-                            readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.medicalmAmount,
-                              inComeDetailsState.medicallAmount
-                            )}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 4th item */}
-                        <th className="inside_th">Conveyance</th>
-                        <td>
-                          <input
-                            onChange={handleChange}
-                            name="conveyancemAmount"
-                            value={inComeDetailsState.conveyancemAmount}
-                            className="inpOfIncomeDetails"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            readOnly
-                            value={inComeDetailsState.conveyancemAmount * 12}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            onChange={handleChange}
-                            name="conveyancelAmount"
-                            value={inComeDetailsState.conveyancelAmount}
-                            className="inpOfIncomeDetails"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.conveyancemAmount,
-                              inComeDetailsState.conveyancelAmount
-                            )}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 5th item */}
-                        <th className="inside_th">Living</th>
-                        <td>
-                          <input
-                            onChange={handleChange}
-                            name="livingmAmount"
-                            value={inComeDetailsState.livingmAmount}
-                            className="inpOfIncomeDetails"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            readOnly
-                            value={inComeDetailsState.livingmAmount * 12}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            onChange={handleChange}
-                            name="livinglAmount"
-                            value={inComeDetailsState.livinglAmount}
-                            className="inpOfIncomeDetails"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.livingmAmount,
-                              inComeDetailsState.livinglAmount
-                            )}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 6th item */}
-                        <th className="inside_th">Provident Fund</th>
-                        <td>
-                          <input
-                            name="providentFundmAmount"
-                            className="inpOfIncomeDetails"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            onChange={handleChange}
-                            name="providentFundyAmount"
+                          </p>
+                      </td>
+                       <td className="text-center col-sm-1">
+                          <input className="col-sm-5"
                             value={inComeDetailsState.providentFundyAmount}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                        <td>
-                          <input
                             onChange={handleChange}
-                            name="providentFundlAmount"
-                            value={inComeDetailsState.providentFundlAmount}
-                            className="inpOfIncomeDetails"
+                            name='providentFundyAmount'
                           />
-                        </td>
-                        <td>
+                        
+                      </td>
+                      <td className="text-center col-sm-1">
+                        <input
+                          name="providentFundlAmount"
+                          value={inComeDetailsState.providentFundlAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                      </td>
+                      <td className="text-center col-sm-1">
+                        
                           <input
                             readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.providentFundyAmount,
-                              inComeDetailsState.providentFundlAmount,
-                              1
-                            )}
-                            className="withoutInputFields"
+                            value={calculateTaxable(inComeDetailsState.providentFundyAmount,
+                            inComeDetailsState.providentFundlAmount,1)}
+                            className="col-sm-5"
                           />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 7th item */}
-                        <th className="inside_th">Bonus</th>
-                        <td>
-                          <input className="inpOfIncomeDetails" />
-                        </td>
-                        <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="col-sm-1 bar">Bonus</th>
+                      <td className="text-center col-sm-1">
+                        <p >
+                        <input
+                          className="col-sm-5"
+                        />
+                        </p>
+                      </td>
+                      <td className="text-center col-sm-1">
                           <input
-                            onChange={handleChange}
-                            name="bonusyAmount"
+                            className="col-sm-5"
                             value={inComeDetailsState.bonusyAmount}
-                            className="withoutInputFields"
-                          />
-                        </td>
-                        <td>
-                          <input
                             onChange={handleChange}
-                            name="bonuslAmount"
-                            value={inComeDetailsState.bonuslAmount}
-                            className="inpOfIncomeDetails"
+                            name="bonusAmount"
                           />
-                        </td>
-                        <td>
+                        
+                      </td>
+                      <td className="text-center col-sm-1">
+                        <input
+                          name="bonusAmount"
+                          value={inComeDetailsState.bonuslAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                      </td>
+                       <td className="text-center col-sm-1">
+                        
                           <input
                             readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.bonusyAmount,
-                              inComeDetailsState.bonuslAmount,
-                              1
-                            )}
-                            className="withoutInputFields"
+                            value={calculateTaxable(inComeDetailsState.bonusyAmount,
+                            inComeDetailsState.bonuslAmount,1)}
+                            className="col-sm-5"
                           />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 8th item */}
-                        <th className="inside_th">Special Amount</th>
-                        <td>
+                      </td>
+                    
+                    </tr>
+
+                     <tr>
+                       <th className="col-sm-1 bar">Special Amount</th>
+                       <td className="text-center col-sm-1">
+                          <p>
                           <input
-                            onChange={handleChange}
                             name="specialAmountmAmount"
                             value={inComeDetailsState.specialAmountmAmount}
-                            className="inpOfIncomeDetails"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            readOnly
-                            value={
-                              inComeDetailsState.specialAmountmAmount *
-                              specialYoccurrance
-                            }
-                            className="withoutInputFields"
-                          />
-                        </td>
-                        <td>
-                          <input
                             onChange={handleChange}
-                            name="specialAmountlAmount"
-                            value={inComeDetailsState.specialAmountlAmount}
-                            className="inpOfIncomeDetails"
+                            className="col-sm-5"
+                           />
+                           </p>
+                      </td>
+                       <td className="text-center col-sm-1">
+                          <input className="col-sm-5"
+                            readOnly
+                            value={inComeDetailsState.specialAmountmAmount*specialYoccurrance}
                           />
-                        </td>
-                        <td>
+                        
+                      </td>
+                       <td className="text-center col-sm-1">
+                        <input
+                          name="specialAmountlAmount"
+                          value={inComeDetailsState.specialAmountlAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                      </td>
+                      <td className="text-center col-sm-1">
+                        
                           <input
                             readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.specialAmountmAmount,
-                              inComeDetailsState.specialAmountlAmount,
-                              specialYoccurrance
-                            )}
-                            className="withoutInputFields"
+                            value={inComeDetailsState.specialAmountmAmount*specialYoccurrance}
+                            className="col-sm-5"
                           />
-                        </td>
-                      </tr>
-                      <tr>
-                        {/* 9th item */}
-                        <th className="last_point">Others</th>
-                        <td className="last_point">
-                          <input
-                            onChange={handleChange}
-                            name="othersmAmount"
-                            value={inComeDetailsState.othersmAmount}
-                            className="inpOfIncomeDetails "
-                          />
-                        </td>
-                        <td className=" last_point">
-                          <input
+                    
+                      </td>
+                    </tr>
+                    <tr>
+                       <th className="col-sm-1 bar">Others</th>
+                       <td className="text-center col-sm-1">
+                           <p >
+                           <input
+                             name="othersmAmount"
+                             value= {inComeDetailsState.othersmAmount}
+                             onChange={handleChange}
+                             className="col-sm-5"
+                            />
+                           </p>
+                      </td>
+                       <td className="text-center col-sm-1">
+                          <input className="col-sm-5"
                             readOnly
-                            className="withoutInputFields "
-                            value={inComeDetailsState.othersmAmount * 12}
+                            value={inComeDetailsState.othersmAmount*12}
                           />
-                        </td>
-                        <td className="last_point">
-                          <input
-                            onChange={handleChange}
-                            name="otherslAmount"
-                            value={inComeDetailsState.otherslAmount}
-                            className="inpOfIncomeDetails "
-                          />
-                        </td>
-                        <td className=" last_point">
-                          <input
+                        
+                      </td>
+                       <td className="text-center col-sm-1">
+                        <input
+                          name="otherslAmount"
+                          value={inComeDetailsState.otherslAmount}
+                          onChange={handleChange}
+                          className="col-sm-5"
+                        />
+                      </td>
+                      <td className="text-center col-sm-1">
+                        
+                          <input className="col-sm-5"
                             readOnly
-                            value={calculateTaxable(
-                              inComeDetailsState.othersmAmount,
-                              inComeDetailsState.otherslAmount,
-                              othersYoccurrance
-                            )}
-                            className="withoutInputFields "
+                            value={calculateTaxable(inComeDetailsState.othersmAmount,
+                             inComeDetailsState.otherslAmount,othersYoccurrance)}
                           />
-                        </td>
-                      </tr>
-
-                      {/* Calculating Total */}
-                      <tr className="total_of_IncomeDetails">
+                    
+                      </td>
+                    </tr>
+                    <tr className="total_of_IncomeDetails">
                         <th className="inside_th">Total</th>
                         <td></td>
                         <td className="withoutInputFields"></td>
@@ -638,12 +639,11 @@ export const InComeDetails = (props) => {
                             <b>{totalTaxableIncome}</b>
                           </p>
                         </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                    </tr>
+                </tbody>
+                </table>
                 </div>
-              </div>
-            </div>
+                </div>
             {/* <p>Total Taxable Income : {totalTaxableIncome}</p> */}
 
             {/* <button type="submit" value="Submit">
