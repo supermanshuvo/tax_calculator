@@ -1,16 +1,15 @@
 import ReactDOM from "react-dom";
-import React, { useState } from 'react'
-import ReactToPdf from "react-to-pdf";
+import React, { useState,useRef } from 'react'
 import './App.css';
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import {InComeDetails} from './components/IncomeDetails.js';
 import TotalTax  from './components/TotalTax.js';
-import InvestmentAllowance from "./components/InvestmentAllowance.js";
+import InvestmentAllowance2 from "./components/InvestMentAllowence2.js";
 import Header from "./components/Header.js";
 import Footer from "./components/Footer";
-import EmployeeDetailsAsOutputTable from './components/EmployeeDetailsAsOutputTable.js'
+import EmployeeDetailsAsOutputTable from './components/EmployeeDetailsAsOutputTable.js';
 
-const ref = React.createRef();
-console.log(ref)
 const options = {
   orientation: 'portrait',
   unit: 'in',
@@ -23,6 +22,7 @@ function App() {
   const [userData,setUserData]=useState({})
   const [provFund,setProvFund] = useState(0)
   const [totalpayable,setTotalpayable] = useState(0)
+  const captureRef = useRef(null);
 
   const calculatePayableTax = (totalTaxableIncome=700000,gender='male')=>{
     let taxArray =[300000,100000,300000,400000,500000]
@@ -53,6 +53,21 @@ function App() {
       setUserData(formData); setFormSubmitted(submitted)
   }
 
+  const printDocument =() =>{
+    const input = captureRef.current;
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'pt', 'a4', false);
+        pdf.addImage(imgData, 'PNG', 0, 0, 590, 0, undefined, false);
+        pdf.setFontSize(6)
+        pdf.text(240,640,'©2021 VivaSoft, All right reserved.')
+        // pdf.output('dataurlnewwindow');
+        pdf.save("download.pdf");
+      })
+    ;
+  }
+
 
   return (
     <div className="App">
@@ -63,28 +78,25 @@ function App() {
         <InComeDetails handleStates={(formData,totalTaxableIncome,provFund,
           submitted)=>handleSubmit(formData,totalTaxableIncome,provFund,
             submitted)} />  
-        <Footer/>      
         </>
       )
       :
       (
         <>
-        <div ref={ref}>
+        <div ref={captureRef}>
           <Header/>
           <EmployeeDetailsAsOutputTable formData={userData}/>
           <TotalTax 
           totalTaxableIncome={totalTaxableIncome} gender = {userData.gender}/>
-          <InvestmentAllowance PF={provFund} ConfigureH12={25} ConfigureH17={15000000} 
+          {/*<InvestmentAllowance PF={provFund} ConfigureH12={25} ConfigureH17={15000000} 
             TotalTaxIncome={totalTaxableIncome} TotalPayable={totalpayable}
-             ProvMonth={userData.provMonths} />
-          <Footer/> 
+             ProvMonth={userData.provMonths} />*/}
+          <InvestmentAllowance2 providentFund={provFund} maxInvestTaxExemption={25} maxAllowedInvesment={15000000} 
+            totalTaxIncome={totalTaxableIncome} totalPayableTax={totalpayable}
+             provMonth={parseInt(userData.provMonths)} />   
         </div>
-  
-        <ReactToPdf targetRef={ref} filename="div-blue.pdf" options={options} x={.5} y={.5} scale={0.8}>
-          {({toPdf}) => (
-              <button onClick={toPdf}>Generate pdf</button>
-          )}
-      </ReactToPdf>
+        <button onClick={printDocument}>Download Report</button>
+        <Footer/>      
       </>
       )
       }

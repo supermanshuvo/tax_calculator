@@ -260,6 +260,9 @@ export const InComeDetails = (props)=>{
                     </tr>
                     <tr>
                     <th scope="row">Bonus</th>
+                    <td><input /></td>
+                    <td><input onChange={handleChange} name="bonusyAmount"
+                     value={inComeDetailsState.bonusyAmount}/></td>
                     <td><input onChange={handleChange} name="bonuslAmount"
                      value={inComeDetailsState.bonuslAmount}/></td>
                     <td><input readOnly value={calculateTaxable(inComeDetailsState.bonusyAmount,
