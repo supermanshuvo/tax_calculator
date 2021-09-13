@@ -1,7 +1,7 @@
 // import { useState } from "react";
 
 const TotalTaxInvest = (props) => {
-    /* let AllowInvestment = props.AllowInvestment,
+  /* let AllowInvestment = props.AllowInvestment,
       totalTaxIncome = props.TotalTaxIncome;
     let [lessRebate, setLessRebate] = useState(0),
       totalMonth = props.ProvMonth;
@@ -19,7 +19,7 @@ const TotalTaxInvest = (props) => {
       setLessRebate(LessRebateResult);
     })();
     console.log(totalTaxIncome); */
-    /* 
+  /* 
     E42 = AllowInvestment
     H20 = totalTaxIncome
     configure.C44 = 
@@ -36,30 +36,43 @@ const TotalTaxInvest = (props) => {
     
     
     */
-    return (
-      <div className="row">
-        <h5 className="bg-secondary fw-light p-2">Total Calculation</h5>
-        <div className="container-fluid">
-          <table className="table">
-            <tbody>
-              <tr>
-                <td>Less Rebate on Investment Tk.</td>
-                <td>{props.AllowInvestment}</td>
-                <td>{props.lessRebate}</td>
-              </tr>
-              <tr>
-                <td colSpan="2">Net Income Tax Payable</td>
-                <td>{props.NetIncomeTaxPayable}</td>
-              </tr>
-              <tr>
-                <td colSpan="2">Provision Per Month {props.totalMonth} Months</td>
-                <td>{props.ProvisionMonthTax}</td>
-              </tr>
-            </tbody>
-          </table>
+  return (
+    <>
+      <div className="sector">
+        <div className="row">
+          <h3>
+            {props.AllowInvestment}: {props.lessRebate} :{" "}
+            {props.NetIncomeTaxPayable}:{props.ProvisionMonthTax}{" "}
+          </h3>
+          {/* <h5 className="bg-secondary fw-light p-2 text-center">
+            Total Calculation
+          </h5> */}
+          <p className="All_Headings">Total Calculation</p>
+          <div className="container-fluid">
+            <table className="table">
+              <tbody>
+                <tr>
+                  <td>Less Rebate on Investment Tk.</td>
+                  <td>{props.AllowInvestment}</td>
+                  <td>{props.lessRebate}</td>
+                </tr>
+                <tr>
+                  <td colSpan="2">Net Income Tax Payable</td>
+                  <td>{props.NetIncomeTaxPayable}</td>
+                </tr>
+                <tr>
+                  <td colSpan="2">
+                    Provision Per Month {props.totalMonth} Months
+                  </td>
+                  <td>{props.ProvisionMonthTax}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    );
-  };
-  
-  export default TotalTaxInvest;
+    </>
+  );
+};
+
+export default TotalTaxInvest;

@@ -175,7 +175,144 @@ function Totaltax(props) {
         }
 
     }
+    if(gender==="disable"){
+      let t1=400000;
+      let t2=100000;
+      let t3=300000;
+      let t4=400000;
+      let t5=500000;
+      //condition1
 
+      if(item>1700000){
+        
+        let amnt2=item-t1
+        setAmount2(amnt2)
+        let amnt3=amnt2-t2;
+        setAmount3(amnt3)
+        let amnt4= amnt3-t3;
+        setAmount4(amnt4)
+        let amnt5=amnt4-t4;
+        setAmount5(amnt5)
+        let amnt6=amnt5-t5
+        setAmount6(amnt6)
+
+        let tax1=item-1700000;
+
+        setTaxable1(t1)
+        setTaxable2(t2)
+        setTaxable3(t3)
+        setTaxable4(t4)
+        setTaxable5(t5)
+        setTaxable6(tax1)
+
+        let paidTax1= (tax1*25)/100
+        let totalTax1= paidTax1+a+b+c+d
+        setCondition1(a)
+        setCondition2(b)
+        setCondition3(c)
+        setCondition4(d)
+        setCondition5(paidTax1)
+        setCondition6(totalTax1)
+      }
+
+      //condition2
+      else if(item>1200000){
+        let amnt2=item-t1
+        setAmount2(amnt2)
+        let amnt3=amnt2-t2;
+        setAmount3(amnt3)
+        let amnt4= amnt3-t3;
+        setAmount4(amnt4)
+        let amnt5=amnt4-t4;
+        setAmount5(amnt5) 
+
+        let tax2=item-1200000;
+
+        setTaxable1(t1)
+        setTaxable2(t2)
+        setTaxable3(t3)
+        setTaxable4(t4)
+        setTaxable5(tax2)
+
+
+        let paidTax2=(tax2*20)/100
+        let totalTax2= paidTax2+a+b+c
+        
+        setCondition1(a)
+        setCondition2(b)
+        setCondition3(c)
+        setCondition4(paidTax2)
+        setCondition6(totalTax2)
+        }
+      
+      //condition3
+      else if(item>800000){
+
+        let amnt2=item-t1
+        setAmount2(amnt2)
+        let amnt3=amnt2-t2;
+        setAmount3(amnt3)
+        let amnt4= amnt3-t3;
+        setAmount4(amnt4)
+
+        let tax3=item-800000;
+
+        setTaxable1(t1)
+        setTaxable2(t2)
+        setTaxable3(t3)
+        setTaxable4(tax3)
+
+        let paidTax3=(tax3*15)/100 ;
+        let totalTax3=paidTax3+a+b
+        setCondition1(a)
+        setCondition2(b)
+        setCondition3(paidTax3)
+        setCondition6(totalTax3)
+        }
+      
+      //condition4
+
+      else if(item>500000){
+         let amnt2=item-t1
+         setAmount2(amnt2)
+         let amnt3=amnt2-t2;
+         setAmount3(amnt3)
+
+         let tax4=item-500000;
+
+         setTaxable1(t1)
+         setTaxable2(t2)
+         setTaxable3(tax4)
+
+         let paidTax4=(tax4*10)/100
+         let totalTax4=paidTax4+a
+         setCondition1(a)
+         setCondition2(paidTax4)
+         setCondition6(totalTax4)
+      }
+      
+      //condition5
+
+      else if(item>400000){
+         let amnt2=item-t1
+         setAmount2(amnt2)
+
+         let tax5=item-400000;
+
+         setTaxable1(t1)
+         setTaxable2(tax5)
+
+         let totalTax5=(tax5*5)/100 ;
+         setCondition1(totalTax5)
+         setCondition6(totalTax5)
+         
+        }
+
+      else{
+         console.log("you don't have to pay tax")
+        }
+
+    }
 
     else{
 
