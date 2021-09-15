@@ -1,18 +1,216 @@
-input.col-sm-5 {
-  text-align: center;
-  background-color: rgb(254 249 254 / 96%);
-  /* box-shadow: inset 0.1vw 0.1vw 0.7vw #dee0e2, inset -0.1vw -0.1vw 0.9vw #ffffff; */
-  padding-top: 10px;
-  border: 1px solid #0000000d;
-}
-
-th.col-sm-1.bar {
-  padding-top: 15px;
-}
-.totalTaxableIncome {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 * {
   font-family: "Poppins", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.text-center-about {
+  text-align: left;
+}
+p.text-center {
+  text-align: center !important;
+  font-size: 1.5vw;
+  color: #fff;
+}
+
+button.exlpore_btn {
+  font-size: 1.5vw;
+  outline: none;
+  border-radius: 1.5vw;
+  padding: none;
+  border: 1px solid #2196f3 !important;
+  padding: 0.3vw 1.5vw;
+  border-radius: 2vw;
+  margin-top: 3vh;
+
+  background-color: #2196f3 !important;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+.header_div {
+  background-color: #020202;
+  min-width: 100%;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: #fff !important;
+  font-size: 1.5vw !important;
+  font-weight: 400 !important;
+}
+
+ul.nav_links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  border-radius: 3vw;
+  /* background: black; */
+}
+
+.navbar a {
+  /* font-size: 1.3rem; */
+  text-transform: uppercase !important;
+  color: #fff !important;
+}
+
+.menu_active {
+  font-weight: 600;
+  /* border-bottom: 1px solid white; */
+}
+
+.menu_active {
+  font-weight: 400 !important;
+  color: white !important;
+  background-color: #66bb6a !important;
+}
+
+li.nav-item {
+  background-color: #2196f3;
+  color: white;
+}
+ul.nav_links {
+  border-radius: 100px !important;
+}
+
+.container.nav-div {
+  margin-top: 5vh;
+  line-height: 4vh;
+  margin-bottom: 20px;
+}
+
+a.nav-link.active.menu_active {
+  font-size: 1.5vw;
+}
+
+h2.about {
+  font-size: 3vw;
+  color: #fff;
+  font-weight: 700;
+}
+
+.ct {
+  color: #4c6dff;
+  font-size: 62px;
+  text-align: left;
+  line-height: 80px;
+  font-weight: 800;
+}
+.my-row {
+  height: 100px;
+  background-color: blanchedalmond;
+  border: 1px solid;
+}
+.something {
+  margin-bottom: 30px;
+}
+.Header-bg-style {
+  background-color: #02000a;
+  padding-top: 116px;
+  text-align: left;
+}
+.bt {
+  font-size: medium;
+}
+
+.form-group {
+  line-height: 2;
+  width: 30%;
+}
+
+input.form-control {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #5c6bc0;
+  /* width: 200%; */
+  border-radius: 0;
+}
+
+input.form-control:active {
+  outline: none;
+  border-bottom: 2px solid red;
+}
+input#exampleInputPassword1 {
+  margin-left: 2vw;
+  background-color: #fafafa;
+}
+
+label {
+  margin-top: 5vh;
+  font-weight: 500;
+  padding-left: 2vw;
+  min-width: 200%;
+  text-transform: capitalize;
+}
+
+form {
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  border-radius: 1vw;
+  padding-bottom: 1vh;
+}
+
+.col-lg-4.col-11 {
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  border-radius: -100vw;
+  margin-left: 0vw;
+}
+
+.form-group {
+  margin-right: 12vw;
+}
+input#exampleInputPassword1 {
+  width: 120%;
+}
+
+div#root {
+  background-color: #fafafa;
+}
+
+button.btn.btn-primary {
+  margin-left: 2vw;
+  margin-top: 2vh;
+  color: rgb(255, 255, 255);
+  background: #1de9b6;
+  border: #1de9b6;
+}
+
+th {
+  text-transform: capitalize;
+}
+p.footerDetails {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  margin-top: 4vh;
+  margin-bottom: 2vh;
+}
+
+p.bt {
+  color: #fff;
+}
+.title_name {
+  /* display: inline-block; */
+  position: relative;
+  left: 0%;
+  margin-top: -5vh;
+  padding: 0 2vw;
+  font-size: 3.5vw;
+  border-radius: 6vw;
+  font-weight: 600;
+  color: #fff;
+  max-width: 100%;
+  text-shadow: 0 0.03vw 0 #ccc, 0 0.06vw 0 #c9c9c9, 0 0.09vw 0 #bbb,
+    0 0.12vw 0 #b9b9b9, 0 0.15vw 0 #aaa, 0 0.24vw 0.1vw rgba(0, 0, 0, 0.1),
+    0 0 0.1vw rgba(0, 0, 0, 0.1), 0 0.05vw 0.05vw rgba(0, 0, 0, 0.3),
+    0 0.05vw 0.05vw rgba(0, 0, 0, 0.2), 0 0.02vw 0.05vw rgba(0, 0, 0, 0.25),
+    0 0.05vw 0.05vw rgba(0, 0, 0, 0.2), 0 0.01vw 0.01vw rgba(0, 0, 0, 0.15);
+}
+
+@media only screen and (max-width: 992px) {
+  .col-lg-4.col-11 {
+    margin-left: 0vw;
+    margin-top: 5vh;
+  }
+}
