@@ -19,7 +19,7 @@ export const InComeDetails = (props) => {
     if(formData.provFund === undefined)formData.provFund= 0;
     formData.bonusAmount=Number(formData.bonusAmount)
     formData.provFund=Number(formData.provFund)
-    props.handleStates(formData, true, props.category);
+    props.handleStates(formData, true);
   }
 
   const checkboxBonusHandler = ()=>{

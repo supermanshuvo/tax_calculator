@@ -25,19 +25,15 @@ function Totaltax(props) {
      const[taxable6,setTaxable6]=useState(0)
 
     const handleChange=()=>{
-      
     //male tax
     let item = props.totalTaxableIncome;
     setAmount1(item)
-    let gender= props.gender;
     let a=5000
     let b=30000
     let c=60000
     let d= 100000
     
-
-    
-    if(gender==="male"){
+    if(props.category==="man"){
       let t1=300000;
       let t2=100000;
       let t3=300000;
@@ -175,7 +171,7 @@ function Totaltax(props) {
         }
 
     }
-    if(gender==="disable"){
+    else if(props.category==="disabled"){
       let t1=400000;
       let t2=100000;
       let t3=300000;
@@ -315,6 +311,7 @@ function Totaltax(props) {
     }
 
     else{
+      console.log('this block')
 
        let t1=350000;
        let t2=100000;
@@ -459,7 +456,7 @@ function Totaltax(props) {
     }
 
   }
-  useEffect(()=>handleChange(),[])
+  useEffect(()=>handleChange(),[props])
     return (
        
       

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMale,faFemale,faWheelchair,faBlind } from '@fortawesome/free-solid-svg-icons'
 
 
-const Navbar = () => {
+const Navbar = ({changeCategory}) => {
   return (
     <>
       <div className="container nav-div" id="nav_id">
@@ -17,7 +17,7 @@ const Navbar = () => {
                 activeClassName="menu_active"
                 className="nav-link active"
                 aria-current="page"
-                to="man"
+                to="man" onClick={()=>changeCategory('man')}
               >
             <span>
                <span><FontAwesomeIcon icon={faMale} size={7}/></span>Male</span>
@@ -33,7 +33,7 @@ const Navbar = () => {
                 activeClassName="menu_active"
                 className="nav-link active"
                 aria-current="page"
-                to="woman"
+                to="woman" onClick={()=>changeCategory('woman')}
               >
                 <span>
                <span><FontAwesomeIcon icon={faFemale} size={7}/></span>Female</span>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 activeClassName="menu_active"
                 className="nav-link active"
                 aria-current="page"
-                to="disabled"
+                to="disabled" onClick={()=>changeCategory('disabled')}
               >
                 <span>
                <span><FontAwesomeIcon icon={faWheelchair} size={7}/></span>Disabled</span>
@@ -63,7 +63,7 @@ const Navbar = () => {
                 activeClassName="menu_active"
                 className="nav-link active"
                 aria-current="page"
-                to="oldage"
+                to="oldage" onClick={()=>changeCategory('oldage')}
               >
                 <span>
                <span><FontAwesomeIcon icon={faBlind} size={7}/></span>OverAged(65+)</span>

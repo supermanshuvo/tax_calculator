@@ -11,7 +11,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
   const [netIncomeTaxPayable,setNetIncomeTaxPayable]=useState(0)
   const [provisionMonthTax,setProvisionMonthTax]=useState(0)
 
-  let  firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
+  let    firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
   let secondConditionLimitedInvestment = totalTaxIncome * provMonth * 0.01 - providentFund; 
   let configureC44 = 1000000,ConfigureC45 = 3000000,ConfigureC46 = 250000,
     ConfigureC49 = 250000,ConfigureC50 = 500000,ConfigureH44 = 15,ConfigureH46 = 15,
@@ -20,7 +20,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
   //var lessRebate = null, netIncomeTaxPayable=null, provisionMonthTax=null;
 
   useEffect(()=>{
-    setTotalInvestMent(providentFund)
+    setTotalInvestMent(providentFund*2)
   },[])
 
   let LessRebateFunc = (allowInvestment,totalTaxIncome) => {
@@ -54,7 +54,8 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
         setNetIncomeTaxPayable((totalPayableTax - lessRebate) < 0? 5000 : 
             ((totalPayableTax - lessRebate) < 5000? 5000: (totalPayableTax - lessRebate)))
         setProvisionMonthTax(Math.round( parseFloat(netIncomeTaxPayable / provMonth)))
-  },[totalInvestMent])
+  },[providentFund,maxInvestTaxExemption,maxAllowedInvesment,
+    totalTaxIncome,totalPayableTax,provMonth])
 
   return (
     <div className="container mt-2">
@@ -67,7 +68,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
             <tbody>
               <tr>
                 <td>Contribution to Provident Fund</td>
-                <td>{providentFund*2}</td>
+                <td>{providentFund}</td>
               </tr>
               <tr>
                 <td>DPS/BSP/LIP/Others (If Applicable)</td>
@@ -77,7 +78,8 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
                     //   let newTotal = parseInt(providentFund*2)+parseInt(value)
                     //   setTotalInvestMent(newTotal)
                       let DPSOthers = e.target.value;
-                      setTotalInvestMent(DPSOthers > 0 ? parseFloat(providentFund*2) + parseFloat(DPSOthers) : parseFloat(providentFund*2) )
+                      setTotalInvestMent(DPSOthers > 0 ? parseFloat(providentFund*2)
+                       + parseFloat(DPSOthers) : parseFloat(providentFund*2) )
                     }
                       } />
                 </td>

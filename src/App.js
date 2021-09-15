@@ -1,9 +1,10 @@
 import ReactDOM from "react-dom";
-import React, { useState,useRef, useReducer} from 'react'
+import React, { useState,useRef, useReducer, useEffect} from 'react'
 import './App.css';
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import {InComeDetails} from './components/IncomeDetails.js';
+import {UpdateIncomeDetails} from './components/UpdateIncomeDetails'
 import { Switch, Route, Redirect } from "react-router-dom";
 import TotalTax  from './components/TotalTax.js';
 import InvestmentAllowance from "./components/InvestMentAllowence.js";
@@ -18,10 +19,10 @@ import {taxConfig, calculatePayableTax} from "./configData.js";
 
 function App() {
   const [formSubmitted,setFormSubmitted]=useState(false)
-  const [category,setCategory]=useState()
+  const [category,setCategory]=useState('man')
   const [formData,setUserData]=useState({})
   const captureRef = useRef(null);
-  //const [totalTaxableIncome,setTotalTaxableIncome] = useState(0);
+  const [totalTaxableIncome,setTotalTaxableIncome] = useState(0);
   const [totalpayable,setTotalpayable] = useState(0)
   const housingLessRef = useRef(0);
   const medicalLesssRef = useRef(0);
@@ -30,7 +31,13 @@ function App() {
   const taxableMedicalRef = useRef(0);
   const taxableHousingRef = useRef(0);
   const taxableConveyanceRef = useRef(0);
-  const totalTaxableIncome=useRef(0);
+  //const totalTaxableIncome=useRef(0);
+
+  useEffect(()=>{
+    let newTotalPayable=calculatePayableTax(totalTaxableIncome,category)
+    setTotalpayable(newTotalPayable); 
+    //console.log('Totalpayable',totalpayable);
+  },[category,totalTaxableIncome,formData])
 
   const printDocument =() =>{
     const input = captureRef.current;
@@ -48,7 +55,7 @@ function App() {
     ;
   }
 
-    const handleSubmit = (formData, submitted,category)=>{
+    const handleSubmit = (formData, submitted)=>{
       setUserData(formData);
       const newHousingLess = Math.min(
         formData.basicAmount*formData.pvMonths*((taxConfig.lessAmount.maxHousingPercentage/100.0)),taxConfig.lessAmount.maxHousing
@@ -68,17 +75,17 @@ function App() {
       const totaltaxIncome = taxableBasicRef.current+taxableMedicalRef.current+taxableHousingRef.current+
         taxableConveyanceRef.current+formData.bonusAmount+formData.provFund;
 
-      //setTotalTaxableIncome(totaltaxIncome)
-      totalTaxableIncome.current=totaltaxIncome
-      setCategory(category);
-      setTotalpayable(calculatePayableTax(totaltaxIncome,category))
+      setTotalTaxableIncome(totaltaxIncome)
+      //totalTaxableIncome.current=totaltaxIncome
+      // setCategory(category);
+      setTotalpayable(calculatePayableTax(totalTaxableIncome,category))
       setFormSubmitted(submitted);
     }  
   
   return (
     <>
       <Header />
-      <Navbar />
+      <Navbar changeCategory={(newCategory)=>setCategory(newCategory)}/>
 
       {
       !formSubmitted && !!formData ?
@@ -86,39 +93,42 @@ function App() {
         <Switch>
           <Route path="/man">
               <InComeDetails category="male" firstAmount ={300000}  handleStates={(formData,
-            submitted,category)=>handleSubmit(formData,submitted,category)} /> 
+            submitted)=>handleSubmit(formData,submitted)} /> 
           </Route>
           <Route path="/woman">
           <InComeDetails category="female" firstAmount ={350000}  handleStates={(formData,
-            submitted,category)=>handleSubmit(formData,submitted,category)} /> 
+            submitted)=>handleSubmit(formData,submitted)} /> 
           </Route>
           <Route path="/disabled">
           <InComeDetails category="disabled" firstAmount ={400000} handleStates={(formData,
-            submitted,category)=>handleSubmit(formData,submitted,category)} /> 
+            submitted)=>handleSubmit(formData,submitted)} /> 
           </Route>
           <Route path="/oldage">
           <InComeDetails category="oldage" firstAmount ={350000}  handleStates={(formData,
-            submitted,category)=>handleSubmit(formData,
-              submitted,category)} /> 
+            submitted)=>handleSubmit(formData,submitted)} /> 
           </Route>
         </Switch>
         ):
         (
           <>
           <div ref={captureRef}> 
+          <div className="row">
           <TaxableIncome formBasic={formData.basicAmount} formHousing={formData.housingAmount} 
             formMedical={formData.medicalAmount} formConveyance={formData.conveyanceAmount}
             formPvMonths={formData.pvMonths} formBonus={formData.bonusAmount}
             formProvFund={formData.provFund}
-            totalTaxableIncome={totalTaxableIncome.current} housingLess={housingLessRef.current}
+            totalTaxableIncome={totalTaxableIncome} housingLess={housingLessRef.current}
             medicalLesss={medicalLesssRef.current} conveyanceLesss={conveyanceLesssRef.current}
             taxableBasic={taxableBasicRef.current} taxableHousing={taxableHousingRef.current}
           taxableMedical={taxableMedicalRef.current} taxableConveyance={taxableConveyanceRef.current}/>
 
-          <TotalTax gender={category} totalTaxableIncome ={totalTaxableIncome.current}/>
+          <UpdateIncomeDetails formData={formData} handleStates={(formData,
+            submitted)=>handleSubmit(formData,submitted)}/>
+          </div>
+          <TotalTax category={category} totalTaxableIncome ={totalTaxableIncome}/>
           <InvestmentAllowance providentFund={formData.provFund} maxInvestTaxExemption={25} maxAllowedInvesment={15000000} 
             totalTaxIncome={totalTaxableIncome} totalPayableTax={totalpayable}
-        provMonth={formData.provMonths} />   
+        provMonth={formData.pvMonths} />   
           </div>
           <button className="downloadReport" onClick={printDocument}>Download Report</button> 
           </>

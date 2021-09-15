@@ -13,13 +13,12 @@ lessAmount:{
 
 
 export const calculatePayableTax = (totalTaxableIncome,category) => {
-    let taxArray = [300000, 100000, 300000, 400000, 500000];
+    let taxArray = [350000, 100000, 300000, 400000, 500000];
     let totalPayable = 0;
     let counter = 0;
     let rate = 0;
     if (category === "disabled") taxArray[0] = 400000;
-    if (category === "oldage") taxArray[0] = 350000;
-    if (category === "female") taxArray[0] = 350000;
+    if (category === "man") taxArray[0] = 300000;
     while (totalTaxableIncome) {
       if (counter === 5) break;
       if (totalTaxableIncome <= taxArray[counter]) {
