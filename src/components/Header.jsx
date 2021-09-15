@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <>
+  
     <div className="Header-bg-style">
       <div className="container" >
         <div className="row ">
@@ -18,11 +18,6 @@ const Header = () => {
                   here u can calculate ur yearly tax very easily.so just checkout this website</p>
             </div>
 
-            <div className="d-flex justify-content-center align-items-center">
-              <button className="exlpore_btn">
-                <a href="#nav_id">Explore</a>
-              </button>
-            </div>
           </div>
           <div className="col-6">
             <div className="d-flex justify-content-center align-items-center">
@@ -32,7 +27,7 @@ const Header = () => {
         </div>
       </div>
       </div>
-    </>
+   
   );
 };
 

@@ -214,3 +214,17 @@ p.bt {
     margin-top: 5vh;
   }
 }
+p.text-center {
+
+  color: #0e0e0e;
+}
+.downloadReport{
+  width: 300px;
+  display: block;
+  margin: 0 auto;
+  background-color: #4c6dff;
+  color: #FFF;
+  padding: 7px 0px;
+  border: none;
+  border-radius: 4px;
+}

@@ -11,7 +11,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
   const [netIncomeTaxPayable,setNetIncomeTaxPayable]=useState(0)
   const [provisionMonthTax,setProvisionMonthTax]=useState(0)
 
-  let    firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
+  let  firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
   let secondConditionLimitedInvestment = totalTaxIncome * provMonth * 0.01 - providentFund; 
   let configureC44 = 1000000,ConfigureC45 = 3000000,ConfigureC46 = 250000,
     ConfigureC49 = 250000,ConfigureC50 = 500000,ConfigureH44 = 15,ConfigureH46 = 15,
@@ -20,7 +20,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
   //var lessRebate = null, netIncomeTaxPayable=null, provisionMonthTax=null;
 
   useEffect(()=>{
-    setTotalInvestMent(providentFund*2)
+    setTotalInvestMent(providentFund)
   },[])
 
   let LessRebateFunc = (allowInvestment,totalTaxIncome) => {
@@ -89,7 +89,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
               <tr className="fw-bold">
                 <td>Allowed Investment</td>
                 <td>
-                  {allowInvestment} From {limitInvestment}
+                  {allowInvestment} From {maxAllowedInvesment}
                 </td>
               </tr>
             </tbody>

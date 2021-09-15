@@ -347,7 +347,6 @@ function Totaltax(props) {
 
         let paidTax1= (tax1*25)/100
         let totalTax1= paidTax1+a+b+c+d
-        console.log(paidTax1)
         setCondition1(a)
         setCondition2(b)
         setCondition3(c)
