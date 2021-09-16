@@ -1,11 +1,12 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 
-function UserDetails() {
+function UserDetails({handleUserSubmit}) {
     const { handleSubmit, register } = useForm();
-    const handleFormData=()=>{
-        console.log("Handle form data")
+    const handleFormData=(userData)=>{
+      handleUserSubmit(userData,true)
     }
+    
     return (
          <div className="container">
                 <p className="All_Headings">User Information</p>
@@ -47,7 +48,7 @@ function UserDetails() {
                                />
                            </div>
                            </div>
-
+                           <button className="downloadReport" >Show Report</button> 
                         
                      </form>
                      </div>

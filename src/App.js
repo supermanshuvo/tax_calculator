@@ -13,14 +13,14 @@ import Header from "./components/Header";
 import TaxableIncome from "./components/TaxableIncome";
 import Navbar from "./components/Navbar";
 import {taxConfig, calculatePayableTax} from "./configData.js";
-import UserDetails from './components/UserDetails'
+import UserDetails from './components/UserDetails';
+import ReportHeader from './components/ReportHeader';
 
 
 function App() {
   const [formSubmitted,setFormSubmitted]=useState(false)
   const [category,setCategory]=useState('man')
   const [formData,setUserData]=useState({})
-  const captureRef = useRef(null);
   const [totalTaxableIncome,setTotalTaxableIncome] = useState(0);
   const [totalpayable,setTotalpayable] = useState(0)
   const housingLessRef = useRef(0);
@@ -30,6 +30,10 @@ function App() {
   const taxableMedicalRef = useRef(0);
   const taxableHousingRef = useRef(0);
   const taxableConveyanceRef = useRef(0);
+  const captureRef = useRef(null);
+  const captureRef2 = useRef(null);
+  const [reportPhase,setReportPhase]=useState(false);
+  const [userInfo,setUserInfo]=useState({})
   //const totalTaxableIncome=useRef(0);
 
   useEffect(()=>{
@@ -45,14 +49,17 @@ function App() {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'pt', 'a4', false);
         pdf.addImage(imgData, 'PNG', 0, 0, 590, 0, undefined, false);
-        pdf.html(Header);
         pdf.setFontSize(6)
         pdf.text(240,640,'©2021 VivaSoft, All right reserved.')
         pdf.output('dataurlnewwindow');
         pdf.save("TaxReport.pdf");
       })
-    ;
   }
+
+    const handleUserInfo = (userInfo,submit)=>{
+      setReportPhase(submit)
+      setUserInfo(userInfo);
+    }
 
     const handleSubmit = (formData, submitted)=>{
       setUserData(formData);
@@ -111,7 +118,8 @@ function App() {
         ):
         (
           <>
-          <div ref={captureRef}> 
+          <div ref={captureRef}>
+          {reportPhase===true?(<ReportHeader userInfo={userInfo}/> ):null}   
           <div></div>
           <TaxableIncome formData={formData} handleStates={(formData,
             submitted)=>handleSubmit(formData,submitted)}
@@ -122,22 +130,31 @@ function App() {
             totalTaxableIncome={totalTaxableIncome} housingLess={housingLessRef.current}
             medicalLesss={medicalLesssRef.current} conveyanceLesss={conveyanceLesssRef.current}
             taxableBasic={taxableBasicRef.current} taxableHousing={taxableHousingRef.current}
-          taxableMedical={taxableMedicalRef.current} taxableConveyance={taxableConveyanceRef.current}/>
+            taxableMedical={taxableMedicalRef.current} reportPhase={reportPhase} 
+          taxableConveyance={taxableConveyanceRef.current}/>
 
           <TotalTax category={category} totalTaxableIncome ={totalTaxableIncome}/>
           <InvestmentAllowance providentFund={formData.provFund} maxInvestTaxExemption={25} maxAllowedInvesment={15000000} 
             totalTaxIncome={totalTaxableIncome} totalPayableTax={totalpayable}
         provMonth={formData.pvMonths} />   
           </div>
+          {reportPhase===false?(
+          <>
           <Link className="btn btn-primary" 
-                     to={`/generateReport`}>GenerateReport</Link>
-          <Route exact path="/generateReport" component={UserDetails}></Route>
-          <button className="downloadReport" onClick={printDocument}>Download Report</button> 
+                     to={`/generateReport`}>CreateReport</Link>
+          <Route exact path="/generateReport"children={ <UserDetails 
+            handleUserSubmit={(userData,
+              submitted)=>handleUserInfo(userData,submitted)} />}></Route></>):null}
+          {/*<Route exact path="generateReport">
+            <UserDetails  handleUserSubmit={(userData,
+              submitted)=>handleSubmit(userData,submitted)} /> 
+            </Route>*/}
+            {reportPhase===true?<button className="downloadReport" onClick={printDocument} >Download Report</button> :null}
           </>
         )
     }
       
-    <Footer/>
+    <Footer ref2={captureRef2}/>
     </>
     </Router>
   );

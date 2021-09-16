@@ -219,13 +219,14 @@ p.text-center {
   color: #0e0e0e;
 }
 .downloadReport{
-  width: 300px;
+  width: 200px;
   display: block;
   margin: 0 auto;
   background-color: #4c6dff;
   color: #FFF;
-  padding: 7px 0px;
+  padding: 6px 0px;
   border: none;
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
