@@ -26,7 +26,9 @@ function Totaltax(props) {
 
     const handleChange=()=>{
     //male tax
+
     let item = props.totalTaxableIncome;
+    console.log(props.totalTaxableIncome)
     setAmount1(item)
     let a=5000
     let b=30000
@@ -147,6 +149,7 @@ function Totaltax(props) {
          setCondition1(a)
          setCondition2(paidTax4)
          setCondition6(totalTax4)
+         console.log(totalTax4)
       }
       
       //condition5
@@ -164,10 +167,6 @@ function Totaltax(props) {
          setCondition1(totalTax5)
          setCondition6(totalTax5)
          
-        }
-
-      else{
-         console.log("you don't have to pay tax")
         }
 
     }
@@ -304,24 +303,21 @@ function Totaltax(props) {
          
         }
 
-      else{
-         console.log("you don't have to pay tax")
-        }
-
     }
 
     else{
       console.log('this block')
 
-       let t1=350000;
-       let t2=100000;
-       let t3=300000;
-       let t4=400000;
-       let t5=500000;
 
-       //condition1
+      let t1=350000;
+      let t2=100000;
+      let t3=300000;
+      let t4=400000;
+      let t5=500000;
+      //condition1
 
-       if(item>1650000){
+      if(item>1650000){
+        
         let amnt2=item-t1
         setAmount2(amnt2)
         let amnt3=amnt2-t2;
@@ -350,70 +346,66 @@ function Totaltax(props) {
         setCondition4(d)
         setCondition5(paidTax1)
         setCondition6(totalTax1)
-       }
+      }
 
-       //condition2
+      //condition2
+      else if(item>1150000){
+        let amnt2=item-t1
+        setAmount2(amnt2)
+        let amnt3=amnt2-t2;
+        setAmount3(amnt3)
+        let amnt4= amnt3-t3;
+        setAmount4(amnt4)
+        let amnt5=amnt4-t4;
+        setAmount5(amnt5) 
 
-       else if(item>1150000){
+        let tax2=item-1150000;
 
-         let amnt2=item-t1
-         setAmount2(amnt2)
-         let amnt3=amnt2-t2;
-         setAmount3(amnt3)
-         let amnt4= amnt3-t3;
-         setAmount4(amnt4)
-         let amnt5=amnt4-t4;
-         setAmount5(amnt5)
-
-         let tax2=item-1150000;
-
-         setTaxable1(t1)
-         setTaxable2(t2)
-         setTaxable3(t3)
-         setTaxable4(t4)
-         setTaxable5(tax2)
+        setTaxable1(t1)
+        setTaxable2(t2)
+        setTaxable3(t3)
+        setTaxable4(t4)
+        setTaxable5(tax2)
 
 
-         let paidTax2=(tax2*20)/100
-         let totalTax2= paidTax2+a+b+c
+        let paidTax2=(tax2*20)/100
+        let totalTax2= paidTax2+a+b+c
         
-         setCondition1(a)
-         setCondition2(b)
-         setCondition3(c)
-         setCondition4(paidTax2)
-         setCondition6(totalTax2)
-       }
-       
-       //condition3
+        setCondition1(a)
+        setCondition2(b)
+        setCondition3(c)
+        setCondition4(paidTax2)
+        setCondition6(totalTax2)
+        }
+      
+      //condition3
+      else if(item>750000){
 
-       else if(item>750000){
+        let amnt2=item-t1
+        setAmount2(amnt2)
+        let amnt3=amnt2-t2;
+        setAmount3(amnt3)
+        let amnt4= amnt3-t3;
+        setAmount4(amnt4)
 
-         let amnt2=item-t1
-         setAmount2(amnt2)
-         let amnt3=amnt2-t2;
-         setAmount3(amnt3)
-         let amnt4= amnt3-t3;
-         setAmount4(amnt4)
+        let tax3=item-750000;
 
-         let tax3=item-750000;
-  
-         setTaxable1(t1)
-         setTaxable2(t2)
-         setTaxable3(t3)
-         setTaxable4(tax3)
+        setTaxable1(t1)
+        setTaxable2(t2)
+        setTaxable3(t3)
+        setTaxable4(tax3)
 
-         let paidTax3=(tax3*15)/100 ;
-         let totalTax3=paidTax3+a+b
-         setCondition1(a)
-         setCondition2(b)
-         setCondition3(paidTax3)
-         setCondition6(totalTax3)
-       }
+        let paidTax3=(tax3*15)/100 ;
+        let totalTax3=paidTax3+a+b
+        setCondition1(a)
+        setCondition2(b)
+        setCondition3(paidTax3)
+        setCondition6(totalTax3)
+        }
+      
+      //condition4
 
-       //condition4
-
-       else if(item>450000){
-
+      else if(item>450000){
          let amnt2=item-t1
          setAmount2(amnt2)
          let amnt3=amnt2-t2;
@@ -430,12 +422,11 @@ function Totaltax(props) {
          setCondition1(a)
          setCondition2(paidTax4)
          setCondition6(totalTax4)
-       }
+      }
+      
+      //condition5
 
-       //condition5
-
-       else if(item>350000){
-
+      else if(item>350000){
          let amnt2=item-t1
          setAmount2(amnt2)
 
@@ -447,16 +438,13 @@ function Totaltax(props) {
          let totalTax5=(tax5*5)/100 ;
          setCondition1(totalTax5)
          setCondition6(totalTax5)
-       }
-       
-       else{
-         console.log("you don't have to pay tax")
-       }
+         
+        }
 
     }
 
   }
-  useEffect(()=>handleChange(),[props])
+  useEffect(()=>handleChange())
     return (
        
       

@@ -1,20 +1,19 @@
-import ReactDOM from "react-dom";
-import React, { useState,useRef, useReducer, useEffect} from 'react'
+import React, { useState,useRef,  useEffect} from 'react'
 import './App.css';
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import {InComeDetails} from './components/IncomeDetails.js';
-import {UpdateIncomeDetails} from './components/UpdateIncomeDetails'
-import { Switch, Route, Redirect } from "react-router-dom";
+//import {UpdateIncomeDetails} from './components/UpdateIncomeDetails'
+import {BrowserRouter as Router,Link, Switch, Route} from "react-router-dom";
 import TotalTax  from './components/TotalTax.js';
 import InvestmentAllowance from "./components/InvestMentAllowence.js";
 import Footer from "./components/Footer";
-import EmployeeDetailsAsOutputTable from './components/EmployeeDetailsAsOutputTable.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import TaxableIncome from "./components/TaxableIncome";
 import Navbar from "./components/Navbar";
 import {taxConfig, calculatePayableTax} from "./configData.js";
+import UserDetails from './components/UserDetails'
 
 
 function App() {
@@ -83,6 +82,7 @@ function App() {
     }  
   
   return (
+    <Router>
     <>
       <Header />
       <Navbar changeCategory={(newCategory)=>setCategory(newCategory)}/>
@@ -112,8 +112,10 @@ function App() {
         (
           <>
           <div ref={captureRef}> 
-          <div className="row">
-          <TaxableIncome formBasic={formData.basicAmount} formHousing={formData.housingAmount} 
+          <div></div>
+          <TaxableIncome formData={formData} handleStates={(formData,
+            submitted)=>handleSubmit(formData,submitted)}
+           formBasic={formData.basicAmount} formHousing={formData.housingAmount} 
             formMedical={formData.medicalAmount} formConveyance={formData.conveyanceAmount}
             formPvMonths={formData.pvMonths} formBonus={formData.bonusAmount}
             formProvFund={formData.provFund}
@@ -122,14 +124,14 @@ function App() {
             taxableBasic={taxableBasicRef.current} taxableHousing={taxableHousingRef.current}
           taxableMedical={taxableMedicalRef.current} taxableConveyance={taxableConveyanceRef.current}/>
 
-          <UpdateIncomeDetails formData={formData} handleStates={(formData,
-            submitted)=>handleSubmit(formData,submitted)}/>
-          </div>
           <TotalTax category={category} totalTaxableIncome ={totalTaxableIncome}/>
           <InvestmentAllowance providentFund={formData.provFund} maxInvestTaxExemption={25} maxAllowedInvesment={15000000} 
             totalTaxIncome={totalTaxableIncome} totalPayableTax={totalpayable}
         provMonth={formData.pvMonths} />   
           </div>
+          <Link className="btn btn-primary" 
+                     to={`/generateReport`}>GenerateReport</Link>
+          <Route exact path="/generateReport" component={UserDetails}></Route>
           <button className="downloadReport" onClick={printDocument}>Download Report</button> 
           </>
         )
@@ -137,6 +139,7 @@ function App() {
       
     <Footer/>
     </>
+    </Router>
   );
 }
 

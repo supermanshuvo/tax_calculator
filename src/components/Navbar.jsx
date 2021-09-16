@@ -20,7 +20,7 @@ const Navbar = ({changeCategory}) => {
                 to="man" onClick={()=>changeCategory('man')}
               >
             <span>
-               <span><FontAwesomeIcon icon={faMale} size={7}/></span>Male</span>
+               <span><FontAwesomeIcon icon={faMale} /></span>Male</span>
                
               </NavLink>
             </li>
@@ -36,7 +36,7 @@ const Navbar = ({changeCategory}) => {
                 to="woman" onClick={()=>changeCategory('woman')}
               >
                 <span>
-               <span><FontAwesomeIcon icon={faFemale} size={7}/></span>Female</span>
+               <span><FontAwesomeIcon icon={faFemale} /></span>Female</span>
               </NavLink>
             </li>
 
@@ -51,7 +51,7 @@ const Navbar = ({changeCategory}) => {
                 to="disabled" onClick={()=>changeCategory('disabled')}
               >
                 <span>
-               <span><FontAwesomeIcon icon={faWheelchair} size={7}/></span>Disabled</span>
+               <span><FontAwesomeIcon icon={faWheelchair} /></span>Disabled</span>
               </NavLink>
             </li>
 
@@ -66,7 +66,7 @@ const Navbar = ({changeCategory}) => {
                 to="oldage" onClick={()=>changeCategory('oldage')}
               >
                 <span>
-               <span><FontAwesomeIcon icon={faBlind} size={7}/></span>OverAged(65+)</span>
+               <span><FontAwesomeIcon icon={faBlind} /></span>OverAged(65+)</span>
               </NavLink>
             </li>
           </ul>
