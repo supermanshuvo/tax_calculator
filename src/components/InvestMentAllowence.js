@@ -1,21 +1,22 @@
 import { useEffect, useState, useRef } from "react";
 import TotalTaxInvest from "./TotalTaxInvest.js";
+import {taxConfig} from ".././configData.js";
 
-const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInvesment,
-    totalTaxIncome,totalPayableTax,provMonth}) => {
+const InvestmentAllowance = ({providentFund,totalTaxIncome,totalPayableTax,provMonth}) => {
   
   const [totalInvestMent, setTotalInvestMent] = useState(0);
   const [allowInvestment, setAllowInvestment] = useState(0);
   const [limitInvestment, setLimitInvestment] = useState(0);
   const [lessRebate,setLessRebate]=useState(0)
   const [netIncomeTaxPayable,setNetIncomeTaxPayable]=useState(0)
-  const [provisionMonthTax,setProvisionMonthTax]=useState(0)
+  //const [provisionMonthTax,setProvisionMonthTax]=useState(0)
 
-  let    firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
-  let secondConditionLimitedInvestment = totalTaxIncome * provMonth * 0.01 - providentFund; 
-  let configureC44 = 1000000,ConfigureC45 = 3000000,ConfigureC46 = 250000,
-    ConfigureC49 = 250000,ConfigureC50 = 500000,ConfigureH44 = 15,ConfigureH46 = 15,
-    ConfigureH47 = 12,ConfigureH49 = 15,ConfigureH50 = 12,ConfigureH51 = 10;
+  // let    firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
+  // let secondConditionLimitedInvestment = totalTaxIncome * provMonth * 0.01 - providentFund; 
+  // let configureC44 = 1000000,ConfigureC45 = 3000000,ConfigureC46 = 250000,
+  //   ConfigureC49 = 250000,ConfigureC50 = 500000,ConfigureH44 = 15,ConfigureH46 = 15,
+  //   ConfigureH47 = 12,ConfigureH49 = 15,ConfigureH50 = 12,ConfigureH51 = 10;
+    
     
   //var lessRebate = null, netIncomeTaxPayable=null, provisionMonthTax=null;
 
@@ -27,34 +28,44 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
     let result = 0;
     if (allowInvestment <= 0) {
       result = 0;
-    } else if (totalTaxIncome <= configureC44) {
-      result = allowInvestment * ConfigureH44 * 0.01;
-    } else if (totalTaxIncome <= ConfigureC45) {
-      if (allowInvestment - ConfigureC46 > 0) {
+    } else if (totalTaxIncome <= taxConfig.config.configureC44) {
+      result = allowInvestment *taxConfig.config.ConfigureH44 * 0.01;
+    } else if (totalTaxIncome <= taxConfig.config.ConfigureC45) {
+      if (allowInvestment - taxConfig.config.ConfigureC46 > 0) {
         result =
-          ConfigureC46 * ConfigureH46 * 0.01 +
-          (allowInvestment - ConfigureC46) * ConfigureH47 * 0.01;
+        taxConfig.config.ConfigureC46 *  taxConfig.config.ConfigureH46 * 0.01 +
+          (allowInvestment - taxConfig.config.ConfigureC46) * taxConfig.config.ConfigureH47 * 0.01;
       } else {
-        result = allowInvestment * ConfigureH46 * 0.01;
+        result = allowInvestment * taxConfig.config.ConfigureH46 * 0.01;
       }
     } else {
       result =
-        ConfigureC49 * ConfigureH49 * 0.01 +
-        ConfigureC50 * ConfigureH50 * 0.01 +
-        (allowInvestment - (ConfigureC49 + ConfigureC50)) * ConfigureH51 * 0.01;
+      taxConfig.config.ConfigureC49 * taxConfig.config.ConfigureH49 * 0.01 +
+      taxConfig.config.ConfigureC50 * taxConfig.config.ConfigureH50 * 0.01 +
+        (allowInvestment - (taxConfig.config.ConfigureC49 + taxConfig.config.ConfigureC50)) * taxConfig.config.ConfigureH51 * 0.01;
     }
 
     return result;
   };
 
   useEffect(()=>{
-        setAllowInvestment(Math.min(firstConditionAllowInvestment,maxAllowedInvesment))
-        setLimitInvestment(Math.max(secondConditionLimitedInvestment,maxAllowedInvesment))
+    // H20*Configure!H12*0.01-H15>Configure!H17,H20*Configure!H12*0.01-H15,Configure!H17
+    /* 
+      if((H20*configureH12*0.01-H15)>configureH17){
+        console.log(Configure!H17)
+      }else{
+        Console.log(H20*Configure!H12*0.01-H15);
+      }
+    
+    */
+    //maxInvestTaxExemption={25} maxAllowedInvesment={15000000}
+        setAllowInvestment(Math.min((totalTaxIncome - providentFund) * taxConfig.config.maxInvestTaxExemption * 0.01,taxConfig.config.maxAllowedInvesment))
+        setLimitInvestment(Math.min(totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01 - providentFund,taxConfig.config.maxAllowedInvesment))
         setLessRebate(LessRebateFunc(allowInvestment,totalTaxIncome))
         setNetIncomeTaxPayable((totalPayableTax - lessRebate) < 0? 5000 : 
             ((totalPayableTax - lessRebate) < 5000? 5000: (totalPayableTax - lessRebate)))
-        setProvisionMonthTax(Math.round( parseFloat(netIncomeTaxPayable / provMonth)))
-  },[providentFund,maxInvestTaxExemption,maxAllowedInvesment,
+        //setProvisionMonthTax(Math.round( parseFloat(netIncomeTaxPayable / provMonth)))
+  },[providentFund,totalInvestMent,allowInvestment,limitInvestment,lessRebate,
     totalTaxIncome,totalPayableTax,provMonth])
 
   return (
@@ -98,7 +109,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
               <tr className="fw-bold">
                 <td>Allowed Investment</td>
                 <td className="text-center">
-                  {allowInvestment} From {maxAllowedInvesment}
+                  {allowInvestment} From {limitInvestment}
                 </td>
               </tr>
             </tbody>
@@ -111,8 +122,8 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
         AllowInvestment={allowInvestment}
         lessRebate={lessRebate}
         NetIncomeTaxPayable={netIncomeTaxPayable}
-        totalMonth={provMonth}
-        ProvisionMonthTax={provisionMonthTax}
+        // totalMonth={provMonth}
+        // ProvisionMonthTax={provisionMonthTax}
       />
     </div>
   );

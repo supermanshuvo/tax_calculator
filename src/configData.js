@@ -8,6 +8,12 @@ lessAmount:{
   maxMedicalPercentage:10,
   maxConveyance:30000,
   
+},
+config:{
+  configureC44 : 1000000,ConfigureC45 : 3000000,ConfigureC46 : 250000,
+  ConfigureC49 : 250000,ConfigureC50 : 500000,ConfigureH44 : 15,ConfigureH46 : 15,
+  ConfigureH47 : 12,ConfigureH49 : 15,ConfigureH50 : 12,ConfigureH51 : 10,
+  maxInvestTaxExemption:25, maxAllowedInvesment:15000000
 }
 }
 
