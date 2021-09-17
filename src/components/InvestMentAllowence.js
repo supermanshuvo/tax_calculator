@@ -10,6 +10,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
   const [lessRebate,setLessRebate]=useState(0)
   const [netIncomeTaxPayable,setNetIncomeTaxPayable]=useState(0)
   const [provisionMonthTax,setProvisionMonthTax]=useState(0)
+  const dpsField = useRef(0)
 
   let    firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
   let secondConditionLimitedInvestment = totalTaxIncome * provMonth * 0.01 - providentFund; 
@@ -20,8 +21,9 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
   //var lessRebate = null, netIncomeTaxPayable=null, provisionMonthTax=null;
 
   useEffect(()=>{
-    setTotalInvestMent(providentFund*2)
-  },[])
+    console.log('dpsField ',dpsField.current.value)
+    setTotalInvestMent(providentFund + Number(dpsField.current.value))
+  },[providentFund])
 
   let LessRebateFunc = (allowInvestment,totalTaxIncome) => {
     let result = 0;
@@ -55,7 +57,7 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
             ((totalPayableTax - lessRebate) < 5000? 5000: (totalPayableTax - lessRebate)))
         setProvisionMonthTax(Math.round( parseFloat(netIncomeTaxPayable / provMonth)))
   },[providentFund,maxInvestTaxExemption,maxAllowedInvesment,
-    totalTaxIncome,totalPayableTax,provMonth])
+    totalTaxIncome,totalPayableTax,provMonth,netIncomeTaxPayable])
 
   return (
     <div className="container mt-2">
@@ -73,13 +75,13 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
               <tr>
                 <td>DPS/BSP/LIP/Others (If Applicable)</td>
                 <td>
-                  <input type="text"  defaultValue={0} onChange={(e)=>{
+                  <input ref={dpsField} type="text"  defaultValue={0} onChange={(e)=>{
                     //   let value = e.target.value===NaN?0:e.target.value;
                     //   let newTotal = parseInt(providentFund*2)+parseInt(value)
                     //   setTotalInvestMent(newTotal)
                       let DPSOthers = e.target.value;
-                      setTotalInvestMent(DPSOthers > 0 ? parseFloat(providentFund*2)
-                       + parseFloat(DPSOthers) : parseFloat(providentFund*2) )
+                      setTotalInvestMent(DPSOthers > 0 ? parseFloat(providentFund)
+                       + parseFloat(DPSOthers) : parseFloat(providentFund) )
                     }
                       } />
                 </td>

@@ -49,9 +49,9 @@ function App() {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'pt', 'a4', false);
         pdf.addImage(imgData, 'PNG', 0, 0, 590, 0, undefined, false);
-        pdf.setFontSize(6)
+        pdf.setFontSize(8)
         pdf.text(240,640,'©2021 VivaSoft, All right reserved.')
-        pdf.output('dataurlnewwindow');
+        //pdf.output('dataurlnewwindow');
         pdf.save("TaxReport.pdf");
       })
   }
