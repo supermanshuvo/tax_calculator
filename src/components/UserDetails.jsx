@@ -16,15 +16,15 @@ function UserDetails({handleUserSubmit}) {
                                    <div className="d-flex justify-content-between ">
                                    <div className="form-group">
                                     <label >UserName</label>
-                                    <input {...register("username")}
+                                    <input required {...register("username")}
                                       type="text"
                                       className="form-control"
                                     />
                                   </div>
                                   <div className="form-group">
                                     <label>Email Address</label>
-                                    <input {...register("email")}
-                                     type="text"
+                                    <input    required {...register("email")}
+                                     type="email"
                                      className="form-control"
                                      />
                                  </div>
@@ -34,7 +34,7 @@ function UserDetails({handleUserSubmit}) {
                                 <div className="d-flex justify-content-between ">
                                 <div className="form-group">
                                   <label>Company Name</label>
-                                  <input {...register("companyName")}
+                                  <input required {...register("companyName")}
                                    type="text"
                                    className="form-control"
                                   />
@@ -42,13 +42,13 @@ function UserDetails({handleUserSubmit}) {
                            
                              <div className="form-group">
                                <label>Mobile Number</label>
-                               <input {...register("mobileNumber")}
+                               <input required {...register("mobileNumber")}
                                 type="text"
                                 className="form-control"
                                />
                            </div>
                            </div>
-                           <button className="downloadReport" >Show Report</button> 
+                           <button className=" create_report" >Show Report</button> 
                         
                      </form>
                      </div>

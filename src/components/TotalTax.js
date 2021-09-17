@@ -1,4 +1,4 @@
-import React,{useEffect, useLayoutEffect, useState} from 'react'
+import React,{useEffect, useState,useLayoutEffect} from 'react'
 
 function Totaltax(props) {
      const [conditon1,setCondition1]=useState(0)
@@ -23,7 +23,7 @@ function Totaltax(props) {
      const[taxable4,setTaxable4]=useState(0)
      const[taxable5,setTaxable5]=useState(0)
      const[taxable6,setTaxable6]=useState(0)
-     
+
      useLayoutEffect(()=>{
       setCondition1(0)
       setCondition2(0)
@@ -49,6 +49,7 @@ function Totaltax(props) {
     //male tax
 
     let item = props.totalTaxableIncome;
+    console.log(props.totalTaxableIncome)
     setAmount1(item)
     let a=5000
     let b=30000
@@ -169,6 +170,7 @@ function Totaltax(props) {
          setCondition1(a)
          setCondition2(paidTax4)
          setCondition6(totalTax4)
+         console.log(totalTax4)
       }
       
       //condition5
@@ -325,6 +327,8 @@ function Totaltax(props) {
     }
 
     else{
+      console.log('this block')
+
 
       let t1=350000;
       let t2=100000;
@@ -461,7 +465,7 @@ function Totaltax(props) {
     }
 
   }
-  useEffect(()=>handleChange(),[props])
+  useEffect(()=>handleChange())
     return (
        
       

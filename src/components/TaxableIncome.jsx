@@ -40,7 +40,7 @@ function TaxableIncome(
     }        
     return (
       
-    <div className="container">
+        <div className="container">
         <p className="All_Headings">Taxable Income</p>
             {reportPhase===true?(
                 <div className="row">
@@ -147,7 +147,7 @@ function TaxableIncome(
                                 </tr>
                                 ):null}
                                 
-                                {formBonus>0?
+                                {formBonus?
                                 (
                                 <tr>
                                     <td className="withoutInputFields td_of_charts">
@@ -308,7 +308,7 @@ function TaxableIncome(
                                     </td>
                                 </tr>
                                 ):null}
-                                {formBonus>0?
+                                {formBonus?
                                 (
                                 <tr>
                                     <td className="withoutInputFields td_of_charts">
@@ -365,13 +365,13 @@ function TaxableIncome(
                 </div>
 
                 {/*st */}
-                <div className="col-4">
+                <div className="col-4 update_form">
                     <form onSubmit={handleSubmit(handleFormData)}>
                     {/* field-no : 1 */}
                     <div className="d-flex justify-content-between ">
                         <div className="form-group">
                         <label >Basic Amount</label>
-                        <input {...register("basicAmount")}
+                        <input required {...register("basicAmount")}
                             type="number"
                             className="form-control"
                             defaultValue={formData.basicAmount}
@@ -451,8 +451,8 @@ function TaxableIncome(
                         </div>
 
                         )}
-                    </div>
-                    <div className="d-flex justify-content-between ">
+                    {/* </div> */}
+                    {/* <div className="d-flex justify-content-between "> */}
                         {formData.provFund!==0?
                         (
                         <div className="form-group">
@@ -474,6 +474,8 @@ function TaxableIncome(
                         </div>
 
                         )}
+
+                        
                     </div>
                     <button type="submit" className="btn btn-primary">
                         Update
@@ -483,9 +485,8 @@ function TaxableIncome(
                 {/*st */}
             </div>
             )}
-
-            
     </div>
+       
        
     )
 }

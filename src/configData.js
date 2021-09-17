@@ -26,6 +26,7 @@ export const calculatePayableTax = (totalTaxableIncome,category) => {
         //console.log(`counter ${counter} rate ${rate} totalTaxableIncome ${totalTaxableIncome} totalPayable ${totalPayable}`)
         return totalPayable;
       } else {
+
         totalPayable = totalPayable + (taxArray[counter] * rate) / 100.0;
       }
       totalTaxableIncome = totalTaxableIncome - taxArray[counter];

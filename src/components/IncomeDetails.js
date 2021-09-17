@@ -34,7 +34,12 @@ export const InComeDetails = (props) => {
 return (
     <>
       <div className="container all_options_div mt-5">
-        <p>This is {props.category} Div</p>
+        {/* <p>This is {props.category} Div</p> */}
+        <div className="text-center " style={{paddingBottom:"48px"}}>
+        <img  className="form-imege" src={props.icon} />
+        <h4>{props.category}</h4>
+        <p>{props.content}</p>
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 col-11">
@@ -43,10 +48,11 @@ return (
                 <div className="d-flex justify-content-between ">
                   <div className="form-group">
                     <label >Basic Amount</label>
-                    <input {...register("basicAmount")}
+                    <input required {...register("basicAmount")}
                       type="number"
                       className="form-control"
-                      defaultValue={0}
+                      placeholder="0"
+                      // defaultValue={0}
                     />
                   </div>
                   <div className="form-group">
@@ -70,10 +76,6 @@ return (
                       defaultValue={0}
                     />
                   </div>
-                </div>
-
-                {/* field-no : 3 */}
-                <div className="d-flex justify-content-between ">
                   <div className="form-group">
                     <label>Medical amount</label>
                     <input {...register("medicalAmount")}
@@ -84,6 +86,19 @@ return (
                     />
                   </div>
                 </div>
+
+                {/* field-no : 3
+                <div className="d-flex justify-content-between ">
+                  <div className="form-group">
+                    <label>Medical amount</label>
+                    <input {...register("medicalAmount")}
+                      type="number"
+                      className="form-control"
+                      id="exampleInputPassword1"
+                      defaultValue={0}
+                    />
+                  </div>
+                </div> */}
 
                 <div className="d-flex justify-content-between ">
                   <div className="form-group">
@@ -101,16 +116,25 @@ return (
                 {/* field-no : 7 */}
 
                 <div className="d-flex justify-content-between ">
-                  <div className="form-check">
-                  <input type="checkbox" name="bonus" onClick={checkboxBonusHandler} />
-                    <label className="form-check-label" >
+                  <div className="form-check form-group">
+                  <input type="checkbox"  id="bonusForm" name="bonus" onClick={checkboxBonusHandler} />
+                    <label htmlFor="bonusForm" className="form-check-label" >
                       Bonus
                     </label>
                     {inputField.bonus? <input {...register("bonusAmount")}
-                      type="number" className="form-control" defaultValue={0}/>:null}
+                      type="number" id="bonusForm"  className="form-control" defaultValue={0}/>:null}
+                  </div>
+                  
+                  <div className="form-check form-group">
+                  <input id="fundForm" type="checkbox" name="provFund" onClick={checkboxprovFundHandler} />
+                    <label htmlFor="fundForm" className="form-check-label">
+                      Providient Fund
+                    </label>
+                    {inputField.provFund? <input id="fundForm" {...register("provFund")}
+                      type="number" className="form-control" defaultValue={0} />:null}
                   </div>
                 </div>
-                <div className="d-flex justify-content-between ">
+                {/* <div className="d-flex justify-content-between ">
                   <div className="form-check">
                   <input type="checkbox" name="provFund" onClick={checkboxprovFundHandler} />
                     <label className="form-check-label">
@@ -119,7 +143,7 @@ return (
                     {inputField.provFund? <input {...register("provFund")}
                       type="number" className="form-control" defaultValue={0} />:null}
                   </div>
-                </div>
+                </div> */}
 
                 <button type="submit" className="btn btn-primary">
                   Submit
@@ -127,6 +151,8 @@ return (
               </form>
             </div>
             <div className="col-lg-4 col-11">
+            <div className="table_wrapper">
+            <h4 className="text-center">Tax Ruls for {props.category}</h4>
               <table className="table">
                 <thead>
                   <tr>
@@ -143,13 +169,13 @@ return (
                   </tr>
                   <tr>
                     <th scope="row">next tk</th>
-                    <td>0000</td>
+                    <td>100000</td>
                     <td>5</td>
                   </tr>
                   <tr>
                     <th scope="row">next tk</th>
                     <td>300000</td>
-                    <td></td>
+                    <td>10</td>
                   </tr>
                   <tr>
                     <th scope="row">next tk</th>
@@ -168,6 +194,7 @@ return (
                   </tr>
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>

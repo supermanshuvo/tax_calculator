@@ -60,20 +60,27 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
   return (
     <div className="container mt-2">
       <div className="row">
-        <h5 className="bg-secondary fw-light p-2">
-          Investment Allowance and Tax Rebate
-        </h5>
-        <div className="container-fluid">
-          <table className="table">
+        
+        <div className="container">
+          <div className="row">
+          <div className="table-responsive">
+          <table className="table table-hover table-bordered border-dark invest">
+            <thead>
+              <tr className="total_of_IncomeDetails">
+               <th scope="col">Investment Allowance and Tax Rebate</th>
+               <th></th>
+              </tr>  
+            </thead>
             <tbody>
+              
               <tr>
                 <td>Contribution to Provident Fund</td>
-                <td>{providentFund}</td>
+                <td className="text-center">{providentFund}</td>
               </tr>
               <tr>
                 <td>DPS/BSP/LIP/Others (If Applicable)</td>
-                <td>
-                  <input type="text"  defaultValue={0} onChange={(e)=>{
+                <td className="text-center table_form">
+                  <input type="text"   className=""  defaultValue={0} onChange={(e)=>{
                     //   let value = e.target.value===NaN?0:e.target.value;
                     //   let newTotal = parseInt(providentFund*2)+parseInt(value)
                     //   setTotalInvestMent(newTotal)
@@ -86,16 +93,18 @@ const InvestmentAllowance = ({providentFund,maxInvestTaxExemption,maxAllowedInve
               </tr>
               <tr className="fw-bold">
                 <td>Total Investment</td>
-                <td>{totalInvestMent}</td>
+                <td  className="text-center">{totalInvestMent}</td>
               </tr>
               <tr className="fw-bold">
                 <td>Allowed Investment</td>
-                <td>
+                <td className="text-center">
                   {allowInvestment} From {maxAllowedInvesment}
                 </td>
               </tr>
             </tbody>
           </table>
+          </div>
+          </div>
         </div>
       </div>
       <TotalTaxInvest
