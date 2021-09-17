@@ -34,7 +34,6 @@ export const InComeDetails = (props) => {
 return (
     <>
       <div className="container all_options_div mt-5">
-        <p>This is {props.category} Div</p>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 col-11">

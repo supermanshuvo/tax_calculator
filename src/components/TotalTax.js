@@ -1,4 +1,4 @@
-import React,{useEffect, useLayoutEffect, useState} from 'react'
+import React,{useEffect, useState,useLayoutEffect} from 'react'
 
 function Totaltax(props) {
      const [conditon1,setCondition1]=useState(0)
@@ -23,7 +23,7 @@ function Totaltax(props) {
      const[taxable4,setTaxable4]=useState(0)
      const[taxable5,setTaxable5]=useState(0)
      const[taxable6,setTaxable6]=useState(0)
-     
+
      useLayoutEffect(()=>{
       setCondition1(0)
       setCondition2(0)
@@ -461,7 +461,7 @@ function Totaltax(props) {
     }
 
   }
-  useEffect(()=>handleChange(),[props])
+  useEffect(()=>handleChange())
     return (
        
       

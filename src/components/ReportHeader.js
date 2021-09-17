@@ -3,9 +3,9 @@ import React from 'react'
 function ReportHeader({userInfo}) {
     return (
         <div className="container">
-            <h2 className="text center">Tax Calculation Report 2020-2021</h2>
+            <h2 className="text center report_header" >Tax Calculation Report 2020-2021</h2>
             <div className="row">
-               <div className="col-10">
+               <div className="col-12">
                    <div className="table-responsive">
                         <table className="table table-hover table-bordered border-dark ">
                            
@@ -13,7 +13,7 @@ function ReportHeader({userInfo}) {
                             <tbody>
                                 
                                 <tr>
-                                    <td className="withoutInputFields td_of_charts">
+                                    <td>
                                        Name : {userInfo.username}
                                     </td>
                                     <td>
@@ -21,7 +21,7 @@ function ReportHeader({userInfo}) {
                                     </td>  
                                 </tr>
                                  <tr>
-                                    <td className="withoutInputFields td_of_charts">
+                                    <td>
                                         Company Name : {userInfo.companyName}
                                     </td>
                                     <td>

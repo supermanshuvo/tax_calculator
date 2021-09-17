@@ -56,12 +56,12 @@ const TotalTaxInvest = (props) => {
                   <td colSpan="2">Net Income Tax Payable</td>
                   <td>{props.NetIncomeTaxPayable}</td>
                 </tr>
-                <tr>
+                {/* {<tr>
                   <td colSpan="2">
                     Provision Per Month {props.totalMonth} Months
                   </td>
                   <td>{props.ProvisionMonthTax}</td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </div>
