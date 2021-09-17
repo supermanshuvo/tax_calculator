@@ -9,10 +9,11 @@ const InvestmentAllowance = ({providentFund,totalTaxIncome,totalPayableTax,provM
   const [limitInvestment, setLimitInvestment] = useState(0);
   const [lessRebate,setLessRebate]=useState(0)
   const [netIncomeTaxPayable,setNetIncomeTaxPayable]=useState(0)
+  const dpsForm=useRef(0)
   //const [provisionMonthTax,setProvisionMonthTax]=useState(0)
 
   // let    firstConditionAllowInvestment = (totalTaxIncome - providentFund) * maxInvestTaxExemption * 0.01;
-  // let secondConditionLimitedInvestment = totalTaxIncome * provMonth * 0.01 - providentFund; 
+  // let secondConditionLimitedInvestment = ((totalTaxIncome * provMonth * 0.01 - providentFund)>0): totalTaxIncome * provMonth * 0.01 - providentFund:0; 
   // let configureC44 = 1000000,ConfigureC45 = 3000000,ConfigureC46 = 250000,
   //   ConfigureC49 = 250000,ConfigureC50 = 500000,ConfigureH44 = 15,ConfigureH46 = 15,
   //   ConfigureH47 = 12,ConfigureH49 = 15,ConfigureH50 = 12,ConfigureH51 = 10;
@@ -20,9 +21,9 @@ const InvestmentAllowance = ({providentFund,totalTaxIncome,totalPayableTax,provM
     
   //var lessRebate = null, netIncomeTaxPayable=null, provisionMonthTax=null;
 
-  useEffect(()=>{
-    setTotalInvestMent(providentFund*2)
-  },[])
+  // useEffect(()=>{
+  //   setTotalInvestMent(providentFund*2)
+  // },[])
 
   let LessRebateFunc = (allowInvestment,totalTaxIncome) => {
     let result = 0;
@@ -59,6 +60,7 @@ const InvestmentAllowance = ({providentFund,totalTaxIncome,totalPayableTax,provM
     
     */
     //maxInvestTaxExemption={25} maxAllowedInvesment={15000000}
+      setTotalInvestMent(providentFund+Number(dpsForm.current.value))
         setAllowInvestment(Math.min((totalTaxIncome - providentFund) * taxConfig.config.maxInvestTaxExemption * 0.01,taxConfig.config.maxAllowedInvesment))
         setLimitInvestment(Math.min(totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01 - providentFund,taxConfig.config.maxAllowedInvesment))
         setLessRebate(LessRebateFunc(allowInvestment,totalTaxIncome))
@@ -91,7 +93,7 @@ const InvestmentAllowance = ({providentFund,totalTaxIncome,totalPayableTax,provM
               <tr>
                 <td>DPS/BSP/LIP/Others (If Applicable)</td>
                 <td className="text-center table_form">
-                  <input type="text"   className=""  defaultValue={0} onChange={(e)=>{
+                  <input ref={dpsForm} type="number" className=""  defaultValue={0} onChange={(e)=>{
                     //   let value = e.target.value===NaN?0:e.target.value;
                     //   let newTotal = parseInt(providentFund*2)+parseInt(value)
                     //   setTotalInvestMent(newTotal)
