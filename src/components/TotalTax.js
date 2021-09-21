@@ -462,6 +462,12 @@ function Totaltax(props) {
 
   }
   useEffect(()=>handleChange())
+
+  var format = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'BDT',
+    minimumFractionDigits: 0,
+  });
     return (
        
       
@@ -495,16 +501,16 @@ function Totaltax(props) {
                         First Tk.
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{taxable1}</p>
+                        <p className="text-center">{format.format(taxable1)}</p>
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">From</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{amount1}</p>
+                        <p className="text-center">{format.format(amount1)}</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">0</p>
+                        <p className="text-center">0%</p>
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">0</p>
@@ -514,76 +520,76 @@ function Totaltax(props) {
                     <tr>
                       <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{taxable2}</p>
+                        <p className="text-center">{format.format(taxable2)}</p>
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">From</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{amount2}</p>
+                        <p className="text-center">{format.format(amount2)}</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">5</p>
+                        <p className="text-center">5%</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{conditon1}</p>
+                        <p className="text-center">{format.format(conditon1)}</p>
                       </td>
                     </tr>
                     {/* 3rd item */}
                     <tr>
                       <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{taxable3}</p>
+                        <p className="text-center">{format.format(taxable3)}</p>
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">from</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{amount3}</p>
+                        <p className="text-center">{format.format(amount3)}</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">10</p>
+                        <p className="text-center">10%</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{conditon2}</p>
+                        <p className="text-center">{format.format(conditon2)}</p>
                       </td>
                     </tr>
                     {/* 4th item */}
                     <tr>
                       <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{taxable4}</p>
+                        <p className="text-center">{format.format(taxable4)}</p>
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">From</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{amount4}</p>
+                        <p className="text-center">{format.format(amount4)}</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">15</p>
+                        <p className="text-center">15%</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{conditon3}</p>
+                        <p className="text-center">{format.format(conditon3)}</p>
                       </td>
                     </tr>
                     {/* 5th item */}
                     <tr>
                       <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{taxable5}</p>
+                        <p className="text-center">{format.format(taxable5)}</p>
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">From</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{amount5}</p>
+                        <p className="text-center">{format.format(amount5)}</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">20</p>
+                        <p className="text-center">20%</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{conditon4}</p>
+                        <p className="text-center">{format.format(conditon4)}</p>
                       </td>
                     </tr>
                     {/* 6th item */}
@@ -591,19 +597,19 @@ function Totaltax(props) {
                     <tr>
                       <td className="td_of_charts">Next Tk.</td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{taxable6}</p>
+                        <p className="text-center">{format.format(taxable6)}</p>
                       </td>
                       <td className="withoutInputFields">
                         <p className="text-center">From</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{amount6}</p>
+                        <p className="text-center">{format.format(amount6)}</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">25</p>
+                        <p className="text-center">25%</p>
                       </td>
                       <td className="withoutInputFields">
-                        <p className="text-center">{conditon5}</p>
+                        <p className="text-center">{format.format(conditon5)}</p>
                       </td>
                     </tr>
 
@@ -611,7 +617,7 @@ function Totaltax(props) {
                     <tr>
                       <th colSpan={5}>Total Payable</th>
                       <td className="withoutInputFields">
-                        <p className="text-center">{conditon6}</p>
+                        <p className="text-center">{format.format(conditon6)}</p>
                       </td>
                     </tr>
                     {/* end of all items and table */}

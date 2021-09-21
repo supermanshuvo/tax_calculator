@@ -1,15 +1,29 @@
 import React from 'react'
+import {useRef,useEffect} from 'react'
 
-function ReportHeader({userInfo}) {
+function ReportHeader({userInfo,region}) {
+    const regionVar = useRef(null)
+    useEffect(()=>{
+        if(region === 'cityCorporation'){
+            regionVar.current = 'Dhaka/Gazipur/Chitagong';
+        }
+        else if(region === 'otherCity'){
+            regionVar.current = 'City Corporation Area';
+        }
+        else regionVar.current = 'Country Side'
+    },[])
+
     return (
         <div className="container">
-            <h2 className="text center report_header" >Tax Calculation Report 2020-2021</h2>
+            <h2 className="text center report_header" >Tax Calculation Statement 2020-2021</h2>
             <div className="row">
                <div className="col-12">
                    <div className="table-responsive">
                         <table className="table table-hover table-bordered border-dark ">
                            
-
+                            <thead>
+                                Region: {regionVar.current}
+                            </thead>
                             <tbody>
                                 
                                 <tr>

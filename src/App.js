@@ -40,11 +40,12 @@ function App() {
   const [reportPhase,setReportPhase]=useState(false);
   const [userInfo,setUserInfo]=useState({})
 
+
   useEffect(()=>{
     let newTotalPayable=calculatePayableTax(totalTaxableIncome,category)
     setTotalpayable(newTotalPayable); 
     //console.log('Totalpayable',totalpayable);
-  },[category,totalTaxableIncome,formData])
+  },[category,totalTaxableIncome,formData,totalpayable])
 
   const printDocument =() =>{
     const input = captureRef.current;
@@ -128,7 +129,7 @@ function App() {
         (
         <>
           <div ref={captureRef}>
-          {reportPhase===true?(<ReportHeader userInfo={userInfo}/> ):null}   
+          {reportPhase===true?(<ReportHeader userInfo={userInfo} region = {formData.zone}/> ):null}   
           <div></div>
           <TaxableIncome formData={formData} handleStates={(formData,
           submitted)=>handleSubmit(formData,submitted)}
@@ -143,7 +144,7 @@ function App() {
           taxableConveyance={taxableConveyanceRef.current}/>
 
           <TotalTax category={category} totalTaxableIncome ={totalTaxableIncome}/>
-          <InvestmentAllowance provFund={formData.provFund}
+          <InvestmentAllowance provFund={formData.provFund} zone={formData.zone}
            totalTaxIncome={totalTaxableIncome} totalPayableTax={totalpayable}/>   
           </div>
           {reportPhase===false?(

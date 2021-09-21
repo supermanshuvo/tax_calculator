@@ -1,9 +1,10 @@
-import React from 'react'
-import { useReducer,useCallback,useEffect,useState} from "react"
+import React, { useLayoutEffect } from 'react'
+import { useReducer,useRef,useEffect,useState} from "react"
 import { useForm } from "react-hook-form";
 import {taxConfig} from ".././configData.js";
+//import NumberFormat from "react-number-format";
 
-function TaxableIncome(
+function TaxableIncome( 
     {formData, handleStates,formBasic, formHousing, 
         formMedical,formConveyance,formPvMonths, formBonus,formProvFund,
         totalTaxableIncome, housingLess,medicalLesss, 
@@ -14,9 +15,15 @@ function TaxableIncome(
     const inputFieldInit = {bonus:false,provFund:false}
     const reducerFunc = (state, newState) => ({ ...state, ...newState });
     const [inputField, setInputField] = useReducer(reducerFunc,inputFieldInit);
-    
-    const { handleSubmit, register } = useForm();
-    
+    const yearlyBasic = useRef(0)
+    const { register,handleSubmit, formState:{errors} } = useForm();
+
+    var format = new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'BDT',
+        minimumFractionDigits: 0,
+    });
+
     const handleFormData = (formData) => {
         formData.basicAmount = Number(formData.basicAmount ) 
         formData.housingAmount = Number(formData.housingAmount) 
@@ -36,8 +43,9 @@ function TaxableIncome(
     }
     const checkboxprovFundHandler = ()=>{
         let prev = inputField.provFund;
-        setInputField({provFund:!prev})
+        setInputField({provFund:!prev}) 
     }        
+        
     return (
       
         <div className="container">
@@ -70,13 +78,16 @@ function TaxableIncome(
                                         <p className="text-center">100% Payable</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formBasic*formPvMonths}</p>
+                                        <p className="text-center">
+                                        {format.format(formBasic*formPvMonths)}
+                                        </p>
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">0</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableBasic}</p>
+                                        <p className="text-center">
+                                            {format.format(taxableBasic)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -90,16 +101,17 @@ function TaxableIncome(
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">{taxConfig.lessAmount.maxHousingPercentage}% 
-                                        of basic or less of {taxConfig.lessAmount.maxHousing}</p>
+                                        of basic or less of {format.format(taxConfig.lessAmount.maxHousing)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formHousing*formPvMonths}</p>
+                                        <p className="text-center">{format.format(formHousing*formPvMonths)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{Math.min(housingLess,formHousing*formPvMonths)}</p>
+                                        <p className="text-center">
+                                            {format.format(Math.min(housingLess,formHousing*formPvMonths))}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableHousing}</p>
+                                        <p className="text-center">{format.format(taxableHousing)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -111,16 +123,16 @@ function TaxableIncome(
                                         conveyance
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">less of {taxConfig.lessAmount.maxConveyance}</p>
+                                        <p className="text-center">less of {format.format(taxConfig.lessAmount.maxConveyance)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formConveyance*formPvMonths}</p>
+                                        <p className="text-center">{format.format(formConveyance*formPvMonths)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{Math.min(conveyanceLesss ,formConveyance*formPvMonths)}</p>
+                                        <p className="text-center">{format.format(Math.min(conveyanceLesss ,formConveyance*formPvMonths))}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableConveyance}</p>
+                                        <p className="text-center">{format.format(taxableConveyance)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -133,16 +145,16 @@ function TaxableIncome(
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">{taxConfig.lessAmount.maxMedicalPercentage}% 
-                                        of basic or less of {taxConfig.lessAmount.maxMedical}</p>
+                                        of basic or less of {format.format(taxConfig.lessAmount.maxMedical)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formMedical*formPvMonths}</p>
+                                        <p className="text-center">{format.format(formMedical*formPvMonths)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{Math.min(medicalLesss,formMedical*formPvMonths)}</p>
+                                        <p className="text-center">{format.format(Math.min(medicalLesss,formMedical*formPvMonths))}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableMedical}</p>
+                                        <p className="text-center">{format.format(taxableMedical)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -157,13 +169,13 @@ function TaxableIncome(
                                         <p className="text-center"></p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formBonus}</p>
+                                        <p className="text-center">{format.format(formBonus)}</p>
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">0</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formBonus}</p>
+                                        <p className="text-center">{format.format(formBonus)}</p>
                                     </td>
                                 </tr>
                                 )
@@ -178,13 +190,13 @@ function TaxableIncome(
                                         <p className="text-center"></p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formProvFund}</p>
+                                        <p className="text-center">{format.format(formProvFund)}</p>
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">0</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formProvFund}</p>
+                                        <p className="text-center">{format.format(formProvFund)}</p>
                                     </td>
                                 </tr>
                                 )
@@ -194,7 +206,7 @@ function TaxableIncome(
                                 <tr>
                                     <th colSpan={4}>Total Taxable Income</th>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{totalTaxableIncome}</p>
+                                        <p className="text-center">{format.format(totalTaxableIncome)}</p>
                                     </td>
                                 </tr>
 
@@ -232,13 +244,13 @@ function TaxableIncome(
                                         <p className="text-center">100% Payable</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formBasic*formPvMonths}</p>
+                                        <p className="text-center">{format.format(taxableBasic)}</p>
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">0</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableBasic}</p>
+                                        <p className="text-center">{format.format(taxableBasic)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -252,16 +264,16 @@ function TaxableIncome(
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">{taxConfig.lessAmount.maxHousingPercentage}% 
-                                        of basic or less of {taxConfig.lessAmount.maxHousing}</p>
+                                        of basic or less of {format.format(taxConfig.lessAmount.maxHousing)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formHousing*formPvMonths}</p>
+                                        <p className="text-center">{format.format(formHousing*formPvMonths)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{Math.min(housingLess,formHousing*formPvMonths)}</p>
+                                        <p className="text-center">{format.format(Math.min(housingLess,formHousing*formPvMonths))}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableHousing}</p>
+                                        <p className="text-center">{format.format(taxableHousing)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -273,16 +285,16 @@ function TaxableIncome(
                                         conveyance
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">less of {taxConfig.lessAmount.maxConveyance}</p>
+                                        <p className="text-center">less of {format.format(taxConfig.lessAmount.maxConveyance)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formConveyance*formPvMonths}</p>
+                                        <p className="text-center">{format.format(formConveyance*formPvMonths)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{Math.min(conveyanceLesss ,formConveyance*formPvMonths)}</p>
+                                        <p className="text-center">{format.format(Math.min(conveyanceLesss ,formConveyance*formPvMonths))}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableConveyance}</p>
+                                        <p className="text-center">{format.format(taxableConveyance)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -295,16 +307,16 @@ function TaxableIncome(
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">{taxConfig.lessAmount.maxMedicalPercentage}% 
-                                        of basic or less of {taxConfig.lessAmount.maxMedical}</p>
+                                        of basic or less of {format.format(taxConfig.lessAmount.maxMedical)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formMedical*formPvMonths}</p>
+                                        <p className="text-center">{format.format(formMedical*formPvMonths)}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{Math.min(medicalLesss,formMedical*formPvMonths)}</p>
+                                        <p className="text-center">{format.format(Math.min(medicalLesss,formMedical*formPvMonths))}</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{taxableMedical}</p>
+                                        <p className="text-center">{format.format(taxableMedical)}</p>
                                     </td>
                                 </tr>
                                 ):null}
@@ -318,13 +330,13 @@ function TaxableIncome(
                                         <p className="text-center"></p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formBonus}</p>
+                                        <p className="text-center">{format.format(formBonus)}</p>
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">0</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formBonus}</p>
+                                        <p className="text-center">{format.format(formBonus)}</p>
                                     </td>
                                 </tr>
                                 )
@@ -339,13 +351,13 @@ function TaxableIncome(
                                         <p className="text-center"></p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formProvFund}</p>
+                                        <p className="text-center">{format.format(formProvFund)}</p>
                                     </td>
                                     <td className="withoutInputFields">
                                         <p className="text-center">0</p>
                                     </td>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{formProvFund}</p>
+                                        <p className="text-center">{format.format(formProvFund)}</p>
                                     </td>
                                 </tr>
                                 )
@@ -355,7 +367,7 @@ function TaxableIncome(
                                 <tr>
                                     <th colSpan={4}>Total Taxable Income</th>
                                     <td className="withoutInputFields">
-                                        <p className="text-center">{totalTaxableIncome}</p>
+                                        <p className="text-center">{format.format(totalTaxableIncome)}</p>
                                     </td>
                                 </tr>
 
@@ -370,113 +382,151 @@ function TaxableIncome(
                     {/* field-no : 1 */}
                     <div className="d-flex justify-content-between ">
                         <div className="form-group">
-                        <label >Basic Amount</label>
-                        <input required {...register("basicAmount")}
-                            type="number"
-                            className="form-control"
-                            defaultValue={formData.basicAmount}
-                        />
+                            <label >Basic Amount</label>
+                            <input required {...register("basicAmount",
+                            {
+                                min: {
+                                value: 1,
+                                message: 'Must Be Positive Number' 
+                                // JS only: <p>error message</p> TS only support string
+                            }}
+                            )}
+                                type="number"
+                                className="form-control"
+                                defaultValue={formData.basicAmount}/>
+                            {errors.basicAmount && (<span className="text-warning">
+                            Must Be Positive Number</span>)}    
                         </div>
-                        <div className="form-group">
-                        <label>provedient month</label>
-                        <input {...register("pvMonths")}
-                            type="number"
-                            className="form-control"
-                            defaultValue={formData.pvMonths}
-                        />
-                        </div>
-                    </div>
-
-                    {/* field-no : 2 */}
-                    <div className="d-flex justify-content-between ">
                         <div className="form-group">
                             <label>Housing amount</label>
-                            <input {...register("housingAmount")}
+                            <input {...register("housingAmount",
+                            {
+                                min: {
+                                  value: 0,
+                                  message: 'Must Be Positive Number' 
+                                  // JS only: <p>error message</p> TS only support string
+                              }}
+                              )}
                                 type="number"
                                 className="form-control"
                                 id="exampleInputPassword1"
-                                defaultValue={formData.housingAmount}
-                            />
+                                defaultValue={formData.housingAmount}/>
+                            {errors.housingAmount && (<span className="text-warning">
+                            Must Be Positive Number</span>)}    
                         </div>
+                        
+                    </div>
+
+                    <div className="d-flex justify-content-between ">
                         <div className="form-group">
                             <label>Medical amount</label>
-                            <input {...register("medicalAmount")}
+                            <input {...register("medicalAmount",
+                            {
+                                min: {
+                                  value: 0,
+                                  message: 'Must Be Positive Number' 
+                                  // JS only: <p>error message</p> TS only support string
+                              }}
+                              )}
                                 type="number"
                                 className="form-control"
                                 id="exampleInputPassword1"
                                 defaultValue={formData.medicalAmount}
                             />
+                            {errors.medicalAmount && (<span className="text-warning">
+                            Must Be Positive Number</span>)}
                         </div>
-                    </div>
-{/* 
-
-                    <div className="d-flex justify-content-between ">
-                        
-                    </div> */}
-
-                    <div className="d-flex justify-content-between ">
-                        <div className="form-group">
-                        <label>
-                            Conveyance
-                        </label>
-                        <input {...register("conveyanceAmount")}
-                            type="number"
-                            className="form-control"
-                            defaultValue={formData.conveyanceAmount}/>
-                        </div>
-                        </div>
-
-
-                    {/* field-no : 7 */}
-
-                    <div className="d-flex justify-content-between ">
-                        {/* {formData.bonusAmount!==0?
-                        (
                         <div className="form-group">
                             <label>
-                                Bonus
+                                Conveyance
                             </label>
-                            <input {...register("bonusAmount")}
-                                type="number" className="form-control" defaultValue={formData.bonusAmount}/>
+                            <input {...register("conveyanceAmount",
+                            {
+                                min: {
+                                value: 0,
+                                message: 'Must Be Positive Number' 
+                                // JS only: <p>error message</p> TS only support string
+                            }}
+                            )}
+                                type="number"
+                                className="form-control"
+                                defaultValue={formData.conveyanceAmount}/>
+                            {errors.conveyanceAmount && (<span className="text-warning">
+                            Must Be Positive Number</span>)}    
                         </div>
-                        ):
-                        ( */}
+                    </div>
+
+                    <div className="d-flex justify-content-between ">
                         <div className="form-check">
                             <input type="checkbox" name="bonus" onClick={checkboxBonusHandler} />
                             <label className="form-check-label" >
                                 Bonus
                             </label>
-                            {inputField.bonus? <input {...register("bonusAmount")}
-                                type="number" className="form-control" defaultValue={formData.bonusAmount}/>:null}
+                            {inputField.bonus? <input {...register("bonusAmount",
+                            {
+                                min: {
+                                  value: 0,
+                                  message: 'Must Be Positive Number' 
+                                  // JS only: <p>error message</p> TS only support string
+                              }}
+                              )}
+                            type="number" className="form-control" defaultValue={formData.bonusAmount}/>:null}
+                            {errors.bonusAmount && (<span className="text-warning">
+                            Must Be Positive Number</span>)}    
                         </div>
 
-                        {/* )} */}
-                    {/* </div> */}
-                    {/* <div className="d-flex justify-content-between "> */}
-                        {/* {formData.provFund!==0?
-                        (
-                        <div className="form-group">
-                            <label>
-                                Provident Fund
-                            </label>
-                            <input {...register("provFund")}
-                                type="number" className="form-control" defaultValue={formData.provFund}/>
-                        </div>
-                        ):
-                        ( */}
                         <div className="form-check">
                             <input type="checkbox" name="provFund" onClick={checkboxprovFundHandler} />
                             <label className="form-check-label" >
                                 Provident Fund
                             </label>
-                            {inputField.provFund? <input {...register("provFund")}
+                            {inputField.provFund? <input {...register("provFund",
+                            {
+                                min: {
+                                  value: 0,
+                                  message: 'Must Be Positive Number' 
+                                  // JS only: <p>error message</p> TS only support string
+                              }}
+                              )}
                                 type="number" className="form-control" defaultValue={formData.provFund}/>:null}
+                            {errors.provFund && (<span className="text-warning">
+                            Must Be Positive Number</span>)}
+                        </div>
+                    </div>
+
+                    <div className="d-flex justify-content-between ">
+                        <div className="form-group">
+                            <label>provedient month</label>
+                            <select className="form-control" type="number" 
+                            {...register("pvMonths")}>
+                                <option selected={1===formData.pvMonths} value={1}>1</option>
+                                <option selected={2===formData.pvMonths} value={2}>2</option>
+                                <option selected={3===formData.pvMonths} value={3}>3</option>
+                                <option selected={4===formData.pvMonths} value={4}>4</option>
+                                <option selected={5===formData.pvMonths} value={5}>5</option>
+                                <option selected={6===formData.pvMonths} value={6}>6</option>
+                                <option selected={7===formData.pvMonths} value={7}>7</option>
+                                <option selected={8===formData.pvMonths} value={8}>8</option>
+                                <option selected={9===formData.pvMonths} value={9}>9</option>
+                                <option selected={10===formData.pvMonths} value={10}>10</option>
+                                <option selected={11===formData.pvMonths} value={11}>11</option>
+                                <option selected={12===formData.pvMonths} value={12}>12</option>
+                            </select>
                         </div>
 
-                        {/* )} */}
-
-                        
+                        <div className="form-group">
+                            <label>Choose Zone</label>
+                            <select className="form-control" type="number" {...register("zone")}>
+                            <option selected={'cityCorporation'===formData.zone} value='cityCorporation'
+                                >Dhaka/Chattagram City</option>
+                            <option selected={'otherCity'===formData.zone}
+                                 value='otherCity'>Other City</option>
+                            <option selected={'restCountry'===formData.zone} 
+                                value='restCountry'>Rest of the Country</option>
+                            </select>
+                        </div>
                     </div>
+
                     <button type="submit" className="btn btn-primary">
                         Update
                     </button>

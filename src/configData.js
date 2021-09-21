@@ -7,7 +7,11 @@ lessAmount:{
   maxMedical:120000,
   maxMedicalPercentage:10,
   maxConveyance:30000,
-  
+},
+zone:{
+  cityCorporation:5000,
+  otherCity:4000,
+  restCountry:3000
 },
 config:{
   configureC44 : 1000000,ConfigureC45 : 3000000,ConfigureC46 : 250000,

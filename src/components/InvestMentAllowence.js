@@ -2,7 +2,7 @@ import { useEffect,useLayoutEffect, useState, useRef } from "react";
 import TotalTaxInvest from "./TotalTaxInvest.js";
 import {taxConfig} from ".././configData.js";
 
-const InvestmentAllowance = ({provFund,totalTaxIncome,totalPayableTax}) => {
+const InvestmentAllowance = ({provFund,totalTaxIncome,totalPayableTax,zone}) => {
   
   const [totalInvestMent, setTotalInvestMent] = useState(0);
   const [allowInvestment, setAllowInvestment] = useState(0);
@@ -46,6 +46,11 @@ const InvestmentAllowance = ({provFund,totalTaxIncome,totalPayableTax}) => {
 
   useEffect(()=>{
 
+    let minimumTax = taxConfig.zone.cityCorporation;
+
+    if(zone==='otherCity'){minimumTax=taxConfig.zone.otherCity}
+    else if(zone==='restCountry')minimumTax=taxConfig.zone.restCountry;
+
     setTotalInvestMent(provFund + Number(dpsField.current.value))
 
     if(((totalTaxIncome -provFund)*taxConfig.config.maxInvestTaxExemption * 0.01) <  taxConfig.config.maxAllowedInvesment){
@@ -55,25 +60,32 @@ const InvestmentAllowance = ({provFund,totalTaxIncome,totalPayableTax}) => {
     }
 
     const lessRebateParentsvar=allowInvestment-totalInvestMent;
-    console.log('allowInvestment ',allowInvestment)
-    console.log('lessRebateParentsvar ',lessRebateParentsvar)
     setParents(lessRebateParentsvar)
     setLimitInvestment(Math.max((totalTaxIncome * 
           taxConfig.config.maxInvestTaxExemption * 0.01 - provFund),
             taxConfig.config.maxAllowedInvesment))
     setLessRebate(LessRebateFunc(lessRebateParents,totalTaxIncome))
-
-    setNetIncomeTaxPayable((totalPayableTax - lessRebate) < 0? 5000 : 
-            ((totalPayableTax - lessRebate) < 5000? 5000: (totalPayableTax - lessRebate)))
-  },[totalTaxIncome,totalInvestMent,allowInvestment,lessRebateParents]
+    
+    let netIncomeTaxAmount = Math.max(minimumTax,totalPayableTax - lessRebate)
+    if(totalPayableTax === 0){
+      netIncomeTaxAmount =0;
+    }
+    setNetIncomeTaxPayable(netIncomeTaxAmount)
+  },[totalInvestMent,netIncomeTaxPayable,
+    allowInvestment,lessRebate,totalPayableTax,
+    limitInvestment,lessRebateParents,totalTaxIncome,zone,provFund]
   
   )
 
+  var format = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'BDT',
+    minimumFractionDigits: 0,
+  });
 
   return (
     <div className="container mt-2">
       <div className="row">
-        
         <div className="container">
           <div className="row">
           <div className="table-responsive">
@@ -93,7 +105,7 @@ const InvestmentAllowance = ({provFund,totalTaxIncome,totalPayableTax}) => {
               <tr>
                 <td>DPS/BSP/LIP/Others (If Applicable)</td>
                 <td className="text-center table_form">
-                  <input type="number" ref={dpsField}  className="" 
+                  <input type="number" ref={dpsField} placeholder="Waiting for input"
                    defaultValue={0} onChange={(e)=>{
                     //   let value = e.target.value===NaN?0:e.target.value;
                     //   let newTotal = parseInt(provFund*2)+parseInt(value)
@@ -107,12 +119,12 @@ const InvestmentAllowance = ({provFund,totalTaxIncome,totalPayableTax}) => {
               </tr>
               <tr className="fw-bold">
                 <td>Total Investment</td>
-                <td  className="text-center">{totalInvestMent}</td>
+                <td  className="text-center">{format.format(totalInvestMent)}</td>
               </tr>
               <tr className="fw-bold">
-                <td>Allowed Investment</td>
+                <td>Allowed Investment (25% of Total Taxable Income )  </td>
                 <td className="text-center">
-                  {allowInvestment} From {limitInvestment}
+                  {format.format(allowInvestment)} From {format.format(limitInvestment)}
                 </td>
               </tr>
             </tbody>

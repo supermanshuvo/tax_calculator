@@ -36,6 +36,13 @@ const TotalTaxInvest = (props) => {
     
     
     */
+
+    var format = new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'BDT',
+      minimumFractionDigits: 0,
+    });
+
   return (
     <>
       <div className="sector">
@@ -48,13 +55,13 @@ const TotalTaxInvest = (props) => {
             <table className="table">
               <tbody>
                 <tr>
-                  <td>Less Rebate on Investment Tk.</td>
-                  <td>{props.AllowInvestment}</td>
-                  <td>{props.lessRebate}</td>
+                  <td>Less Rebate on Investment Tk</td>
+                  <td>{format.format(props.AllowInvestment)}</td>
+                  <td>{format.format(props.lessRebate)}</td>
                 </tr>
                 <tr>
                   <td colSpan="2">Net Income Tax Payable</td>
-                  <td>{props.NetIncomeTaxPayable}</td>
+                  <td>{format.format(props.NetIncomeTaxPayable)}</td>
                 </tr>
                 {/* {<tr>
                   <td colSpan="2">
