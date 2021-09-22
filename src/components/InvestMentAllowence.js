@@ -15,11 +15,6 @@ const InvestmentAllowance = ({
   const dpsField = useRef(0);
   const [lessRebateParents, setParents] = useState(0);
 
-  // useEffect(()=>{
-  //   console.log('dpsField ',dpsField.current.value)
-  //   setTotalInvestMent(provFund + Number(dpsField.current.value))
-  // },[provFund])
-
   let LessRebateFunc = (allowInvestment, totalTaxIncome) => {
     let result = 0;
     if (allowInvestment <= 0) {
@@ -50,11 +45,9 @@ const InvestmentAllowance = ({
   };
 
   useEffect(() => {
-    let minimumTax = taxConfig.zone.cityCorporation;
-
-    if (zone === "otherCity") {
-      minimumTax = taxConfig.zone.otherCity;
-    } else if (zone === "restCountry") minimumTax = taxConfig.zone.restCountry;
+    let minimumTax = (zone === "cityCorporation")?taxConfig.zone.cityCorporation:(
+      (zone === "otherCity")? taxConfig.zone.otherCity: taxConfig.zone.restCountry
+    )
 
     setTotalInvestMent(provFund + Number(dpsField.current.value));
 

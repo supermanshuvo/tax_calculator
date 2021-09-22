@@ -1,6 +1,6 @@
 import React from "react";
 
-function TaxStatement() {
+function Footer() {
   return (
     <>
       <div className="container-fluid footer_div">
@@ -10,4 +10,4 @@ function TaxStatement() {
   );
 }
 
-export default TaxStatement;
+export default Footer;

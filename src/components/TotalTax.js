@@ -59,11 +59,11 @@ function Totaltax(props) {
     let t1, t2, t3, t4, t5;
     if (props.category === "disabled")
       [t1, t2, t3, t4, t5] = [...taxConfig.taxRules.disabled];
-    else if (props.category === "man")
-      [t1, t2, t3, t4, t5] = [...taxConfig.taxRules.male];
+    else if (props.category === "general")
+      [t1, t2, t3, t4, t5] = [...taxConfig.taxRules.general];
     else if (props.category === "freedomFighters")
       [t1, t2, t3, t4, t5] = [...taxConfig.taxRules.freedomFighters];
-    else [t1, t2, t3, t4, t5] = [...taxConfig.taxRules.others];
+    else [t1, t2, t3, t4, t5] = [...taxConfig.taxRules.oldAge];
 
     let sumOfTaxArray1 = t1 + t2 + t3 + t4 + t5;
     let sumOfTaxArray2 = t1 + t2 + t3 + t4;

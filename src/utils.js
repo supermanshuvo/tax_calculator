@@ -1,7 +1,7 @@
 import { taxConfig } from "./configData.js";
 
 export const calculatePayableTax = (totalTaxableIncome, category) => {
-  let taxArray = taxConfig.taxRules.others;
+  let taxArray = taxConfig.taxRules.oldAge;
   if (category === "disabled") taxArray = taxConfig.taxRules.disabled;
   else if (category === "man") taxArray = taxConfig.taxRules.male;
   else if (category === "freedomFighters")

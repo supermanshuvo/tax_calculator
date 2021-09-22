@@ -10,12 +10,14 @@ import {
   Switch,
   Route,
   Redirect,
+  useHistory,
 } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import UserDetails from "./components/UserDetails";
+import TaxStatement  from "./components/TaxStatement";
 import ReportHeader from "./components/ReportHeader";
 import TaxableIncome from "./components/TaxableIncome";
 import TotalTax from "./components/TotalTax.js";
@@ -31,7 +33,7 @@ import sinior from "./images/04-icon.png";
 
 function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [category, setCategory] = useState("man");
+  const [category, setCategory] = useState();
   const [formData, setUserData] = useState({});
   const [totalTaxableIncome, setTotalTaxableIncome] = useState(0);
   const [totalpayable, setTotalpayable] = useState(0);
@@ -46,6 +48,8 @@ function App() {
   const [createBtnShow, setCreateBtnShow] = useState(true);
   const [reportPhase, setReportPhase] = useState(false);
   const [userInfo, setUserInfo] = useState({});
+  const [zone, setZone] = useState('')
+  const history = useHistory()
 
   useEffect(() => {
     let newTotalPayable = calculatePayableTax(totalTaxableIncome, category);
@@ -72,7 +76,10 @@ function App() {
   };
 
   const handleSubmit = (formData, submitted) => {
+    console.log(formData)
+    setZone(formData.zone)
     setUserData(formData);
+    setCategory(formData.category)
     const newHousingLess = Math.min(
       formData.basicAmount *
         formData.pvMonths *
@@ -124,68 +131,31 @@ function App() {
     <Router>
       <>
         <Header />
-        <Navbar changeCategory={(newCategory) => setCategory(newCategory)} />
+        {/*<Navbar updateCategory={(newCategory) => setCategory(newCategory)} />*/}
 
         {!formSubmitted && !!formData ? (
           <Switch>
-            <Route path="/man">
+            <Route path="/">
               <InComeDetails
-                category="Male"
-                icon={male}
-                content="Morbi in sem quis dui placerat ornare.
-               Pellentesque odio nisi"
-                firstAmount={300000}
                 handleStates={(formData, submitted) =>
                   handleSubmit(formData, submitted)
                 }
               />
             </Route>
-            <Route path="/freedomFighters">
-              <InComeDetails
-                category="Female"
-                icon={female}
-                content="Praesent dapibus, neque id cursus faucibus,
-           tortor neque egestas auguae."
-                firstAmount={475000}
-                handleStates={(formData, submitted) =>
-                  handleSubmit(formData, submitted)
-                }
-              />
-            </Route>
-            <Route path="/disabled">
-              <InComeDetails
-                category="Disabled"
-                icon={disable}
-                content="Phasellus ultrices nulla quis nibh. Quisque a lectus. 
-          Donec consectetuer ligula vulputate."
-                firstAmount={450000}
-                handleStates={(formData, submitted) =>
-                  handleSubmit(formData, submitted)
-                }
-              />
-            </Route>
-            <Route path="/oldage">
-              <InComeDetails
-                category="Oldage"
-                icon={sinior}
-                content="Nam dui mi, tincidunt quis, accumsan porttitor, 
-          facilisis luctus, metus."
-                firstAmount={350000}
-                handleStates={(formData, submitted) =>
-                  handleSubmit(formData, submitted)
-                }
-              />
-            </Route>
-            <Redirect to="/man" />
+
+            <Route path='taxStatement'>
+              <TaxStatement/>
+            </Route>  
           </Switch>
         ) : (
           <>
             <div ref={captureRef}>
               {reportPhase === true ? (
-                <ReportHeader userInfo={userInfo} region={formData.zone} />
+                <ReportHeader userInfo={userInfo} region={zone} />
               ) : null}
               <div></div>
-              <TaxableIncome
+              <TaxableIncome updateZone={(newZone)=>setZone(newZone)}
+              updateCategory={(newCategory) => setCategory(newCategory)}
                 formData={formData}
                 handleStates={(formData, submitted) =>
                   handleSubmit(formData, submitted)
@@ -214,7 +184,7 @@ function App() {
               />
               <InvestmentAllowance
                 provFund={formData.provFund}
-                zone={formData.zone}
+                zone={zone}
                 totalTaxIncome={totalTaxableIncome}
                 totalPayableTax={totalpayable}
               />

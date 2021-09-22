@@ -41,6 +41,42 @@ export const InComeDetails = (props) => {
           <div className="row">
             <div className="col-lg-8 col-11">
               <form onSubmit={handleSubmit(handleFormData)}>
+                <h3>Salary Details</h3>
+                <div className="d-flex justify-content-between ">
+                <div className="form-group">
+                    <label>Choose Category</label>
+                    <select
+                      className="form-control"
+                        type="number"
+                        {...register("category")}
+                      >
+                        <option value="general" selected>
+                          General
+                        </option>
+                        <option value="oldAge">Female/OldAge(65+)</option>
+                        <option value="freedomFighters">Gazetted Freedom Fighters</option>
+                        <option value="disabled">Disabled</option>
+                      </select>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Choose Zone</label>
+                    <select
+                      className="form-control"
+                        type="number"
+                        {...register("zone")}
+                      >
+                        <option value="cityCorporation" selected>
+                          Dhaka/Chattagram City
+                        </option>
+                        <option value="otherCity">Other City</option>
+                        <option value="restCountry">Rest of the Country</option>
+                      </select>
+                  </div>
+
+          
+
+                </div>  
                 <div className="d-flex justify-content-between ">
                   <div className="form-group">
                     <label>Basic Amount</label>
@@ -191,8 +227,8 @@ export const InComeDetails = (props) => {
                 </div>
 
                 <div className="d-flex justify-content-between ">
-                  <div className="form-group">
-                    <label>provedient month</label>
+                <div className="form-group">
+                    <label>Number Of month</label>
                     <select
                       className="form-control"
                       type="number"
@@ -215,69 +251,12 @@ export const InComeDetails = (props) => {
                     </select>
                   </div>
 
-                  <div className="form-group">
-                    <label>Choose Zone</label>
-                    <select
-                      className="form-control"
-                      type="number"
-                      {...register("zone")}
-                    >
-                      <option value="cityCorporation" selected>
-                        Dhaka/Chattagram City
-                      </option>
-                      <option value="otherCity">Other City</option>
-                      <option value="restCountry">Rest of the Country</option>
-                    </select>
-                  </div>
                 </div>
 
                 <button type="submit" className="btn btn-primary">
                   Submit
                 </button>
               </form>
-            </div>
-            <div className="col-lg-4 col-11">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">amount</th>
-                    <th scope="col">Tax %</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">first tk</th>
-                    <td>{props.firstAmount}</td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">next tk</th>
-                    <td>0000</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">next tk</th>
-                    <td>300000</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">next tk</th>
-                    <td>400000</td>
-                    <td>15</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">next tk</th>
-                    <td>500000</td>
-                    <td>20</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">next tk</th>
-                    <td>rest of all</td>
-                    <td>25</td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
