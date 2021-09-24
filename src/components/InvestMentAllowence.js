@@ -10,6 +10,8 @@ const InvestmentAllowance = ({
   totalPayableTax,
   zone,
 }) => {
+
+  console.log('totalpayable ',totalPayableTax)
   const [totalInvestMent, setTotalInvestMent] = useState(0);
   const [allowInvestment, setAllowInvestment] = useState(0);
   const [limitInvestment, setLimitInvestment] = useState(0);
@@ -18,34 +20,34 @@ const InvestmentAllowance = ({
   const dpsField = useRef(0);
   const [lessRebateParents, setParents] = useState(0);
 
-  let LessRebateFunc = (allowInvestment, totalTaxIncome) => {
-    let result = 0;
-    if (allowInvestment <= 0) {
-      result = 0;
-    } else if (totalTaxIncome <= taxConfig.config.configureC44) {
-      result = allowInvestment * taxConfig.config.ConfigureH44 * 0.01;
-    } else if (totalTaxIncome <= taxConfig.config.ConfigureC45) {
-      if (allowInvestment - taxConfig.config.ConfigureC46 > 0) {
-        result =
-          taxConfig.config.ConfigureC46 * taxConfig.config.ConfigureH46 * 0.01 +
-          (allowInvestment - taxConfig.config.ConfigureC46) *
-            taxConfig.config.ConfigureH47 *
-            0.01;
-      } else {
-        result = allowInvestment * taxConfig.config.ConfigureH46 * 0.01;
-      }
-    } else {
-      result =
-        taxConfig.config.ConfigureC49 * taxConfig.config.ConfigureH49 * 0.01 +
-        taxConfig.config.ConfigureC50 * taxConfig.config.ConfigureH50 * 0.01 +
-        (allowInvestment -
-          (taxConfig.config.ConfigureC49 + taxConfig.config.ConfigureC50)) *
-          taxConfig.config.ConfigureH51 *
-          0.01;
-    }
+  // let LessRebateFunc = (allowInvestment, totalTaxIncome) => {
+  //   let result = 0;
+  //   if (allowInvestment <= 0) {
+  //     result = 0;
+  //   } else if (totalTaxIncome <= taxConfig.config.configureC44) {
+  //     result = allowInvestment * taxConfig.config.ConfigureH44 * 0.01;
+  //   } else if (totalTaxIncome <= taxConfig.config.ConfigureC45) {
+  //     if (allowInvestment - taxConfig.config.ConfigureC46 > 0) {
+  //       result =
+  //         taxConfig.config.ConfigureC46 * taxConfig.config.ConfigureH46 * 0.01 +
+  //         (allowInvestment - taxConfig.config.ConfigureC46) *
+  //           taxConfig.config.ConfigureH47 *
+  //           0.01;
+  //     } else {
+  //       result = allowInvestment * taxConfig.config.ConfigureH46 * 0.01;
+  //     }
+  //   } else {
+  //     result =
+  //       taxConfig.config.ConfigureC49 * taxConfig.config.ConfigureH49 * 0.01 +
+  //       taxConfig.config.ConfigureC50 * taxConfig.config.ConfigureH50 * 0.01 +
+  //       (allowInvestment -
+  //         (taxConfig.config.ConfigureC49 + taxConfig.config.ConfigureC50)) *
+  //         taxConfig.config.ConfigureH51 *
+  //         0.01;
+  //   }
 
-    return result;
-  };
+  //   return result;
+  // };
 
   useEffect(() => {
     let minimumTax =
@@ -58,13 +60,13 @@ const InvestmentAllowance = ({
     setTotalInvestMent(provFund + Number(dpsField.current.value));
 
     if (
-      (totalTaxIncome - provFund) *
+      totalTaxIncome *
         taxConfig.config.maxInvestTaxExemption *
         0.01 <
       taxConfig.config.maxAllowedInvesment
     ) {
       setAllowInvestment(
-        (totalTaxIncome - provFund) *
+        totalTaxIncome*
           taxConfig.config.maxInvestTaxExemption *
           0.01
       );
@@ -76,13 +78,12 @@ const InvestmentAllowance = ({
     setParents(lessRebateParentsvar);
     setLimitInvestment(
       Math.max(
-        totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01 -
-          provFund,
+        totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01 ,
         taxConfig.config.maxAllowedInvesment
       )
     );
-    setLessRebate(LessRebateFunc(lessRebateParents, totalTaxIncome));
-
+    //setLessRebate(LessRebateFunc(lessRebateParents, totalTaxIncome));
+      setLessRebate(lessRebateParents*.15)  
     let netIncomeTaxAmount = Math.max(minimumTax, totalPayableTax - lessRebate);
     if (totalPayableTax === 0) {
       netIncomeTaxAmount = 0;
@@ -113,7 +114,7 @@ const InvestmentAllowance = ({
         className="accordion"
         onClick={() => {
           setActive(title);
-          console.log("accordion");
+          //console.log("accordion");
         }}
       >
         <p className="All_Headings">Total Calculation</p>
@@ -158,7 +159,7 @@ const InvestmentAllowance = ({
               <td className="text-center">{format.format(totalInvestMent)}</td>
             </tr>
             <tr>
-              <td>Allowed Investment (25% of Total Taxable Income ) </td>
+              <td>Allowed Investment (25% of Total {totalTaxIncome} ) </td>
               <td className="text-center">
                 {format.format(allowInvestment)} From{" "}
                 {format.format(limitInvestment)}
@@ -168,8 +169,9 @@ const InvestmentAllowance = ({
             <tr>
               <td>Less Rebate on Investment Tk</td>
               <td className="text-center">
-                {format.format(lessRebateParents) + " "}
-                {"  (15% of Total Investment) "}
+                {format.format(lessRebateParents+" ") + 
+                "   (15% of "+ lessRebateParents + ")"}
+                
                 {format.format(lessRebate)}
               </td>
             </tr>

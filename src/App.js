@@ -38,8 +38,6 @@ function App() {
   const [active, setActive] = useState("taxableIncome");
 
 
-  console.log(active)
-
   const handleUserInfo = (userInfo, submit) => {
     setUserInfo(userInfo);
     setReportPhase(submit);
@@ -48,7 +46,6 @@ function App() {
   useEffect(() => {
     let newTotalPayable = calculatePayableTax(totalTaxableIncome, category);
     setTotalpayable(newTotalPayable);
-    //console.log('Totalpayable',totalpayable);
   }, [category, totalTaxableIncome, formData, totalpayable]);
 
   const printDocument = () => {
@@ -111,7 +108,7 @@ function App() {
     setTotalTaxableIncome(totaltaxIncome);
     //totalTaxableIncome.current=totaltaxIncome
     // setCategory(category);
-    setTotalpayable(calculatePayableTax(totalTaxableIncome, category));
+    //setTotalpayable(calculatePayableTax(totalTaxableIncome, category));
     setFormSubmitted(submitted);
   };
 
@@ -162,6 +159,7 @@ function App() {
                   />
 
                   <TotalTax title = "totalTax"
+                   setTotalpayable={setTotalpayable}
                     active={active} setActive={setActive}
                     category={category}
                     totalTaxableIncome={totalTaxableIncome}

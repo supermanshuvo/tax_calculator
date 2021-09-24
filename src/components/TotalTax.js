@@ -99,6 +99,7 @@ function Totaltax(props) {
       setCondition4(d);
       setCondition5(paidTax1);
       setCondition6(totalTax1);
+      props.setTotalpayable(totalTax1)
     }
 
     //condition2
@@ -128,6 +129,7 @@ function Totaltax(props) {
       setCondition3(c);
       setCondition4(paidTax2);
       setCondition6(totalTax2);
+      props.setTotalpayable(totalTax2)
     }
 
     //condition3
@@ -151,6 +153,7 @@ function Totaltax(props) {
       setCondition2(b);
       setCondition3(paidTax3);
       setCondition6(totalTax3);
+      props.setTotalpayable(totalTax3)
     }
 
     //condition4
@@ -170,6 +173,7 @@ function Totaltax(props) {
       setCondition1(a);
       setCondition2(paidTax4);
       setCondition6(totalTax4);
+      props.setTotalpayable(totalTax4)
     }
 
     //condition5
@@ -185,10 +189,11 @@ function Totaltax(props) {
       let totalTax5 = (tax5 * 5) / 100;
       setCondition1(totalTax5);
       setCondition6(totalTax5);
+      props.setTotalpayable(totalTax5)
     }
   };
 
-  useEffect(() => handleChange());
+  useEffect(() => handleChange(),[props]);
 
   var format = new Intl.NumberFormat("en-IN", {
     style: "currency",

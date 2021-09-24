@@ -32,9 +32,14 @@ function TaxableIncome({
 
   return (
     <div className=" accordion_tab" >
-      <div className="accordion" onClick={() => setActive(title)}>
+      <div className="accordion" onClick={() => {
+        if(title===active){
+          setActive('')
+        }
+        else
+        setActive(title)}}>
         <p className="All_Headings" >
-          Taxable Income
+          Taxable Income 
         </p>
       </div>
       <div className={(active===title? "show":"")+" accordionContent row "}>
