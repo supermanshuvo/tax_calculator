@@ -202,7 +202,7 @@ function Totaltax(props) {
   });
   return (
     <>
-     <div className="accordion_tab">
+     {/* <div className="accordion_tab">
      <div className="accordion" onClick={() => props.setActive(props.title)}>
         <p className="All_Headings">Income Tax</p>
       </div>
@@ -210,7 +210,25 @@ function Totaltax(props) {
         className={
           (props.active === props.title ? "show" : "") + " accordionContent row"
         }
-      >
+      > */}
+      <div className="accordion" id="accordionExample">
+  <div className="accordion-item">
+    <h2 className="accordion-header"
+    onClick={() => {
+      if(props.title===props.active){
+      props.setActive('')
+      }
+      else
+      props.setActive(props.title)}}
+    id="headingOne">
+      <button className={"accordion-button "+ (props.title === props.active?'togolBtn':'')} type="button" 
+      data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+       aria-expanded="true" aria-controls="collapseTwo">
+        total payable Tax <span>{props.title !== props.active?' '+format.format(conditon6):''}</span>
+      </button>
+    </h2>
+    <div id="collapseTwo" className={"accordion-collapse collapse "+(props.active === props.title ? "show" : "")} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div className="accordion-body"></div>
         <div className="table-responsive">
           <table className="table table-hover table-bordered border-dark ">
             {/* All headings */}
@@ -355,6 +373,7 @@ function Totaltax(props) {
               {/* end of all items and table */}
             </tbody>
           </table>
+        </div>
         </div>
       </div>
      </div>

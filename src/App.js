@@ -30,6 +30,7 @@ function App() {
   const taxableMedicalRef = useRef(0);
   const taxableHousingRef = useRef(0);
   const taxableConveyanceRef = useRef(0);
+  const taxableOthersRef = useRef(0);
   const captureRef = useRef(null);
   const [reportPhase, setReportPhase] = useState(false);
   const [userInfo, setUserInfo] = useState({});
@@ -96,6 +97,7 @@ function App() {
         taxConfig.lessAmount.maxConveyance,
       0
     );
+    taxableOthersRef.current = formData.othersAmount * formData.pvMonths;
 
     const totaltaxIncome =
       taxableBasicRef.current +
@@ -103,12 +105,14 @@ function App() {
       taxableHousingRef.current +
       taxableConveyanceRef.current +
       formData.bonusAmount +
-      formData.provFund;
+      formData.provFund+
+      taxableOthersRef.current;
 
     setTotalTaxableIncome(totaltaxIncome);
     //totalTaxableIncome.current=totaltaxIncome
     // setCategory(category);
     //setTotalpayable(calculatePayableTax(totalTaxableIncome, category));
+    setActive('taxableIncome')
     setFormSubmitted(submitted);
   };
 
@@ -133,17 +137,19 @@ function App() {
             <>
               <div className="container">
                 <div className="row">
-                <div className="col-md-8 col-sm-12" ref={captureRef}>
+                <div className={!reportPhase ?"accordion col-md-8 col-sm-12":'row'} id="accordionExample" ref={captureRef}>
                   {reportPhase === true ? (
                     <ReportHeader userInfo={userInfo} region={zone} />
                   ) : null}
 
-                  <TaxableIncome title = "taxableIncome"
+                  <TaxableIncome reportPhase={reportPhase}
+                   title = "taxableIncome"
                   active={active} setActive={setActive}
                     formBasic={formData.basicAmount}
                     formHousing={formData.housingAmount}
                     formMedical={formData.medicalAmount}
                     formConveyance={formData.conveyanceAmount}
+                    formOthers={formData.othersAmount}
                     formPvMonths={formData.pvMonths}
                     formBonus={formData.bonusAmount}
                     formProvFund={formData.provFund}
@@ -154,17 +160,19 @@ function App() {
                     taxableBasic={taxableBasicRef.current}
                     taxableHousing={taxableHousingRef.current}
                     taxableMedical={taxableMedicalRef.current}
-                    reportPhase={reportPhase}
                     taxableConveyance={taxableConveyanceRef.current}
+                    taxableOthers={taxableOthersRef.current}
+                    reportPhase={reportPhase}
                   />
 
-                  <TotalTax title = "totalTax"
+                  <TotalTax reportPhase={reportPhase}
+                   title = "totalTax"
                    setTotalpayable={setTotalpayable}
                     active={active} setActive={setActive}
                     category={category}
                     totalTaxableIncome={totalTaxableIncome}
                   />
-                  <InvestmentAllowance
+                  <InvestmentAllowance reportPhase={reportPhase}
                   title = "investmentAllowance"
                     active={active} setActive={setActive}
                     provFund={formData.provFund}
@@ -174,7 +182,7 @@ function App() {
                   />
                 </div>
                 
-                <div className="col-md-4 col-sm-12">
+                {!reportPhase ?<div className="col-md-4 col-sm-12">
                   <UpdateIncomeDetails
                     updateZone={(newZone) => setZone(newZone)}
                     updateCategory={(newCategory) => setCategory(newCategory)}
@@ -183,7 +191,7 @@ function App() {
                       handleFormSubmit(formData, submitted)
                     }
                   />
-                </div>
+                </div>:''}
                 </div>
               </div>
 

@@ -41,6 +41,7 @@ export const UpdateIncomeDetails = ({
     formData.housingAmount = Number(formData.housingAmount);
     formData.medicalAmount = Number(formData.medicalAmount);
     formData.conveyanceAmount = Number(formData.conveyanceAmount);
+    formData.othersAmount = Number(formData.othersAmount)
     formData.pvMonths = Number(formData.pvMonths);
     if (formData.bonusAmount === undefined) formData.bonusAmount = 0;
     if (formData.provFund === undefined) formData.provFund = 0;
@@ -203,13 +204,13 @@ export const UpdateIncomeDetails = ({
 
         <div className="d-flex justify-content-between ">
           <div className="form-check form-group">
-            <input
+            {/* <input
               type="checkbox"
               name="bonus"
               onClick={checkboxBonusHandler}
-            />
+            /> */}
             <label className="form-check-label">Bonus</label>
-            {inputField.bonus ? (
+            {/* {inputField.bonus ? ( */}
               <input
                 {...register("bonusAmount", {
                   min: {
@@ -222,20 +223,20 @@ export const UpdateIncomeDetails = ({
                 className="form-control"
                 defaultValue={formData.bonusAmount}
               />
-            ) : null}
+            {/* ) : null} */}
             {errors.bonusAmount && (
               <span className="text-warning">Must Be Positive Number</span>
             )}
           </div>
 
           <div className="form-check form-group">
-            <input
+            {/* <input
               type="checkbox"
               name="provFund"
               onClick={checkboxprovFundHandler}
-            />
+            /> */}
             <label className="form-check-label">Provident Fund</label>
-            {inputField.provFund ? (
+            {/* {inputField.provFund ? ( */}
               <input
                 {...register("provFund", {
                   min: {
@@ -248,7 +249,7 @@ export const UpdateIncomeDetails = ({
                 className="form-control"
                 defaultValue={formData.provFund}
               />
-            ) : null}
+            {/* ) : null} */}
             {errors.provFund && (
               <span className="text-warning">Must Be Positive Number</span>
             )}
@@ -256,6 +257,25 @@ export const UpdateIncomeDetails = ({
         </div>
 
         <div className="d-flex justify-content-between ">
+          <div className="form-group">
+            <label>Others</label>
+            <input
+              {...register("othersAmount", {
+                min: {
+                  value: 0,
+                  message: "Must Be Positive Number",
+                  // JS only: <p>error message</p> TS only support string
+                },
+              })}
+              type="number"
+              className="form-control"
+              id="exampleInputPassword1"
+              defaultValue={formData.othersAmount}
+            />
+            {errors.othersAmount && (
+              <span className="text-warning">Must Be Positive Number</span>
+            )}
+          </div>
           <div className="form-group">
             <label>Number Of Months</label>
             <select

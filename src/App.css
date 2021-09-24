@@ -479,9 +479,11 @@ table.table.table-hover.table-bordered.border-dark th{
 }
 .report_header{
   padding-top: 100px;
-  font-weight: 700;
-  font-size: 52px;
+  font-weight: 600;
+  font-size: 22px;
   margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 36px;
 }
 .container-fluid.footer_div {
   background-color: #000000eb;
@@ -650,4 +652,11 @@ table{
 }
 .total_calc td{
   height: 10px !important;
+}
+
+.accordion-button.togolBtn::after{
+  transform: rotate(-360deg) !important;
+}
+.table-responsive {
+  overflow-x: hidden;
 }

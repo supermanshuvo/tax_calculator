@@ -10,8 +10,7 @@ const InvestmentAllowance = ({
   totalPayableTax,
   zone,
 }) => {
-
-  console.log('totalpayable ',totalPayableTax)
+  console.log("totalpayable ", totalPayableTax);
   const [totalInvestMent, setTotalInvestMent] = useState(0);
   const [allowInvestment, setAllowInvestment] = useState(0);
   const [limitInvestment, setLimitInvestment] = useState(0);
@@ -60,15 +59,11 @@ const InvestmentAllowance = ({
     setTotalInvestMent(provFund + Number(dpsField.current.value));
 
     if (
-      totalTaxIncome *
-        taxConfig.config.maxInvestTaxExemption *
-        0.01 <
+      totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01 <
       taxConfig.config.maxAllowedInvesment
     ) {
       setAllowInvestment(
-        totalTaxIncome*
-          taxConfig.config.maxInvestTaxExemption *
-          0.01
+        totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01
       );
     } else {
       setAllowInvestment(taxConfig.config.maxAllowedInvesment);
@@ -78,12 +73,12 @@ const InvestmentAllowance = ({
     setParents(lessRebateParentsvar);
     setLimitInvestment(
       Math.max(
-        totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01 ,
+        totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01,
         taxConfig.config.maxAllowedInvesment
       )
     );
     //setLessRebate(LessRebateFunc(lessRebateParents, totalTaxIncome));
-      setLessRebate(lessRebateParents*.15)  
+    setLessRebate(lessRebateParents * 0.15);
     let netIncomeTaxAmount = Math.max(minimumTax, totalPayableTax - lessRebate);
     if (totalPayableTax === 0) {
       netIncomeTaxAmount = 0;
@@ -109,80 +104,115 @@ const InvestmentAllowance = ({
   });
 
   return (
-    <div className=" accordion_tab">
-      <div
-        className="accordion"
-        onClick={() => {
-          setActive(title);
-          //console.log("accordion");
-        }}
-      >
-        <p className="All_Headings">Total Calculation</p>
-      </div>
-      <div className={(active === title ? "show" : "") + " accordionContent table-responsive "}>
-        <table className="table table-hover table-bordered total_calc">
-          <thead>
-            <tr className="total_of_IncomeDetails">
-              <th scope="col">Investment Allowance and Tax Rebate</th>
-              <th> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Contribution to Provident Fund</td>
-              <td className="text-center">{provFund}</td>
-            </tr>
-            <tr>
-              <td>DPS/BSP/LIP/Others (If Applicable)</td>
-              <td className="text-center table_form">
-                <input
-                  type="number"
-                  ref={dpsField}
-                  placeholder="Waiting for input"
-                  defaultValue={0}
-                  onChange={(e) => {
-                    //   let value = e.target.value===NaN?0:e.target.value;
-                    //   let newTotal = parseInt(provFund*2)+parseInt(value)
-                    //   setTotalInvestMent(newTotal)
-                    let DPSOthers = e.target.value;
-                    setTotalInvestMent(
-                      DPSOthers > 0
-                        ? parseFloat(provFund) + parseFloat(DPSOthers)
-                        : parseFloat(provFund)
-                    );
-                  }}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Total Investment</td>
-              <td className="text-center">{format.format(totalInvestMent)}</td>
-            </tr>
-            <tr>
-              <td>Allowed Investment (25% of Total {totalTaxIncome} ) </td>
-              <td className="text-center">
-                {format.format(allowInvestment)} From{" "}
-                {format.format(limitInvestment)}
-              </td>
-            </tr>
+    // <div className=" accordion_tab">
+    //   <div
+    //     className="accordion"
+    //     onClick={() => {
+    //       setActive(title);
+    //       //console.log("accordion");
+    //     }}
+    //   >
+    //     <p className="All_Headings">Total Calculation</p>
+    //   </div>
+    //      <div className={(active === title ? "show" : "") + " accordionContent table-responsive "}>
 
-            <tr>
-              <td>Less Rebate on Investment Tk</td>
-              <td className="text-center">
-                {format.format(lessRebateParents+" ") + 
-                "   (15% of "+ lessRebateParents + ")"}
-                
-                {format.format(lessRebate)}
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="1">Net Income Tax Payable </td>
-              <td className="text-center ">
-                <p className="fw-bold">{format.format(netIncomeTaxPayable)}</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div className="accordion-item">
+      <h2 className="accordion-header"
+        onClick={() => {
+        if(title===active){
+        setActive('')
+        }
+        else
+        setActive(title)}}
+       id="headingThree">
+        <button
+          className={"accordion-button "+ (title === active?'togolBtn':'')}
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          Total Calculation <span>{title !== active? 'Net Income Tax  : '+format.format(netIncomeTaxPayable) : ''}</span>
+        </button>
+      </h2>
+      <div
+        id="collapseThree"
+        className={"accordion-collapse collapse "+(active === title ? "show" : "")}
+        aria-labelledby="headingThree"
+        data-bs-parent="#accordionExample"
+      >
+        <div className="accordion-body">
+          <table className="table table-hover table-bordered total_calc">
+            <thead>
+              <tr className="total_of_IncomeDetails">
+                <th scope="col">Investment Allowance and Tax Rebate</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Contribution to Provident Fund</td>
+                <td className="text-center">{provFund}</td>
+              </tr>
+              <tr>
+                <td>DPS/BSP/LIP/Others (If Applicable)</td>
+                <td className="text-center table_form">
+                  <input
+                    type="number"
+                    ref={dpsField}
+                    placeholder="Waiting for input"
+                    defaultValue={0}
+                    onChange={(e) => {
+                      //   let value = e.target.value===NaN?0:e.target.value;
+                      //   let newTotal = parseInt(provFund*2)+parseInt(value)
+                      //   setTotalInvestMent(newTotal)
+                      let DPSOthers = e.target.value;
+                      setTotalInvestMent(
+                        DPSOthers > 0
+                          ? parseFloat(provFund) + parseFloat(DPSOthers)
+                          : parseFloat(provFund)
+                      );
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Total Investment</td>
+                <td className="text-center">
+                  {format.format(totalInvestMent)}
+                </td>
+              </tr>
+              <tr>
+                <td>Allowed Investment (25% of Total {totalTaxIncome} ) </td>
+                <td className="text-center">
+                  {format.format(allowInvestment)} From{" "}
+                  {format.format(limitInvestment)}
+                </td>
+              </tr>
+
+              <tr>
+                <td>Less Rebate on Investment Tk</td>
+                <td className="text-center">
+                  {format.format(lessRebateParents + " ") +
+                    "   (15% of " +
+                    lessRebateParents +
+                    ")"}
+
+                  {format.format(lessRebate)}
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="1">Net Income Tax Payable </td>
+                <td className="text-center ">
+                  <p className="fw-bold">
+                    {format.format(netIncomeTaxPayable)}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
