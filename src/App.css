@@ -15,7 +15,69 @@ p.text-center {
   font-size: 1.5vw;
   color: #fff;
 }
+.Header-bg-style .container .row{
+  padding: 40px 0px 0px;
+}
+.form_style h3{
+  font-size: 36px;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+.form_style .d-flex .form-group{
+  position: relative;
+}
+.form_style .d-flex .form-group span.text-warning{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #ff0000b5 !important;
+  margin-bottom: -22px;
+  font-size: 12px;
+}
+.form_style .d-flex .form-group  input:focus{
+ border: red;
+}
 
+.form_style .d-flex .form-group .form-check-label{
+  line-height: 2em;
+  padding: 5px 10px;
+}
+@media (min-width: 992px) { 
+  .form_style .d-flex .form-group{
+    display: flex;
+    align-items: center;
+  }
+  .form_style .d-flex .form-group label{
+    padding-right: 20px;
+    width: 75%;
+  }
+  .form_style .d-flex .form-group input{
+    /* width: 50%; */
+  }
+  
+  .form_style .d-flex .form-group .form-check-label{
+    line-height: 2em;
+    padding: 5px 10px;
+  }
+ }
+
+ /*Mobile Form*/
+ @media (max-width: 576px) { 
+  .form_style .d-flex {
+    display: block !important;
+  }
+  .form_style .d-flex .form-group{
+    width: 100%;
+  }
+  button.btn.btn-primary{
+    width: 80% !important;
+  }
+  .form_style .d-flex .form-group .form-check-label{
+    line-height: 2em;
+    padding: 5px 10px;
+  }
+  }
 button.exlpore_btn {
   font-size: 16px;
   outline: none;
@@ -128,7 +190,7 @@ h2.about {
   color: #4c6dff;
   font-size: 72px;
   text-align: left;
-  line-height: 62px;
+  line-height: 82px;
   font-weight: 800;
   padding-bottom: 10px;
   font-size: 82px;
@@ -138,6 +200,40 @@ h2.about {
         -webkit-text-fill-color: transparent;
         position: relative;
 }
+p.bt {
+  color: #fff;
+  font-size: 22px;
+}
+@media (max-width: 992px) { 
+  .ct{
+    font-size: 62px;
+    line-height: 72px;
+  }
+  p.bt {
+    font-size: 20px;
+  }
+ }
+
+ @media (max-width: 768px) {
+  .ct{
+    font-size: 52px;
+    line-height: 62px;
+  }
+  p.bt {
+    font-size: 18px;
+  }
+ }
+
+
+ @media (max-width: 576px) {
+  .ct{
+    font-size: 42px;
+    line-height: 52px;
+  }
+  p.bt {
+    font-size: 16px;
+  }
+ }
 
 .my-row {
   height: 100px;
@@ -149,6 +245,7 @@ h2.about {
 }
 .Header-bg{
   background-image: url(./images/bg.jpg);
+  margin-bottom: 40px;
 }
 .Header-bg-style {
   background-color: #02000ae3;
@@ -284,10 +381,7 @@ p.footerDetails {
   margin-bottom: 2vh;
 }
 
-p.bt {
-  color: #fff;
-  font-size: 22px;
-}
+
 .title_name {
   /* display: inline-block; */
   position: relative;
@@ -315,9 +409,9 @@ p.text-center {
   font-size: 16px;
 }
 p.All_Headings {
-  font-size: 34px;
+  font-size: 24px;
   font-weight: 600;
-  padding: 12px 0;
+  padding: 0px 0;
 }
 
 .row .bg-secondary {
@@ -425,6 +519,12 @@ p.footerDetails {
 
 }
 
+.padding_top_30{
+  padding-top: 30px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 @media only screen and (max-width: 768px) {
   .hero_image img {
     display: none !important;
@@ -451,3 +551,103 @@ p.footerDetails {
     width: 100% !important;
   }
   }
+
+  .accordionContent{
+    height: 0;
+    opacity: 0;
+    display: flex;
+    overflow: hidden;
+    transition: all 300ms ease-in-out;
+  }
+  .accordionContent.show{
+    height: 450px;
+    opacity: 1;
+    margin-top: 30px;
+
+  }
+
+  .accordion{
+    cursor: pointer;
+    padding-left: 0px !important;
+  }
+  .accordion_tab{
+    border: 1px solid #00000000;
+    box-shadow: 0px 0px 2px 2px #00000008;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 6px 35px;
+  }
+  .accordion .All_Headings{
+    padding-top: 0px;
+    margin-bottom: 0;
+  }
+.update_form{
+  border: 1px solid #00000000;
+  box-shadow: 0px 0px 2px 2px #00000008;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 20px 35px;
+}
+.update_form h3{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.form-check input.form-control{
+  /* width: 75%; */
+}
+
+.update_form label{
+  font-size: 14px;
+}
+
+.update_formform .justify-content-between{
+  margin-bottom: 20px;
+}
+@media (max-width: 992px) { 
+  .update_form{
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  .update_form  .justify-content-between{
+    margin-bottom: 0px;
+  }
+  .update_form  .d-flex {
+    display: block !important;
+  }
+  .update_form .d-flex .form-group{
+    width: 100%;
+  }
+
+  .update_form .d-flex .form-group .form-check-label{
+    line-height: 2em;
+    padding: 5px 10px;
+  }
+ #root .update_form .form-group label{
+   padding-top: 20px;
+    padding-bottom: 0px !important;
+    line-height: 15px !important;
+  }
+  #root .update_form .form-group input{
+    font-size: 12px;
+  }
+  #root .update_form .select_field{
+    font-size: 12px;
+  }
+}
+table{
+  font-size: 12px;
+}
+.update_form .form-check input.form-control {
+  width: 100%;
+}
+.update_form .justify-content-between {
+  margin-bottom: 19px;
+}
+.user_information h3{
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+.total_calc td{
+  height: 10px !important;
+}

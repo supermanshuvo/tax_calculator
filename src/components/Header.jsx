@@ -8,7 +8,7 @@ const Header = () => {
       <div className="Header-bg">
         <div className="Header-bg-style">
           <div className="container">
-            <div className="row " style={{ padding: "100px" }}>
+            <div className="row ">
               <div className="col-md-12 my-auto col-sm-12 text-center">
                 <div>
                   {/* <h3 className="h3_sub_heading">TAX CALCULATOR</h3> */}

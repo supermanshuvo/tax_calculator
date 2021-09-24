@@ -2,6 +2,9 @@ import { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { taxConfig } from ".././configData.js";
 
 const InvestmentAllowance = ({
+  title,
+  active,
+  setActive,
   provFund,
   totalTaxIncome,
   totalPayableTax,
@@ -45,9 +48,12 @@ const InvestmentAllowance = ({
   };
 
   useEffect(() => {
-    let minimumTax = (zone === "cityCorporation")?taxConfig.zone.cityCorporation:(
-      (zone === "otherCity")? taxConfig.zone.otherCity: taxConfig.zone.restCountry
-    )
+    let minimumTax =
+      zone === "cityCorporation"
+        ? taxConfig.zone.cityCorporation
+        : zone === "otherCity"
+        ? taxConfig.zone.otherCity
+        : taxConfig.zone.restCountry;
 
     setTotalInvestMent(provFund + Number(dpsField.current.value));
 
@@ -102,82 +108,79 @@ const InvestmentAllowance = ({
   });
 
   return (
-    <div className="container mt-2">
-      <div className="row">
-        <div className="section">
-          <div className="row">
-            <div className="table-responsive">
-              <p className="All_Headings">Total Calculation</p>
-              <table className="table table-hover table-bordered border-dark invest">
-                <thead>
-                  <tr className="total_of_IncomeDetails">
-                    <th scope="col">Investment Allowance and Tax Rebate</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Contribution to Provident Fund</td>
-                    <td className="text-center">{provFund}</td>
-                  </tr>
-                  <tr>
-                    <td>DPS/BSP/LIP/Others (If Applicable)</td>
-                    <td className="text-center table_form">
-                      <input
-                        type="number"
-                        ref={dpsField}
-                        placeholder="Waiting for input"
-                        defaultValue={0}
-                        onChange={(e) => {
-                          //   let value = e.target.value===NaN?0:e.target.value;
-                          //   let newTotal = parseInt(provFund*2)+parseInt(value)
-                          //   setTotalInvestMent(newTotal)
-                          let DPSOthers = e.target.value;
-                          setTotalInvestMent(
-                            DPSOthers > 0
-                              ? parseFloat(provFund) + parseFloat(DPSOthers)
-                              : parseFloat(provFund)
-                          );
-                        }}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Total Investment</td>
-                    <td className="text-center">
-                      {format.format(totalInvestMent)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Allowed Investment (25% of Total Taxable Income ) </td>
-                    <td className="text-center">
-                      {format.format(allowInvestment)} From{" "}
-                      {format.format(limitInvestment)}
-                    </td>
-                  </tr>
+    <div className=" accordion_tab">
+      <div
+        className="accordion"
+        onClick={() => {
+          setActive(title);
+          console.log("accordion");
+        }}
+      >
+        <p className="All_Headings">Total Calculation</p>
+      </div>
+      <div className={(active === title ? "show" : "") + " accordionContent table-responsive "}>
+        <table className="table table-hover table-bordered total_calc">
+          <thead>
+            <tr className="total_of_IncomeDetails">
+              <th scope="col">Investment Allowance and Tax Rebate</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Contribution to Provident Fund</td>
+              <td className="text-center">{provFund}</td>
+            </tr>
+            <tr>
+              <td>DPS/BSP/LIP/Others (If Applicable)</td>
+              <td className="text-center table_form">
+                <input
+                  type="number"
+                  ref={dpsField}
+                  placeholder="Waiting for input"
+                  defaultValue={0}
+                  onChange={(e) => {
+                    //   let value = e.target.value===NaN?0:e.target.value;
+                    //   let newTotal = parseInt(provFund*2)+parseInt(value)
+                    //   setTotalInvestMent(newTotal)
+                    let DPSOthers = e.target.value;
+                    setTotalInvestMent(
+                      DPSOthers > 0
+                        ? parseFloat(provFund) + parseFloat(DPSOthers)
+                        : parseFloat(provFund)
+                    );
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Total Investment</td>
+              <td className="text-center">{format.format(totalInvestMent)}</td>
+            </tr>
+            <tr>
+              <td>Allowed Investment (25% of Total Taxable Income ) </td>
+              <td className="text-center">
+                {format.format(allowInvestment)} From{" "}
+                {format.format(limitInvestment)}
+              </td>
+            </tr>
 
-                  <tr>
-                    <td>Less Rebate on Investment Tk</td>
-                    <td className="text-center">
-                      {format.format(lessRebateParents)+ ' '}
-                      {"  (15% of Total Investment) "}
-                      {format.format(lessRebate)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="1">Net Income Tax Payable </td>
-                    <td className="text-center ">
-                      {" "}
-                      <p className="fw-bold">
-                        {format.format(netIncomeTaxPayable)}
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+            <tr>
+              <td>Less Rebate on Investment Tk</td>
+              <td className="text-center">
+                {format.format(lessRebateParents) + " "}
+                {"  (15% of Total Investment) "}
+                {format.format(lessRebate)}
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="1">Net Income Tax Payable </td>
+              <td className="text-center ">
+                <p className="fw-bold">{format.format(netIncomeTaxPayable)}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

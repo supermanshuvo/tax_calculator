@@ -39,8 +39,8 @@ export const InComeDetails = (props) => {
       <div className="container all_options_div mt-5">
         <div className="container">
           <div className="row">
-            <div className="col-lg-8 col-11">
-              <form onSubmit={handleSubmit(handleFormData)}>
+            <div className=" col-md-10 offset-md-1 offset-sm-1 col-sm-10">
+              <form className="form_style" onSubmit={handleSubmit(handleFormData)}>
                 <h3>Salary Details</h3>
                 <div className="d-flex justify-content-between ">
                 <div className="form-group">
@@ -171,11 +171,12 @@ export const InComeDetails = (props) => {
                 <div className="d-flex justify-content-between ">
                   <div className="form-group">
                     <input
+                      id="bonuas_checkbox"
                       type="checkbox"
                       name="bonus"
                       onClick={checkboxBonusHandler}
                     />
-                    <label className="form-check-label">Bonus</label>
+                    <label htmlFor="bonuas_checkbox" className="form-check-label">Bonus</label>
                     {inputField.bonus ? (
                       <input
                         {...register("bonusAmount", {
@@ -199,11 +200,12 @@ export const InComeDetails = (props) => {
 
                   <div className="form-group">
                     <input
+                      id="prov_checkbox"
                       type="checkbox"
                       name="provFund"
                       onClick={checkboxprovFundHandler}
                     />
-                    <label className="form-check-label">Providient Fund</label>
+                    <label htmlFor="prov_checkbox" className="form-check-label">Providient Fund</label>
                     {inputField.provFund ? (
                       <input
                         {...register("provFund", {

@@ -2,22 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { InComeDetails } from "./components/IncomeDetails.js";
-//import {UpdateIncomeDetails} from './components/UpdateIncomeDetails'
-import {
-  BrowserRouter as Router,
-  Link,
-  Switch,
-  Route,
-  Redirect,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+import { InComeDetails } from "./components/IncomeDetails.js";
 import UserDetails from "./components/UserDetails";
-import TaxStatement  from "./components/TaxStatement";
+import { UpdateIncomeDetails } from "./components/UpdateIncomeDetails";
 import ReportHeader from "./components/ReportHeader";
 import TaxableIncome from "./components/TaxableIncome";
 import TotalTax from "./components/TotalTax.js";
@@ -25,11 +16,6 @@ import InvestmentAllowance from "./components/InvestMentAllowence.js";
 import { taxConfig } from "./configData.js";
 import { calculatePayableTax } from "./utils.js";
 import Footer from "./components/Footer";
-// Image
-import male from "./images/01-icon.png";
-import female from "./images/02-icon.png";
-import disable from "./images/03-icon.png";
-import sinior from "./images/04-icon.png";
 
 function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -45,11 +31,19 @@ function App() {
   const taxableHousingRef = useRef(0);
   const taxableConveyanceRef = useRef(0);
   const captureRef = useRef(null);
-  const [createBtnShow, setCreateBtnShow] = useState(true);
   const [reportPhase, setReportPhase] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  const [zone, setZone] = useState('')
-  const history = useHistory()
+  const [zone, setZone] = useState("");
+  const [createBtnShow, setCreateBtnShow] = useState(true);
+  const [active, setActive] = useState("taxableIncome");
+
+
+  console.log(active)
+
+  const handleUserInfo = (userInfo, submit) => {
+    setUserInfo(userInfo);
+    setReportPhase(submit);
+  };
 
   useEffect(() => {
     let newTotalPayable = calculatePayableTax(totalTaxableIncome, category);
@@ -70,16 +64,10 @@ function App() {
     });
   };
 
-  const handleUserInfo = (userInfo, submit) => {
-    setReportPhase(submit);
-    setUserInfo(userInfo);
-  };
-
-  const handleSubmit = (formData, submitted) => {
-    console.log(formData)
-    setZone(formData.zone)
+  const handleFormSubmit = (formData, submitted) => {
+    setZone(formData.zone);
     setUserData(formData);
-    setCategory(formData.category)
+    setCategory(formData.category);
     const newHousingLess = Math.min(
       formData.basicAmount *
         formData.pvMonths *
@@ -128,103 +116,109 @@ function App() {
   };
 
   return (
-    <Router>
-      <>
-        <Header />
-        {/*<Navbar updateCategory={(newCategory) => setCategory(newCategory)} />*/}
+    <>
+      <Router>
+        <>
+          <Header />
+          {/*<Navbar updateCategory={(newCategory) => setCategory(newCategory)} />*/}
 
-        {!formSubmitted && !!formData ? (
-          <Switch>
-            <Route path="/">
-              <InComeDetails
-                handleStates={(formData, submitted) =>
-                  handleSubmit(formData, submitted)
-                }
-              />
-            </Route>
+          {!formSubmitted && !!formData ? (
+            <Switch>
+              <Route path="/">
+                <InComeDetails
+                  handleStates={(formData, submitted) =>
+                    handleFormSubmit(formData, submitted)
+                  }
+                />
+              </Route>
+            </Switch>
+          ) : (
+            <>
+              <div className="container">
+                <div className="row">
+                <div className="col-md-8 col-sm-12" ref={captureRef}>
+                  {reportPhase === true ? (
+                    <ReportHeader userInfo={userInfo} region={zone} />
+                  ) : null}
 
-            <Route path='taxStatement'>
-              <TaxStatement/>
-            </Route>  
-          </Switch>
-        ) : (
-          <>
-            <div ref={captureRef}>
-              {reportPhase === true ? (
-                <ReportHeader userInfo={userInfo} region={zone} />
-              ) : null}
-              <div></div>
-              <TaxableIncome updateZone={(newZone)=>setZone(newZone)}
-              updateCategory={(newCategory) => setCategory(newCategory)}
-                formData={formData}
-                handleStates={(formData, submitted) =>
-                  handleSubmit(formData, submitted)
-                }
-                formBasic={formData.basicAmount}
-                formHousing={formData.housingAmount}
-                formMedical={formData.medicalAmount}
-                formConveyance={formData.conveyanceAmount}
-                formPvMonths={formData.pvMonths}
-                formBonus={formData.bonusAmount}
-                formProvFund={formData.provFund}
-                totalTaxableIncome={totalTaxableIncome}
-                housingLess={housingLessRef.current}
-                medicalLesss={medicalLesssRef.current}
-                conveyanceLesss={conveyanceLesssRef.current}
-                taxableBasic={taxableBasicRef.current}
-                taxableHousing={taxableHousingRef.current}
-                taxableMedical={taxableMedicalRef.current}
-                reportPhase={reportPhase}
-                taxableConveyance={taxableConveyanceRef.current}
-              />
+                  <TaxableIncome title = "taxableIncome"
+                  active={active} setActive={setActive}
+                    formBasic={formData.basicAmount}
+                    formHousing={formData.housingAmount}
+                    formMedical={formData.medicalAmount}
+                    formConveyance={formData.conveyanceAmount}
+                    formPvMonths={formData.pvMonths}
+                    formBonus={formData.bonusAmount}
+                    formProvFund={formData.provFund}
+                    totalTaxableIncome={totalTaxableIncome}
+                    housingLess={housingLessRef.current}
+                    medicalLesss={medicalLesssRef.current}
+                    conveyanceLesss={conveyanceLesssRef.current}
+                    taxableBasic={taxableBasicRef.current}
+                    taxableHousing={taxableHousingRef.current}
+                    taxableMedical={taxableMedicalRef.current}
+                    reportPhase={reportPhase}
+                    taxableConveyance={taxableConveyanceRef.current}
+                  />
 
-              <TotalTax
-                category={category}
-                totalTaxableIncome={totalTaxableIncome}
-              />
-              <InvestmentAllowance
-                provFund={formData.provFund}
-                zone={zone}
-                totalTaxIncome={totalTaxableIncome}
-                totalPayableTax={totalpayable}
-              />
-            </div>
-            {reportPhase === false ? (
-              <>
-                {createBtnShow ? (
-                  <Link
-                    className=" create_report"
-                    to={`/generateReport`}
-                    onClick={() => setCreateBtnShow(false)}
-                  >
-                    Create Report
-                  </Link>
-                ) : null}
+                  <TotalTax title = "totalTax"
+                    active={active} setActive={setActive}
+                    category={category}
+                    totalTaxableIncome={totalTaxableIncome}
+                  />
+                  <InvestmentAllowance
+                  title = "investmentAllowance"
+                    active={active} setActive={setActive}
+                    provFund={formData.provFund}
+                    zone={zone}
+                    totalTaxIncome={totalTaxableIncome}
+                    totalPayableTax={totalpayable}
+                  />
+                </div>
+                
+                <div className="col-md-4 col-sm-12">
+                  <UpdateIncomeDetails
+                    updateZone={(newZone) => setZone(newZone)}
+                    updateCategory={(newCategory) => setCategory(newCategory)}
+                    formData={formData}
+                    handleStates={(formData, submitted) =>
+                      handleFormSubmit(formData, submitted)
+                    }
+                  />
+                </div>
+                </div>
+              </div>
 
-                <Route
-                  exact
-                  path="/generateReport"
-                  children={
+              <div style={{margin:"40px"}}>
+                  {createBtnShow &&
+                    <button type="button"
+                      className="create_report"
+                      onClick={() => setCreateBtnShow(false)}
+                    >
+                      Create Report
+                    </button>}
+                  {reportPhase === false && createBtnShow==false ? (
                     <UserDetails
                       handleUserSubmit={(userData, submitted) =>
                         handleUserInfo(userData, submitted)
                       }
                     />
-                  }
-                ></Route>
-              </>
-            ) : null}
-            {reportPhase === true ? (
-              <button className="download_report" onClick={printDocument}>
-                Download Report
-              </button>
-            ) : null}
-          </>
-        )}
+                  ) : null}
+             
 
-        <Footer />
-      </>
-    </Router>
+                {reportPhase ? (
+                  <button className="download_report" onClick={printDocument}>
+                    Download Report
+                  </button>
+                ) : null}
+              </div>  
+            </>
+          )}
+
+          <Footer />
+        </>
+      </Router>
+    </>
   );
 }
 

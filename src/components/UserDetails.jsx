@@ -8,8 +8,8 @@ function UserDetails({ handleUserSubmit }) {
   };
 
   return (
-    <div className="container">
-      <p className="All_Headings">User Information</p>
+    <div className="container user_information">
+      <h3 className="All_Headings">User Information</h3>
       <div className="row">
         <div className="col-8 mx-auto">
           <form onSubmit={handleSubmit(handleFormData)}>

@@ -55,7 +55,7 @@ function Totaltax(props) {
     let b = 30000;
     let c = 60000;
     let d = 100000;
-    
+
     let t1, t2, t3, t4, t5;
     if (props.category === "disabled")
       [t1, t2, t3, t4, t5] = [...taxConfig.taxRules.disabled];
@@ -197,179 +197,162 @@ function Totaltax(props) {
   });
   return (
     <>
-      <div className="container">
+     <div className="accordion_tab">
+     <div className="accordion" onClick={() => props.setActive(props.title)}>
         <p className="All_Headings">Income Tax</p>
-        <form action="">
-          <div className="row">
-            <div className="col-12 mx-auto">
-              <div className="table-responsive">
-                <table className="table table-hover table-bordered border-dark ">
-                  {/* All headings */}
-                  <thead>
-                    <tr className="total_of_IncomeDetails">
-                      <th scope="col" className="text-center"></th>
-                      <th scope="col" className="text-center"></th>
-                      <th scope="col" className="text-center"></th>
-                      <th scope="col" className="text-center"></th>
-                      <th scope="col" className="text-center">
-                        Rate
-                      </th>
-                      <th scope="col" className="text-center">
-                        Tax
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {/* 1st item */}
-                    <tr>
-                      <td className="withoutInputFields td_of_charts">
-                        First Tk.
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(taxable1)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">From</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(amount1)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">0%</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">0</p>
-                      </td>
-                    </tr>
-                    {/* 2nd item */}
-                    <tr>
-                      <td className="td_of_charts">Next Tk.</td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(taxable2)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">From</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(amount2)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">5%</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">
-                          {format.format(conditon1)}
-                        </p>
-                      </td>
-                    </tr>
-                    {/* 3rd item */}
-                    <tr>
-                      <td className="td_of_charts">Next Tk.</td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(taxable3)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">from</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(amount3)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">10%</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">
-                          {format.format(conditon2)}
-                        </p>
-                      </td>
-                    </tr>
-                    {/* 4th item */}
-                    <tr>
-                      <td className="td_of_charts">Next Tk.</td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(taxable4)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">From</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(amount4)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">15%</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">
-                          {format.format(conditon3)}
-                        </p>
-                      </td>
-                    </tr>
-                    {/* 5th item */}
-                    <tr>
-                      <td className="td_of_charts">Next Tk.</td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(taxable5)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">From</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(amount5)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">20%</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">
-                          {format.format(conditon4)}
-                        </p>
-                      </td>
-                    </tr>
-                    {/* 6th item */}
-
-                    <tr>
-                      <td className="td_of_charts">Next Tk.</td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(taxable6)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">From</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">{format.format(amount6)}</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">25%</p>
-                      </td>
-                      <td className="withoutInputFields">
-                        <p className="text-center">
-                          {format.format(conditon5)}
-                        </p>
-                      </td>
-                    </tr>
-
-                    {/* Calculating Total */}
-                    <tr>
-                      <th colSpan={5}>Total Payable</th>
-                      <td className="withoutInputFields">
-                        <p className="text-center">
-                          {format.format(conditon6)}
-                        </p>
-                      </td>
-                    </tr>
-                    {/* end of all items and table */}
-                  </tbody>
-                </table>
-              </div>
-
-              {/*in next line "col-9" div will have been ended */}
-            </div>
-            {/*in next line "row" div will have been ended */}
-          </div>
-          {/*in next line "form"  will have been ended */}
-        </form>
-        {/*in next line "container-fluid" div will have been ended */}
       </div>
+      <div
+        className={
+          (props.active === props.title ? "show" : "") + " accordionContent row"
+        }
+      >
+        <div className="table-responsive">
+          <table className="table table-hover table-bordered border-dark ">
+            {/* All headings */}
+            <thead>
+              <tr className="total_of_IncomeDetails">
+                <th scope="col" className="text-center"></th>
+                <th scope="col" className="text-center"></th>
+                <th scope="col" className="text-center"></th>
+                <th scope="col" className="text-center"></th>
+                <th scope="col" className="text-center">
+                  Rate
+                </th>
+                <th scope="col" className="text-center">
+                  Tax
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* 1st item */}
+              <tr>
+                <td className="withoutInputFields td_of_charts">First Tk.</td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(taxable1)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">From</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(amount1)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">0%</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">0</p>
+                </td>
+              </tr>
+              {/* 2nd item */}
+              <tr>
+                <td className="td_of_charts">Next Tk.</td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(taxable2)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">From</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(amount2)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">5%</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(conditon1)}</p>
+                </td>
+              </tr>
+              {/* 3rd item */}
+              <tr>
+                <td className="td_of_charts">Next Tk.</td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(taxable3)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">from</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(amount3)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">10%</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(conditon2)}</p>
+                </td>
+              </tr>
+              {/* 4th item */}
+              <tr>
+                <td className="td_of_charts">Next Tk.</td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(taxable4)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">From</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(amount4)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">15%</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(conditon3)}</p>
+                </td>
+              </tr>
+              {/* 5th item */}
+              <tr>
+                <td className="td_of_charts">Next Tk.</td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(taxable5)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">From</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(amount5)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">20%</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(conditon4)}</p>
+                </td>
+              </tr>
+              {/* 6th item */}
+
+              <tr>
+                <td className="td_of_charts">Next Tk.</td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(taxable6)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">From</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(amount6)}</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">25%</p>
+                </td>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(conditon5)}</p>
+                </td>
+              </tr>
+
+              {/* Calculating Total */}
+              <tr>
+                <th colSpan={5}>Total Payable</th>
+                <td className="withoutInputFields">
+                  <p className="text-center">{format.format(conditon6)}</p>
+                </td>
+              </tr>
+              {/* end of all items and table */}
+            </tbody>
+          </table>
+        </div>
+      </div>
+     </div>
     </>
   );
 }
