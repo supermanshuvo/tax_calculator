@@ -1,9 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, createRef } from "react";
 import "./App.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-
+// import html2pdf from 'html2pdf';
+import ReactDOMServer from "react-dom/server";
+import ReactPDF from '@react-pdf/renderer';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import { InComeDetails } from "./components/IncomeDetails.js";
@@ -16,6 +18,10 @@ import InvestmentAllowance from "./components/InvestMentAllowence.js";
 import { taxConfig } from "./configData.js";
 import { calculatePayableTax } from "./utils.js";
 import Footer from "./components/Footer";
+//import MyDocument from './components/Mydocument'
+
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -31,12 +37,12 @@ function App() {
   const taxableHousingRef = useRef(0);
   const taxableConveyanceRef = useRef(0);
   const taxableOthersRef = useRef(0);
-  const captureRef = useRef(null);
   const [reportPhase, setReportPhase] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [zone, setZone] = useState("");
   const [createBtnShow, setCreateBtnShow] = useState(true);
   const [active, setActive] = useState("taxableIncome");
+  const captureRef = createRef(null)
 
 
   const handleUserInfo = (userInfo, submit) => {
@@ -61,7 +67,13 @@ function App() {
       pdf.save("TaxReport.pdf");
     });
   };
-
+  
+  // const printDocument2 = ()=>{
+  //   //const div = captureRef.current;
+  //   ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`);
+  // }
+  
+  
   const handleFormSubmit = (formData, submitted) => {
     setZone(formData.zone);
     setUserData(formData);
@@ -137,7 +149,7 @@ function App() {
             <>
               <div className="container">
                 <div className="row">
-                <div className={!reportPhase ?"accordion col-md-8 col-sm-12":'row'} id="accordionExample" ref={captureRef}>
+                <div className={!reportPhase ?"accordion col-md-8 col-sm-12":'row report_page'} id="accordionExample" ref={captureRef}>
                   {reportPhase === true ? (
                     <ReportHeader userInfo={userInfo} region={zone} />
                   ) : null}
@@ -212,10 +224,12 @@ function App() {
                   ) : null}
              
 
+
                 {reportPhase ? (
                   <button className="download_report" onClick={printDocument}>
                     Download Report
                   </button>
+                  
                 ) : null}
               </div>  
             </>

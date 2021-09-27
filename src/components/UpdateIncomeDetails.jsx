@@ -55,7 +55,7 @@ export const UpdateIncomeDetails = ({
   return (
       <div className=" update_form">
         <div>
-          <h3>Update Credentials</h3>
+          <h3>Update Details</h3>
         </div>
         <form onSubmit={handleSubmit(handleFormData)}>
         {/* field-no : 1 */}
@@ -277,7 +277,7 @@ export const UpdateIncomeDetails = ({
             )}
           </div>
           <div className="form-group">
-            <label>Number Of Months</label>
+            <label>Num. Of Months</label>
             <select
               className="form-control"
               type="number"

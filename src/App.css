@@ -18,22 +18,37 @@ p.text-center {
 .Header-bg-style .container .row{
   padding: 40px 0px 0px;
 }
-.form_style h3{
-  font-size: 36px;
+.form_style h3,
+.salery_range{
+  font-size: 22px;
   font-weight: 600;
-  text-decoration: underline;
+  text-decoration: none;
   margin-bottom: 30px;
 }
-.form_style .d-flex .form-group{
+.salery_range{
+  margin-bottom: 42px;
+}
+.form_style .d-flex .form-group,
+.update_form .d-flex .form-group{
   position: relative;
 }
-.form_style .d-flex .form-group span.text-warning{
+.form_style .d-flex .form-group span.text-warning,
+.update_form  .d-flex .form-group .text-warning{
   position: absolute;
   right: 0;
   bottom: 0;
   color: #ff0000b5 !important;
   margin-bottom: -22px;
   font-size: 12px;
+}
+
+.update_form  .d-flex .form-group .text-warning{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #ff0000b5 !important;
+  margin-bottom: -22px;
+  font-size: 10px;
 }
 .form_style .d-flex .form-group  input:focus{
  border: red;
@@ -50,7 +65,8 @@ p.text-center {
   }
   .form_style .d-flex .form-group label{
     padding-right: 20px;
-    width: 75%;
+    width: 80%;
+    padding-top: 15px !important;
   }
   .form_style .d-flex .form-group input{
     /* width: 50%; */
@@ -299,7 +315,7 @@ label {
   padding-bottom: 10px;
 }
 form .justify-content-between{
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 .col-4 form .justify-content-between{
   margin-bottom: 25px;
@@ -309,9 +325,9 @@ form .justify-content-between{
   margin-top: 0;
 }
 .table_wrapper {
-  box-shadow: rgb(33 150 243 / 9%) 0px 8px 24px;
-  padding: 25px 23px;
-  border: 1px solid #0000ff17;
+  /* box-shadow: rgb(33 150 243 / 9%) 0px 8px 24px; */
+  padding: 0px 23px 25px;
+  /* border: 1px solid #0000ff17; */
   border-radius: 3px;
 }
 p.text-center {
@@ -424,15 +440,17 @@ p.All_Headings {
 }
 
 button.btn.btn-primary {
-  /* margin-left: 2vw; */
-  margin-top: 2vh;
-  margin-left: 0px;;
-  color: rgb(255, 255, 255);
-  background: #4c6dff;
-  border: #4c6dff;
-  width: 100%;
-  margin-top: 34px;
-  padding: 12px 0;
+    /* margin-left: 2vw; */
+    margin-top: 2vh;
+    margin-left: 0px;
+    color: rgb(255, 255, 255);
+    background: #4c6dff;
+    border: #4c6dff;
+    width: 30%;
+    margin-top: 34px;
+    padding: 12px 0;
+    margin: 20px auto 0;
+    display: block;
 }
 .download_report{
   color: rgb(255, 255, 255);
@@ -637,26 +655,114 @@ p.footerDetails {
   }
 }
 table{
-  font-size: 12px;
+  font-size: 14px;
 }
 .update_form .form-check input.form-control {
   width: 100%;
 }
 .update_form .justify-content-between {
-  margin-bottom: 19px;
+  margin-bottom: 8px;
 }
 .user_information h3{
   text-align: center;
   text-decoration: underline;
   margin-bottom: 30px;
 }
-.total_calc td{
-  height: 10px !important;
-}
+
 
 .accordion-button.togolBtn::after{
   transform: rotate(-360deg) !important;
 }
 .table-responsive {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
+.accordion-body {
+  padding: 0;
+}
+.accordion-button:focus {
+  z-index: 3;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.0rem rgb(13 110 253 / 0%) !important;
+}
+.accordion-button:focus {
+  z-index: 3;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.0rem rgb(13 110 253 / 0%) !important;
+}
+button.accordion-button.togolBtn {
+  background-color: #fff;
+}
+.accordion > div {
+  margin-bottom: 10px;
+} 
+.accordion-header button{
+  position: relative;
+}
+
+.accordion-header button span {
+  /* background-color: red; */
+  text-align: right;
+  float: right;
+  display: inline-block;
+  right: 50px;
+  position: absolute;
+}
+.accordion-body {
+  padding: 0rem 0rem !important;
+}
+
+.table-bordered thead td, .table-bordered thead th {
+  border-bottom-width: 0px;
+}
+.form-control {
+  font-size: 14px !important;
+}
+.accordion-button:not(.collapsed){
+  background-color: #fff !important;
+  color: #000 !important;
+}
+.total_calc tr{
+  border-color:#e4e4e4 ;
+}
+
+.all_options_div label{
+  font-size: 14px;
+}
+.all_options_div input{
+  font-size: 14px !important;
+}
+.col-md-8 .table_wrapper{
+  display: none;
+} 
+@media (max-width: 992px) { 
+  .col-md-8 .table_wrapper{
+    display: block;
+  }
+  .col-md-4 .table_wrapper{
+    display: none;
+  }
+ }
+
+ .update_form label{
+   padding-bottom: 0px;
+   margin-bottom: 0px;
+ }
+ .row.report_page{
+  /* border: 1px solid rgba(221, 221, 221, 0.697); */
+  display: block !important;
+  /* box-shadow: 0px 0px 23px 1px #00000008; */
+  padding-left: 104px;
+  padding-right: 84px;
+  padding-bottom: 104px;
+ }
+ .update_form button.btn.btn-primary{
+width: 150px;
+ }
+
+  .report_page .All_Headings{
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
