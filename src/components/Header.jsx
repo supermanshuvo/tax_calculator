@@ -1,6 +1,4 @@
 import React from "react";
-import hero from "../../src/images/divi.png";
-import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (

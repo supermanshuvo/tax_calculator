@@ -1,4 +1,4 @@
-import { useReducer, useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { taxConfig } from "../configData.js";
 
@@ -20,7 +20,7 @@ export const InComeDetails = (props) => {
     formData.othersAmount = Number(formData.othersAmount);
     formData.yearlyCheck=yearlyCheck;
     formData.pvMonths = Number(formData.pvMonths);
-    if(yearlyCheck == true)formData.pvMonths=1;
+    if(yearlyCheck === true)formData.pvMonths=1;
     if (formData.bonusAmount === undefined) formData.bonusAmount = 0;
     if (formData.provFund === undefined) formData.provFund = 0;
     formData.bonusAmount = Number(formData.bonusAmount);
@@ -128,8 +128,9 @@ export const InComeDetails = (props) => {
                         type="number"
                         {...register("category")}
                         onChange={changeCategory}
+                        defaultValue={'general'}
                       >
-                        <option value="general" selected>
+                        <option value="general" >
                           General
                         </option>
                         <option value="oldAge">Female/OldAge(65+)</option>
@@ -140,12 +141,12 @@ export const InComeDetails = (props) => {
                   
                   <div className="form-group">
                     <label>Choose Zone</label>
-                    <select
+                    <select defaultValue={"cityCorporation"}
                       className="form-control"
                         type="number"
                         {...register("zone")}
                       >
-                        <option value="cityCorporation" selected>
+                        <option value="cityCorporation" >
                           Dhaka/Chitagong City
                         </option>
                         <option value="otherCity">Other City</option>
@@ -191,7 +192,7 @@ export const InComeDetails = (props) => {
                       type="number"
                       className="form-control"
                       id="exampleInputPassword1"
-                      defaultValue={0}
+                      placeholder="0"
                     />
                     {errors.housingAmount && (
                       <span className="text-warning">
@@ -215,7 +216,7 @@ export const InComeDetails = (props) => {
                       type="number"
                       className="form-control"
                       id="exampleInputPassword1"
-                      defaultValue={0}
+                      placeholder="0"
                     />
                     {errors.medicalAmount && (
                       <span className="text-warning">
@@ -236,7 +237,7 @@ export const InComeDetails = (props) => {
                       })}
                       type="number"
                       className="form-control"
-                      defaultValue={0}
+                      placeholder="0"
                     />
 
                     {errors.conveyanceAmount && (
@@ -268,7 +269,7 @@ export const InComeDetails = (props) => {
                         })}
                         type="number"
                         className="form-control"
-                        defaultValue={0}
+                        placeholder="0"
                       />
                     {/* ) : null} */}
                     {errors.bonusAmount && (
@@ -297,7 +298,7 @@ export const InComeDetails = (props) => {
                         })}
                         type="number"
                         className="form-control"
-                        defaultValue={0}
+                        placeholder="0"
                       />
                     {/* ) : null} */}
                     {errors.provFund && (
@@ -322,7 +323,7 @@ export const InComeDetails = (props) => {
                       type="number"
                       className="form-control"
                       id="exampleInputPassword1"
-                      defaultValue={0}
+                      placeholder="0"
                     />
                     {errors.othersAmount && (
                       <span className="text-warning">
@@ -332,10 +333,11 @@ export const InComeDetails = (props) => {
                   </div>
                 {!yearlyCheck &&<div className="form-group">
                     <label>Number Of month</label>
-                    <select
+                    <select 
                       className="form-control"
                       type="number"
                       {...register("pvMonths")}
+                      defaultValue={12}
                     >
                       <option value={1}>1</option>
                       <option value={2}>2</option>
@@ -348,7 +350,7 @@ export const InComeDetails = (props) => {
                       <option value={9}>9</option>
                       <option value={10}>10</option>
                       <option value={11}>11</option>
-                      <option value={12} selected>
+                      <option value={12} >
                         12
                       </option>
                     </select>

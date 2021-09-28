@@ -1,4 +1,4 @@
-import { useReducer,useState} from "react";
+import {useState} from "react";
 import { useForm } from "react-hook-form";
 
 export const UpdateIncomeDetails = ({ 
@@ -8,9 +8,6 @@ export const UpdateIncomeDetails = ({
     updateZone,
     updateCategory, }) => 
     {
-  const inputFieldInit = { bonus: false, provFund: false };
-  const reducerFunc = (state, newState) => ({ ...state, ...newState });
-  const [inputField, setInputField] = useReducer(reducerFunc, inputFieldInit);
   const [yearlyCheckNow,setYearlyCheckNow] = useState(yearlyCheck)
 
   const {
@@ -19,15 +16,6 @@ export const UpdateIncomeDetails = ({
     formState: { errors },
   } = useForm();
 
-
-  const checkboxBonusHandler = () => {
-    let prev = inputField.bonus;
-    setInputField({ bonus: !prev });
-  };
-  const checkboxprovFundHandler = () => {
-    let prev = inputField.provFund;
-    setInputField({ provFund: !prev });
-  };
 
   const changeZoon=(ev)=>{
     //console.log(ev.target.value)
@@ -46,7 +34,7 @@ export const UpdateIncomeDetails = ({
     formData.othersAmount = Number(formData.othersAmount);
     formData.yearlyCheck=yearlyCheckNow;
     formData.pvMonths = Number(formData.pvMonths);
-    if(yearlyCheckNow == true)formData.pvMonths=1;
+    if(yearlyCheckNow === true)formData.pvMonths=1;
     if (formData.bonusAmount === undefined) formData.bonusAmount = 0;
     if (formData.provFund === undefined) formData.provFund = 0;
     formData.bonusAmount = Number(formData.bonusAmount);
@@ -75,7 +63,7 @@ export const UpdateIncomeDetails = ({
         <div className="d-flex justify-content-between">
           <div className="form-group">
             <label>Category</label>
-            <select
+            <select defaultValue={formData.category}
               className="form-control select_field"
               type="number"
               {...register("category")}
@@ -83,22 +71,20 @@ export const UpdateIncomeDetails = ({
             >
               <option
                 value="general"
-                selected={"general" === formData.category}
               >
                 General
               </option>
-              <option value="oldAge" selected={"oldAge" === formData.category}>
+              <option value="oldAge" 
+              >
                 Female/OldAge(65+)
               </option>
               <option
                 value="freedomFighters"
-                selected={"freedomFighters" === formData.category}
               >
                 Gazetted Freedom Fighters
               </option>
               <option
                 value="disabled"
-                selected={"disabled" === formData.category}
               >
                 Disabled
               </option>
@@ -106,26 +92,23 @@ export const UpdateIncomeDetails = ({
           </div>
           <div className="form-group select_field">
             <label>Zone</label>
-            <select
+            <select defaultValue={formData.zone}
               className="form-control select_field"
               type="number"
               {...register("zone")}
               onChange={changeZoon}
             >
               <option
-                selected={"cityCorporation" === formData.zone}
                 value="cityCorporation"
               >
                 Dhaka/Chattagram City
               </option>
               <option
-                selected={"otherCity" === formData.zone}
                 value="otherCity"
               >
                 Other City
               </option>
               <option
-                selected={"restCountry" === formData.zone}
                 value="restCountry"
               >
                 Rest of the Country
@@ -292,46 +275,58 @@ export const UpdateIncomeDetails = ({
           {!yearlyCheckNow &&
           <div className="form-group">
             <label>Num. Of Months</label>
-            <select
+            <select defaultValue={formData.pvMonths}
               className="form-control"
               type="number"
               {...register("pvMonths")}
               //onChange={changeMonths}
             >
-              <option selected={1 === formData.pvMonths} value={1}>
+              <option 
+               value={1}>
                 1
               </option>
-              <option selected={2 === formData.pvMonths} value={2}>
+              <option
+              value={2}>
                 2
               </option>
-              <option selected={3 === formData.pvMonths} value={3}>
+              <option 
+              value={3}>
                 3
               </option>
-              <option selected={4 === formData.pvMonths} value={4}>
+              <option 
+              value={4}>
                 4
               </option>
-              <option selected={5 === formData.pvMonths} value={5}>
+              <option
+              value={5}>
                 5
               </option>
-              <option selected={6 === formData.pvMonths} value={6}>
+              <option 
+              value={6}>
                 6
               </option>
-              <option selected={7 === formData.pvMonths} value={7}>
+              <option 
+              value={7}>
                 7
               </option>
-              <option selected={8 === formData.pvMonths} value={8}>
+              <option  
+              value={8}>
                 8
               </option>
-              <option selected={9 === formData.pvMonths} value={9}>
+              <option 
+              value={9}>
                 9
               </option>
-              <option selected={10 === formData.pvMonths} value={10}>
+              <option 
+              value={10}>
                 10
               </option>
-              <option selected={11 === formData.pvMonths} value={11}>
+              <option 
+              value={11}>
                 11
               </option>
-              <option selected={12 === formData.pvMonths} value={12}>
+              <option 
+              value={12}>
                 12
               </option>
             </select>

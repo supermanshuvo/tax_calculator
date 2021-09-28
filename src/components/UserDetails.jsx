@@ -1,21 +1,24 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from 'axios';
 
 function UserDetails({ handleUserSubmit }) {
   const { handleSubmit, register } = useForm();
-  const handleFormData = (userData) => {
-  // function WriteFile(){
-  //   var fh = fopen("../userData.txt",3); // Open the file for writing
-  //   if(fh!=-1) // If the file has been successfully opened
-  //   {
-  //       var str = "Some text goes here...";
-  //       fwrite(fh, str); // Write the string to a file
-  //       fclose(fh); // Close the file
-  //   }
-  //   }
-  //   WriteFile();
-    
-    handleUserSubmit(userData, true);
+
+  const handleFormData =  (userData) => {
+  //let userDataObj =  {...userData}
+
+  try{
+    axios.post('https://sheet.best/api/sheets/72625992-ace7-4115-ab14-255c18b776df', 
+    userData)
+    .then(response => 
+      console.log('SuccessFull')
+    )
+
+  }  catch(error){
+    console.log(`${error.name} occurs!`)
+  }
+  handleUserSubmit(userData, true);
   };
 
   return (
@@ -29,7 +32,7 @@ function UserDetails({ handleUserSubmit }) {
                 <label>Name</label>
                 <input
                   required
-                  {...register("username")}
+                  {...register("name")}
                   type="text"
                   className="form-control"
                 />
@@ -49,7 +52,7 @@ function UserDetails({ handleUserSubmit }) {
               <div className="form-group">
                 <label>Company Name</label>
                 <input
-                  {...register("companyName")}
+                  {...register("company")}
                   type="text"
                   className="form-control"
                 />
@@ -59,7 +62,7 @@ function UserDetails({ handleUserSubmit }) {
                 <label>Mobile Number</label>
                 <input
                   required
-                  {...register("mobileNumber")}
+                  {...register("phone")}
                   type="text"
                   className="form-control"
                 />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { taxConfig } from ".././configData.js";
 
 function TaxableIncome({
@@ -114,7 +114,7 @@ function TaxableIncome({
                           Basic
                         </td>
                         <td className="withoutInputFields">
-                          <p className="text-center">100% Payable</p>
+                          <p className="text-center"></p>
                         </td>
                         <td className="withoutInputFields">
                           <p className="text-center">
@@ -350,7 +350,7 @@ function TaxableIncome({
                 <tr>
                   <td className="withoutInputFields td_of_charts">Basic</td>
                   <td className="withoutInputFields">
-                    <p className="text-center">100% Payable</p>
+                    <p className="text-center"></p>
                   </td>
                   <td className="withoutInputFields">
                     <p className="text-center">

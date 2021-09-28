@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { taxConfig } from ".././configData.js";
 
 const InvestmentAllowance = ({
@@ -11,7 +11,6 @@ const InvestmentAllowance = ({
   totalPayableTax,
   zone,
 }) => {
-  console.log("totalpayable ", totalPayableTax);
   const [totalInvestMent, setTotalInvestMent] = useState(0);
   const [allowInvestment, setAllowInvestment] = useState(0);
   const [limitInvestment, setLimitInvestment] = useState(0);

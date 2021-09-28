@@ -29,12 +29,12 @@ function ReportHeader({ userInfo, region }) {
             </thead>
               <tbody>
                 <tr>
-                  <td>Name : {userInfo.username}</td>
+                  <td>Name : {userInfo.name}</td>
                   <td>Email : {userInfo.email}</td>
                 </tr>
                 <tr>
                   <td>Company: {userInfo.company}</td>
-                  <td>Mobile No : {userInfo.mobileNumber}</td>
+                  <td>Mobile No : {userInfo.phone}</td>
                 </tr>
               </tbody>
             </table>

@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect, createRef } from "react";
 import "./App.css";
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router,  Switch, Route } from "react-router-dom";
 // import html2pdf from 'html2pdf';
 import 'jspdf-autotable'
-import ReactDOMServer from "react-dom/server";
-import ReactPDF from '@react-pdf/renderer';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import { InComeDetails } from "./components/IncomeDetails.js";
@@ -19,10 +16,6 @@ import InvestmentAllowance from "./components/InvestMentAllowence.js";
 import { taxConfig } from "./configData.js";
 import { calculatePayableTax } from "./utils.js";
 import Footer from "./components/Footer";
-
-
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -60,17 +53,16 @@ function App() {
 
 function generate() {  
   var doc = new jsPDF('p', 'pt', 'letter');  
-  var htmlstring = '';  
-  var tempVarToCheckPageHeight = 0;  
-  var pageHeight = 0;  
-  pageHeight = doc.internal.pageSize.height;  
-  var specialElementHandlers = {  
-      // element with id of "bypass" - jQuery style selector  
-      '#bypassme': function(element, renderer) {  
-          // true = "handled elsewhere, bypass text extraction"  
-          return true  
-      }  
-  };  
+  // var htmlstring = '';  
+  // var tempVarToCheckPageHeight = 0;  
+  //pageHeight = doc.internal.pageSize.height;  
+  // var specialElementHandlers = {  
+  //     // element with id of "bypass" - jQuery style selector  
+  //     '#bypassme': function(element, renderer) {  
+  //         // true = "handled elsewhere, bypass text extraction"  
+  //         return true  
+  //     }  
+  // };  
   var margins = {  
       top: 10,  
       bottom: 10,  
@@ -337,7 +329,7 @@ doc.autoTable({
                     >
                       Create Report
                     </button>}
-                  {reportPhase === false && createBtnShow==false ? (
+                  {reportPhase === false && createBtnShow===false ? (
                     <UserDetails
                       handleUserSubmit={(userData, submitted) =>
                         handleUserInfo(userData, submitted)
