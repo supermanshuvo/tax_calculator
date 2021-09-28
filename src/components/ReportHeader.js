@@ -21,6 +21,12 @@ function ReportHeader({ userInfo, region }) {
           <div className="table-responsive">
             <table className="table table-hover table-bordered border-dark "
             id="userTable">
+              <thead>
+              <tr className="total_of_IncomeDetails">
+                <th scope="col">User Information</th>
+                <th> </th>
+              </tr>
+            </thead>
               <tbody>
                 <tr>
                   <td>Name : {userInfo.username}</td>

@@ -23,7 +23,7 @@ function UserDetails({ handleUserSubmit }) {
       <h3 className="All_Headings">User Information</h3>
       <div className="row">
         <div className="col-8 mx-auto">
-          <form onSubmit={handleSubmit(handleFormData)}>
+          <form onSubmit={handleSubmit(handleFormData)} className="userForm">
             <div className="d-flex justify-content-between ">
               <div className="form-group">
                 <label>Name</label>

@@ -96,7 +96,13 @@ function generate() {
     styles: {  
         minCellHeight: 16
     } ,
-    margin: margins
+    margin: margins,
+    didParseCell: function (table) {
+      if (table.section === 'head') {
+        table.cell.styles.fillColor = '#dee2e6';
+        table.cell.styles.textColor = '#525252';
+      }
+   },
 
 })  
   doc.autoTable({  
@@ -194,7 +200,7 @@ doc.autoTable({
 })
   doc.setFontSize(9);
   doc.text(240, doc.lastAutoTable.finalY + 30, "©2021 VivaSoft, All right reserved.");
-  doc.save('Marks_Of_Students.pdf');  
+  doc.save('Tax_Statement.pdf');  
 }  
   
   const handleFormSubmit = (formData, submitted) => {

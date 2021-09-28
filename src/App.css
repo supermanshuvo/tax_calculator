@@ -675,7 +675,7 @@ table{
   transform: rotate(-360deg) !important;
 }
 .table-responsive {
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important;           */
 }
 .accordion-body {
   padding: 0;
@@ -771,3 +771,19 @@ width: 150px;
   #taxableTable{
     font-size:12px;
   }
+  @media (max-width: 768px) {
+    .userForm .d-flex{
+      display: block !important;
+     }
+     .userForm .d-flex .form-group{
+       width: 100% !important;
+     }
+     .userForm .d-flex .form-group label{
+       padding-bottom: 0px;
+       margin-bottom: 0px;
+     }
+     .user_information .All_Headings{
+       padding-bottom: 30px;
+     }
+  }
+  

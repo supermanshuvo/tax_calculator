@@ -112,10 +112,10 @@ export const InComeDetails = (props) => {
               <form className="form_style" onSubmit={handleSubmit(handleFormData)}>
                 <h3>Salary Details</h3>
                 <div className="d-flex justify-content-between ">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" 
+                  <div className="form-check">
+                    <input className="form-check-input" type="checkbox" 
                     value="" onClick={()=>setYearlyCheck(!yearlyCheck)} id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label className="form-check-label" htmlFor="flexCheckDefault">
                       Calculate your tax on yearly amount
                     </label>
                   </div>

@@ -64,10 +64,10 @@ export const UpdateIncomeDetails = ({
         <form onSubmit={handleSubmit(handleFormData)}>
         {/* field-no : 1 */}
         <div className="d-flex justify-content-between ">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox"  checked={yearlyCheckNow}
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox"  defaultChecked={yearlyCheckNow}
             value="" onClick={()=>setYearlyCheckNow(!yearlyCheckNow)} id="flexCheckDefault"/>
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Calculate Your Tax Based On Yearly Amount
             </label>
           </div>
