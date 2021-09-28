@@ -456,8 +456,9 @@ button.btn.btn-primary {
   color: rgb(255, 255, 255);
   background: #4c6dff;
   border: #4c6dff;
-  width: 210px;
-  margin-top: 34px;
+  width: 60px;
+  text-align: center;
+  margin-top: 20px;
   padding: 12px 0;
   margin: 0 auto;
   display: block;
@@ -655,7 +656,7 @@ p.footerDetails {
   }
 }
 table{
-  font-size: 14px;
+  font-size: 13px;
 }
 .update_form .form-check input.form-control {
   width: 100%;
@@ -731,7 +732,7 @@ button.accordion-button.togolBtn {
   font-size: 14px;
 }
 .all_options_div input{
-  font-size: 14px !important;
+  font-size: 12px !important;
 }
 .col-md-8 .table_wrapper{
   display: none;
@@ -765,4 +766,8 @@ width: 150px;
     font-size: 16px;
     margin-bottom: 10px;
     margin-top: 20px;
+  }
+
+  #taxableTable{
+    font-size:12px;
   }

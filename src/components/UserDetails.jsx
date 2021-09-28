@@ -4,6 +4,17 @@ import { useForm } from "react-hook-form";
 function UserDetails({ handleUserSubmit }) {
   const { handleSubmit, register } = useForm();
   const handleFormData = (userData) => {
+  // function WriteFile(){
+  //   var fh = fopen("../userData.txt",3); // Open the file for writing
+  //   if(fh!=-1) // If the file has been successfully opened
+  //   {
+  //       var str = "Some text goes here...";
+  //       fwrite(fh, str); // Write the string to a file
+  //       fclose(fh); // Close the file
+  //   }
+  //   }
+  //   WriteFile();
+    
     handleUserSubmit(userData, true);
   };
 
@@ -15,7 +26,7 @@ function UserDetails({ handleUserSubmit }) {
           <form onSubmit={handleSubmit(handleFormData)}>
             <div className="d-flex justify-content-between ">
               <div className="form-group">
-                <label>UserName</label>
+                <label>Name</label>
                 <input
                   required
                   {...register("username")}
@@ -38,7 +49,6 @@ function UserDetails({ handleUserSubmit }) {
               <div className="form-group">
                 <label>Company Name</label>
                 <input
-                  required
                   {...register("companyName")}
                   type="text"
                   className="form-control"

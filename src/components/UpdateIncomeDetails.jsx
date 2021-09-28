@@ -1,7 +1,8 @@
-import { useReducer} from "react";
+import { useReducer,useState} from "react";
 import { useForm } from "react-hook-form";
 
 export const UpdateIncomeDetails = ({ 
+    yearlyCheck,
     formData, 
     handleStates,
     updateZone,
@@ -10,6 +11,7 @@ export const UpdateIncomeDetails = ({
   const inputFieldInit = { bonus: false, provFund: false };
   const reducerFunc = (state, newState) => ({ ...state, ...newState });
   const [inputField, setInputField] = useReducer(reducerFunc, inputFieldInit);
+  const [yearlyCheckNow,setYearlyCheckNow] = useState(yearlyCheck)
 
   const {
     register,
@@ -41,8 +43,10 @@ export const UpdateIncomeDetails = ({
     formData.housingAmount = Number(formData.housingAmount);
     formData.medicalAmount = Number(formData.medicalAmount);
     formData.conveyanceAmount = Number(formData.conveyanceAmount);
-    formData.othersAmount = Number(formData.othersAmount)
+    formData.othersAmount = Number(formData.othersAmount);
+    formData.yearlyCheck=yearlyCheckNow;
     formData.pvMonths = Number(formData.pvMonths);
+    if(yearlyCheckNow == true)formData.pvMonths=1;
     if (formData.bonusAmount === undefined) formData.bonusAmount = 0;
     if (formData.provFund === undefined) formData.provFund = 0;
     formData.bonusAmount = Number(formData.bonusAmount);
@@ -59,6 +63,15 @@ export const UpdateIncomeDetails = ({
         </div>
         <form onSubmit={handleSubmit(handleFormData)}>
         {/* field-no : 1 */}
+        <div className="d-flex justify-content-between ">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"  checked={yearlyCheckNow}
+            value="" onClick={()=>setYearlyCheckNow(!yearlyCheckNow)} id="flexCheckDefault"/>
+            <label class="form-check-label" for="flexCheckDefault">
+              Calculate Your Tax Based On Yearly Amount
+            </label>
+          </div>
+        </div>
         <div className="d-flex justify-content-between">
           <div className="form-group">
             <label>Category</label>
@@ -123,7 +136,7 @@ export const UpdateIncomeDetails = ({
 
         <div className="d-flex justify-content-between ">
           <div className="form-group">
-            <label>Basic Amount</label>
+            <label>Basic Amount{yearlyCheckNow?'(y)':''}</label>
             <input
               required
               {...register("basicAmount", {
@@ -142,7 +155,7 @@ export const UpdateIncomeDetails = ({
             )}
           </div>
           <div className="form-group">
-            <label>Housing amount</label>
+            <label>Housing amount{yearlyCheckNow?'(y)':''}</label>
             <input
               {...register("housingAmount", {
                 min: {
@@ -164,7 +177,7 @@ export const UpdateIncomeDetails = ({
 
         <div className="d-flex justify-content-between ">
           <div className="form-group">
-            <label>Medical amount</label>
+            <label>Medical amount{yearlyCheckNow?'(y)':''}</label>
             <input
               {...register("medicalAmount", {
                 min: {
@@ -183,7 +196,7 @@ export const UpdateIncomeDetails = ({
             )}
           </div>
           <div className="form-group">
-            <label>Conveyance</label>
+            <label>Conveyance {yearlyCheckNow?'(y)':''}</label>
             <input
               {...register("conveyanceAmount", {
                 min: {
@@ -209,7 +222,7 @@ export const UpdateIncomeDetails = ({
               name="bonus"
               onClick={checkboxBonusHandler}
             /> */}
-            <label className="form-check-label">Bonus</label>
+            <label className="form-check-label">Bonus(y)</label>
             {/* {inputField.bonus ? ( */}
               <input
                 {...register("bonusAmount", {
@@ -235,7 +248,7 @@ export const UpdateIncomeDetails = ({
               name="provFund"
               onClick={checkboxprovFundHandler}
             /> */}
-            <label className="form-check-label">Provident Fund</label>
+            <label className="form-check-label">Provident Fund(y)</label>
             {/* {inputField.provFund ? ( */}
               <input
                 {...register("provFund", {
@@ -258,7 +271,7 @@ export const UpdateIncomeDetails = ({
 
         <div className="d-flex justify-content-between ">
           <div className="form-group">
-            <label>Others</label>
+            <label>Others{yearlyCheckNow?'(y)':''}</label>
             <input
               {...register("othersAmount", {
                 min: {
@@ -276,6 +289,7 @@ export const UpdateIncomeDetails = ({
               <span className="text-warning">Must Be Positive Number</span>
             )}
           </div>
+          {!yearlyCheckNow &&
           <div className="form-group">
             <label>Num. Of Months</label>
             <select
@@ -321,7 +335,7 @@ export const UpdateIncomeDetails = ({
                 12
               </option>
             </select>
-          </div>
+          </div>}
         </div>
 
         <button type="submit" className="btn btn-primary">

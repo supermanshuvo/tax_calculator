@@ -4,6 +4,7 @@ import { taxConfig } from "../configData.js";
 
 export const InComeDetails = (props) => {
   const [taxArray,setTaxArray]= useState(taxConfig.taxRules.general)
+  const [yearlyCheck,setYearlyCheck] = useState(false)
 
   const {
     register,
@@ -17,7 +18,9 @@ export const InComeDetails = (props) => {
     formData.medicalAmount = Number(formData.medicalAmount);
     formData.conveyanceAmount = Number(formData.conveyanceAmount);
     formData.othersAmount = Number(formData.othersAmount);
+    formData.yearlyCheck=yearlyCheck;
     formData.pvMonths = Number(formData.pvMonths);
+    if(yearlyCheck == true)formData.pvMonths=1;
     if (formData.bonusAmount === undefined) formData.bonusAmount = 0;
     if (formData.provFund === undefined) formData.provFund = 0;
     formData.bonusAmount = Number(formData.bonusAmount);
@@ -52,10 +55,7 @@ export const InComeDetails = (props) => {
   //   let prev = inputField.bonus;
   //   setInputField({ bonus: !prev });
   // };
-  // const checkboxprovFundHandler = () => {
-  //   let prev = inputField.provFund;
-  //   setInputField({ provFund: !prev });
-  // };
+
 
   return (
     <>
@@ -112,6 +112,15 @@ export const InComeDetails = (props) => {
               <form className="form_style" onSubmit={handleSubmit(handleFormData)}>
                 <h3>Salary Details</h3>
                 <div className="d-flex justify-content-between ">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" 
+                    value="" onClick={()=>setYearlyCheck(!yearlyCheck)} id="flexCheckDefault"/>
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Calculate your tax on yearly amount
+                    </label>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between ">
                 <div className="form-group">
                     <label>Choose Category</label>
                     <select
@@ -149,7 +158,7 @@ export const InComeDetails = (props) => {
                 </div>  
                 <div className="d-flex justify-content-between ">
                   <div className="form-group">
-                    <label>Basic Amount</label>
+                    <label>Basic Amount{yearlyCheck?'(y)':''}</label>
                     <input
                       {...register("basicAmount", {
                         required: "error message",
@@ -170,7 +179,7 @@ export const InComeDetails = (props) => {
                   </div>
 
                   <div className="form-group">
-                    <label>Housing amount</label>
+                    <label>Housing amount{yearlyCheck?'(y)':''}</label>
                     <input
                       {...register("housingAmount", {
                         min: {
@@ -194,7 +203,7 @@ export const InComeDetails = (props) => {
 
                 <div className="d-flex justify-content-between ">
                   <div className="form-group">
-                    <label>Medical amount</label>
+                    <label>Medical amount{yearlyCheck?'(y)':''}</label>
                     <input
                       {...register("medicalAmount", {
                         min: {
@@ -216,7 +225,7 @@ export const InComeDetails = (props) => {
                   </div>
 
                   <div className="form-group">
-                    <label>Conveyance</label>
+                    <label>Conveyance{yearlyCheck?'(y)':''}</label>
                     <input
                       {...register("conveyanceAmount", {
                         min: {
@@ -247,7 +256,7 @@ export const InComeDetails = (props) => {
                       name="bonus"
                       onClick={checkboxBonusHandler}
                     /> */}
-                    <label  className="form-check-label">Bonus</label>
+                    <label  className="form-check-label">Bonus(y)</label>
                     {/* {inputField.bonus ? ( */}
                       <input
                         {...register("bonusAmount", {
@@ -276,7 +285,7 @@ export const InComeDetails = (props) => {
                       name="provFund"
                       onClick={checkboxprovFundHandler}
                     /> */}
-                    <label  className="form-check-label">Providient Fund</label>
+                    <label  className="form-check-label">Providient Fund(y)</label>
                     {/* {inputField.provFund ? ( */}
                       <input
                         {...register("provFund", {
@@ -301,7 +310,7 @@ export const InComeDetails = (props) => {
 
                 <div className="d-flex justify-content-between ">
                 <div className="form-group">
-                    <label>Others</label>
+                    <label>Others{yearlyCheck?'(y)':''}</label>
                     <input
                       {...register("othersAmount", {
                         min: {
@@ -321,7 +330,7 @@ export const InComeDetails = (props) => {
                       </span>
                     )}
                   </div>
-                <div className="form-group">
+                {!yearlyCheck &&<div className="form-group">
                     <label>Number Of month</label>
                     <select
                       className="form-control"
@@ -343,7 +352,7 @@ export const InComeDetails = (props) => {
                         12
                       </option>
                     </select>
-                  </div>
+                  </div>}
 
                 </div>
 

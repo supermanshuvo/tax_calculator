@@ -322,7 +322,7 @@ function TaxableIncome({
       {reportPhase === true && (
         <div className="table-responsive">
           <p className="All_Headings">Taxable Income</p>
-          <table className="table table-hover table-bordered border-dark ">
+          <table className="table table-hover table-bordered border-dark " id='taxableTable'>
             {/* {/ All headings /} */}
             <thead>
               <tr className="total_of_IncomeDetails">

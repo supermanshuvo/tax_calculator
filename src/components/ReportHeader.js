@@ -19,15 +19,15 @@ function ReportHeader({ userInfo, region }) {
       <div className="row">
         <div className="col-12">
           <div className="table-responsive">
-            <table className="table table-hover table-bordered border-dark ">
-              <thead>Region: {regionVar.current}</thead>
+            <table className="table table-hover table-bordered border-dark "
+            id="userTable">
               <tbody>
                 <tr>
                   <td>Name : {userInfo.username}</td>
                   <td>Email : {userInfo.email}</td>
                 </tr>
                 <tr>
-                  <td>Company Name : {userInfo.companyName}</td>
+                  <td>Company: {userInfo.company}</td>
                   <td>Mobile No : {userInfo.mobileNumber}</td>
                 </tr>
               </tbody>

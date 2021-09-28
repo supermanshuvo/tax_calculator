@@ -1,30 +1,47 @@
-import React from 'react';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+examples.multiple = function () {
+  var doc = new jsPDF()
+  doc.text('Multiple tables', 14, 20)
 
-// Create styles
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4'
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1
+  doc.autoTable({ startY: 30, head: headRows(), body: bodyRows(25) })
+
+  var pageNumber = doc.internal.getNumberOfPages()
+
+  doc.autoTable({
+    columns: [
+      { dataKey: 'id', header: 'ID' },
+      { dataKey: 'name', header: 'Name' },
+      { dataKey: 'expenses', header: 'Sum' },
+    ],
+    body: bodyRows(15),
+    startY: 240,
+    showHead: 'firstPage',
+    styles: { overflow: 'hidden' },
+    margin: { right: 107 },
+  })
+
+  doc.setPage(pageNumber)
+
+  doc.autoTable({
+    columns: [
+      { dataKey: 'id', header: 'ID' },
+      { dataKey: 'name', header: 'Name' },
+      { dataKey: 'expenses', header: 'Sum' },
+    ],
+    body: bodyRows(15),
+    startY: 240,
+    showHead: 'firstPage',
+    styles: { overflow: 'hidden' },
+    margin: { left: 107 },
+  })
+
+  for (var j = 0; j < 3; j++) {
+    doc.autoTable({
+      head: headRows(),
+      body: bodyRows(),
+      startY: doc.lastAutoTable.finalY + 10,
+      pageBreak: 'avoid',
+    })
   }
-});
 
-// Create Document Component
-const MyDocument = () => (
-  <Document>
-    <Page size="A4" style={styles.page}>
-      <View style={styles.section}>
-        <Text>Section #1</Text>
-      </View>
-      <View style={styles.section}>
-        <Text>Section #2</Text>
-      </View>
-    </Page>
-  </Document>
-)
-export default MyDocument;
+  return doc
+}

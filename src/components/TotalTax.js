@@ -252,7 +252,8 @@ function Totaltax(props) {
           >
             <div className="accordion-body"></div>
             <div className="table-responsive">
-              <table className="table table-hover table-bordered border-dark ">
+              <table 
+              className="table table-hover table-bordered border-dark ">
                 {/* All headings */}
                 <thead>
                   <tr className="total_of_IncomeDetails">
@@ -404,12 +405,12 @@ function Totaltax(props) {
 
       {props.reportPhase===true &&(
         <div className="table-responsive">
-          <p className="All_Headings">Income Tax</p>
-        <table className="table table-hover table-bordered border-dark ">
+        <table className="table table-hover table-bordered border-dark "
+          id='totalTaxTable'>
           {/* All headings */}
           <thead>
             <tr className="total_of_IncomeDetails">
-              <th scope="col" className="text-center"></th>
+              <th scope="col" className="text-center">Payable Tax</th>
               <th scope="col" className="text-center"></th>
               <th scope="col" className="text-center"></th>
               <th scope="col" className="text-center"></th>
@@ -440,7 +441,7 @@ function Totaltax(props) {
                 <p className="text-center">0%</p>
               </td>
               <td className="withoutInputFields">
-                <p className="text-center">0</p>
+                <p className="text-center">BDT 0</p>
               </td>
             </tr>
             {/* 2nd item */}

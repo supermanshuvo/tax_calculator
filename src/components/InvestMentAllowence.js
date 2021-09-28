@@ -58,8 +58,6 @@ const InvestmentAllowance = ({
         ? taxConfig.zone.otherCity
         : taxConfig.zone.restCountry;
 
-    setTotalInvestMent(provFund + Number(dpsField.current.value));
-
     if (
       totalTaxIncome * taxConfig.config.maxInvestTaxExemption * 0.01 <
       taxConfig.config.maxAllowedInvesment
@@ -70,7 +68,7 @@ const InvestmentAllowance = ({
     } else {
       setAllowInvestment(taxConfig.config.maxAllowedInvesment);
     }
-
+    setTotalInvestMent(provFund + Number(dpsField.current.value));
     const lessRebateParentsvar = Math.min(allowInvestment, totalInvestMent);
     setParents(lessRebateParentsvar);
     setLimitInvestment(
@@ -226,7 +224,8 @@ const InvestmentAllowance = ({
       { reportPhase === true &&(
         <div className="table-responsive">
           <p className="All_Headings">Taxable Income</p>
-          <table className="table table-hover table-bordered total_calc">
+          <table className="table table-hover table-bordered total_calc"
+          id="investmentTable">
             <thead>
               <tr className="total_of_IncomeDetails">
                 <th scope="col">Investment Allowance and Tax Rebate</th>
