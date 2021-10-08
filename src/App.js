@@ -249,6 +249,14 @@ doc.autoTable({
     setFormSubmitted(submitted);
   };
 
+  const backBtnClick = ()=>{
+    setUserData({})
+    setCreateBtnShow(true)
+    setReportPhase(false)
+    setFormSubmitted(false)
+
+  }
+
   return (
     <>
       <Router>
@@ -273,10 +281,12 @@ doc.autoTable({
                 <div className={!reportPhase ?"accordion col-md-8 col-sm-12":'row report_page'} id="accordionExample" ref={captureRef}>
                   
                 {reportPhase ? (
-                  <button className="download_report" onClick={generate}>
-                    Download Report
-                  </button>
-                  
+                  <>
+                    <button className="btn btn-primary backBtn" onClick={backBtnClick}>Back</button>
+                    <button className="download_report" onClick={generate}>
+                      Download Report
+                    </button>
+                  </>
                 ) : null}
                 
                   {reportPhase === true ? (

@@ -30,7 +30,8 @@ function UserDetails({ handleUserSubmit }) {
             <div className="d-flex justify-content-between ">
               <div className="form-group">
                 <label>Name</label>
-                <input
+                <input 
+                  placeholder='Enter Name'
                   required
                   {...register("name")}
                   type="text"
@@ -39,7 +40,8 @@ function UserDetails({ handleUserSubmit }) {
               </div>
               <div className="form-group">
                 <label>Email Address</label>
-                <input
+                <input 
+                  placeholder='Enter E-mail'
                   required
                   {...register("email")}
                   type="email"
@@ -51,7 +53,8 @@ function UserDetails({ handleUserSubmit }) {
             <div className="d-flex justify-content-between ">
               <div className="form-group">
                 <label>Company Name</label>
-                <input
+                <input 
+                  placeholder='Enter Company Name'
                   {...register("company")}
                   type="text"
                   className="form-control"
@@ -61,6 +64,7 @@ function UserDetails({ handleUserSubmit }) {
               <div className="form-group">
                 <label>Mobile Number</label>
                 <input
+                  placeholder='Enter Phone Number'
                   required
                   {...register("phone")}
                   type="text"

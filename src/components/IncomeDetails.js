@@ -178,78 +178,6 @@ export const InComeDetails = (props) => {
                       </span>
                     )}
                   </div>
-
-                  <div className="form-group">
-                    <label>Housing amount{yearlyCheck?'(y)':''}</label>
-                    <input
-                      {...register("housingAmount", {
-                        min: {
-                          value: 0,
-                          message: "Must Be Positive Number",
-                          // JS only: <p>error message</p> TS only support string
-                        },
-                      })}
-                      type="number"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="0"
-                    />
-                    {errors.housingAmount && (
-                      <span className="text-warning">
-                        Must Be Positive Number
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="d-flex justify-content-between ">
-                  <div className="form-group">
-                    <label>Medical amount{yearlyCheck?'(y)':''}</label>
-                    <input
-                      {...register("medicalAmount", {
-                        min: {
-                          value: 0,
-                          message: "Must Be Positive Number",
-                          // JS only: <p>error message</p> TS only support string
-                        },
-                      })}
-                      type="number"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="0"
-                    />
-                    {errors.medicalAmount && (
-                      <span className="text-warning">
-                        Must Be Positive Number
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="form-group">
-                    <label>Conveyance{yearlyCheck?'(y)':''}</label>
-                    <input
-                      {...register("conveyanceAmount", {
-                        min: {
-                          value: 0,
-                          message: "Must Be Positive Number",
-                          // JS only: <p>error message</p> TS only support string
-                        },
-                      })}
-                      type="number"
-                      className="form-control"
-                      placeholder="0"
-                    />
-
-                    {errors.conveyanceAmount && (
-                      <span className="text-warning">
-                        Must Be Positive Number
-                      </span>
-                    )}
-                  </div>
-                </div>
-                
-
-                <div className="d-flex justify-content-between ">
                   <div className="form-group">
                     {/* <input
                       id="bonuas_checkbox"
@@ -278,7 +206,31 @@ export const InComeDetails = (props) => {
                       </span>
                     )}
                   </div>
+                  
+                </div>
 
+                <div className="d-flex justify-content-between ">
+                <div className="form-group">
+                    <label>Housing amount{yearlyCheck?'(y)':''}</label>
+                    <input
+                      {...register("housingAmount", {
+                        min: {
+                          value: 0,
+                          message: "Must Be Positive Number",
+                          // JS only: <p>error message</p> TS only support string
+                        },
+                      })}
+                      type="number"
+                      className="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="0"
+                    />
+                    {errors.housingAmount && (
+                      <span className="text-warning">
+                        Must Be Positive Number
+                      </span>
+                    )}
+                  </div>
                   <div className="form-group">
                     {/* <input
                       id="prov_checkbox"
@@ -307,10 +259,33 @@ export const InComeDetails = (props) => {
                       </span>
                     )}
                   </div>
+                  
                 </div>
+                
 
                 <div className="d-flex justify-content-between ">
                 <div className="form-group">
+                    <label>Medical amount{yearlyCheck?'(y)':''}</label>
+                    <input
+                      {...register("medicalAmount", {
+                        min: {
+                          value: 0,
+                          message: "Must Be Positive Number",
+                          // JS only: <p>error message</p> TS only support string
+                        },
+                      })}
+                      type="number"
+                      className="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="0"
+                    />
+                    {errors.medicalAmount && (
+                      <span className="text-warning">
+                        Must Be Positive Number
+                      </span>
+                    )}
+                  </div>
+                  <div className="form-group">
                     <label>Others{yearlyCheck?'(y)':''}</label>
                     <input
                       {...register("othersAmount", {
@@ -331,6 +306,33 @@ export const InComeDetails = (props) => {
                       </span>
                     )}
                   </div>
+
+                  
+                </div>
+
+                <div className="d-flex justify-content-between ">
+                <div className="form-group">
+                    <label>Conveyance{yearlyCheck?'(y)':''}</label>
+                    <input
+                      {...register("conveyanceAmount", {
+                        min: {
+                          value: 0,
+                          message: "Must Be Positive Number",
+                          // JS only: <p>error message</p> TS only support string
+                        },
+                      })}
+                      type="number"
+                      className="form-control"
+                      placeholder="0"
+                    />
+
+                    {errors.conveyanceAmount && (
+                      <span className="text-warning">
+                        Must Be Positive Number
+                      </span>
+                    )}
+                  </div>
+                
                 {!yearlyCheck &&<div className="form-group">
                     <label>Number Of month</label>
                     <select 
