@@ -77,14 +77,14 @@ function generate() {
     html: '#userTable',  
     startY: 70,  
     theme: 'grid',  
-    columnStyles: {  
-        0: {  
-            cellWidth: 100,  
-        },  
-        1: {  
-            cellWidth: 100,  
-        }
-    },  
+    // columnStyles: {  
+    //     0: {  
+    //         cellWidth: 100,  
+    //     },  
+    //     1: {  
+    //         cellWidth: 100,  
+    //     }
+    // },  
     styles: {  
         minCellHeight: 16
     } ,
@@ -101,23 +101,23 @@ function generate() {
       html: '#taxableTable',  
       startY: doc.lastAutoTable.finalY + 10,  
       theme: 'grid',  
-      columnStyles: {  
-          0: {  
-              cellWidth: 70,  
-          },  
-          1: {  
-              cellWidth: 120,  
-          },  
-          2: {  
-              cellWidth: 70,  
-          } ,
-          3: {  
-            cellWidth: 80,  
-        },
-        4: {  
-          cellWidth: 100,  
-      }     
-      },  
+      // columnStyles: {  
+      //     0: {  
+      //         cellWidth: 70,  
+      //     },  
+      //     1: {  
+      //         cellWidth: 120,  
+      //     },  
+      //     2: {  
+      //         cellWidth: 70,  
+      //     } ,
+      //     3: {  
+      //       cellWidth: 80,  
+      //   },
+      //   4: {  
+      //     cellWidth: 100,  
+      // }     
+      // },  
       styles: {  
           minCellHeight: 16  
       },
@@ -135,26 +135,26 @@ function generate() {
     html: '#totalTaxTable',  
     startY: doc.lastAutoTable.finalY + 10,  
     theme: 'grid',  
-    columnStyles: {  
-        0: {  
-            cellWidth: 60,  
-        },  
-        1: {  
-            cellWidth: 90,  
-        },  
-        2: {  
-            cellWidth: 40,  
-        },
-        3: {  
-          cellWidth: 100,  
-      },
-        4: {  
-          cellWidth: 50,  
-      }, 
-      5: {  
-        cellWidth: 120,  
-    },       
-    },  
+    // columnStyles: {  
+    //     0: {  
+    //         cellWidth: 60,  
+    //     },  
+    //     1: {  
+    //         cellWidth: 90,  
+    //     },  
+    //     2: {  
+    //         cellWidth: 40,  
+    //     },
+    //     3: {  
+    //       cellWidth: 100,  
+    //   },
+    //     4: {  
+    //       cellWidth: 50,  
+    //   }, 
+    //   5: {  
+    //     cellWidth: 120,  
+    // },       
+    // },  
     styles: {  
         minCellHeight: 16
     },
@@ -171,14 +171,14 @@ doc.autoTable({
   html: '#investmentTable',  
   startY: doc.lastAutoTable.finalY + 10,  
   theme: 'grid',  
-  columnStyles: {  
-      0: {  
-          cellWidth: 140,  
-      },  
-      1: {  
-          cellWidth: 160,  
-      }
-  },  
+  // columnStyles: {  
+  //     0: {  
+  //         cellWidth: 140,  
+  //     },  
+  //     1: {  
+  //         cellWidth: 160,  
+  //     }
+  // },  
   styles: {  
       minCellHeight: 16
   }  ,

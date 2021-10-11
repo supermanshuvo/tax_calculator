@@ -786,4 +786,17 @@ width: 150px;
        padding-bottom: 30px;
      }
   }
+
+
+  
+
+  .taxTable {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 0.5s linear;
+  }
+  .showTable{
+    visibility: visible;
+    opacity: 1;
+  }
   
