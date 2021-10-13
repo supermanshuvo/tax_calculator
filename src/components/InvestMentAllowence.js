@@ -132,9 +132,9 @@ const InvestmentAllowance = ({
           className={"accordion-button "+ (title === active?'togolBtn':'')}
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#collapseOne"
+          data-bs-target="#collapseThree"
           aria-expanded="true"
-          aria-controls="collapseOne"
+          aria-controls="collapseThree"
         >
           Total Calculation <span>{title !== active? 'Net Income Tax  : '+format.format(netIncomeTaxPayable) : ''}</span>
         </button>
