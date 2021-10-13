@@ -3,9 +3,7 @@ import { useForm } from "react-hook-form";
 import { taxConfig } from "../configData.js";
 
 export const InComeDetails = (props) => {
-  const [taxArray, setTaxArray] = useState(taxConfig.taxRules.general);
   const [yearlyCheck, setYearlyCheck] = useState(false);
-  const [showTaxDetails,setShowTaxDetails] = useState(false)
 
   const {
     register,
@@ -29,17 +27,9 @@ export const InComeDetails = (props) => {
     props.handleStates(formData, true);
   };
 
-  const changeCategory = (ev) => {
+  const changeCategory2 = (ev) => {
     let category = ev.target.value;
-    if (category === "disabled") {
-      setTaxArray(taxConfig.taxRules.disabled);
-    } else if (category === "freedomFighters") {
-      setTaxArray(taxConfig.taxRules.freedomFighters);
-    } else if (category === "general") {
-      setTaxArray(taxConfig.taxRules.general);
-    } else {
-      setTaxArray(taxConfig.taxRules.oldAge);
-    }
+    props.changeCategory(category)
   };
 
   // const checkboxBonusHandler = () => {
@@ -53,57 +43,20 @@ export const InComeDetails = (props) => {
         <div className="container">
           <div className="row">
             <div className=" col-lg-8  col-sm-12">
-              <div className="table_wrapper ">
-                <h3 className="salery_range">Tax Rules</h3>
-                <div className="table-responsive">
-                  <table className="table  table-bordered border-dark ">
-                    <thead>
-                      <tr>
-                        <th scope="col">Step</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">Tax %</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>first tk</th>
-                        <td>{taxArray[0]}</td>
-                        <td>0</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[1]}</td>
-                        <td>5</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[2]}</td>
-                        <td>10</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[3]}</td>
-                        <td>15</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[4]}</td>
-                        <td>20</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>rest of all</td>
-                        <td>25</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
               <form
                 className="form_style"
                 onSubmit={handleSubmit(handleFormData)}
               >
-                <h3>Salary Details</h3>
+                <div className='row'>
+                  <div className='col-md-8 col-sm-8'><h3>Salary Details</h3></div>
+                  <div className='col-md-4 col-sm-4'>
+                  <button className="btn btn-light"  type="button" data-bs-toggle="offcanvas" 
+                  data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                   Click To See Tax Rules</button>
+
+                  </div>
+                </div>
+                
                 <div className="d-flex justify-content-between ">
                   <div className="form-check">
                     <input
@@ -128,7 +81,7 @@ export const InComeDetails = (props) => {
                       className="form-control"
                       type="number"
                       {...register("category")}
-                      onChange={changeCategory}
+                      onChange={changeCategory2}
                       defaultValue={"general"}
                     >
                       <option value="general">General</option>
@@ -360,60 +313,10 @@ export const InComeDetails = (props) => {
                 </button>
               </form>
             </div>
-            <div className={" col-lg-4 col-sm-4 taxTable " + 
-            (showTaxDetails===true? "showTable" :"")}>
-              <div className="table_wrapper">
-                <h3 className="salery_range">Tax Rules 22</h3>
-                <div className="table-responsive">
-                  <table className="table  table-bordered border-dark ">
-                    <thead>
-                      <tr>
-                        <th scope="col">Step</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">Tax %</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>first tk</th>
-                        <td>{taxArray[0]}</td>
-                        <td>0</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[1]}</td>
-                        <td>5</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[2]}</td>
-                        <td>10</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[3]}</td>
-                        <td>15</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>{taxArray[4]}</td>
-                        <td>20</td>
-                      </tr>
-                      <tr>
-                        <th>next tk</th>
-                        <td>rest of all</td>
-                        <td>25</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
-        <button className="btn btn-primary" 
-            onClick={()=>setShowTaxDetails(!showTaxDetails)}
-            >Tax Rules</button>
+
       </div>
     </>
   );

@@ -787,16 +787,17 @@ width: 150px;
      }
   }
 
-
-  
-
-  .taxTable {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 1s, opacity 0.5s linear;
-  }
-  .showTable{
-    visibility: visible;
-    opacity: 1;
-  }
-  
+/* .taxRule{
+  position: absolute;
+  height: auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset:40% 20% 40% 35%;
+  background-color:crimson;
+  padding: 20px;
+  border: #fff;
+  border-radius: 10px 2px 20px 5px;
+  box-shadow: 100px;
+ */
